@@ -11,6 +11,7 @@
   <key>CFBundleLocalizations</key>
   <array>
     <string>en</string>
+    <string>bo</string>
     <string>ja</string>
     <string>zh-Hans</string>
     <string>zh-Hant</string>
@@ -33,13 +34,13 @@
     <string>vi</string>
   </array>
   <key>CFBundleDisplayName</key>
-  <string>PhotoCraft</string>
+  <string>Tibetan Design</string>
   <key>CFBundleName</key>
-  <string>PhotoCraft</string>
+  <string>Tibetan Design</string>
   <key>CFBundleExecutable</key>
-  <string>PhotoCraft</string>
+  <string>Tibetan Design</string>
   <key>CFBundleIdentifier</key>
-  <string>ai.storyteller.photocraft</string>
+  <string>com.tibetanebook.tibetan-design</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundlePackageType</key>
@@ -55,7 +56,7 @@
   <key>PhotoCraftBuildCommit</key>
   <string>@BUILD_SHA@</string>
   <key>CFBundleIconFile</key>
-  <string>PhotoCraft</string>
+  <string>Tibetan Design</string>
   <key>LSApplicationCategoryType</key>
   <string>public.app-category.graphics-design</string>
   <!-- Must match MACOSX_DEPLOYMENT_TARGET in package.sh. Big Sur is the first release on
@@ -78,14 +79,14 @@
       <key>UTTypeIdentifier</key>
       <string>ai.storyteller.photocraft.document</string>
       <key>UTTypeDescription</key>
-      <string>PhotoCraft Document</string>
+      <string>Tibetan Design Document</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
         <string>public.image</string>
       </array>
       <key>UTTypeIconFile</key>
-      <string>PhotoCraft</string>
+      <string>Tibetan Design</string>
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.filename-extension</key>
@@ -181,13 +182,13 @@
   <array>
     <dict>
       <key>CFBundleTypeName</key>
-      <string>PhotoCraft Document</string>
+      <string>Tibetan Design Document</string>
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>LSHandlerRank</key>
       <string>Owner</string>
       <key>CFBundleTypeIconFile</key>
-      <string>PhotoCraft</string>
+      <string>Tibetan Design</string>
       <key>LSItemContentTypes</key>
       <array><string>ai.storyteller.photocraft.document</string></array>
     </dict>

@@ -122,3 +122,5 @@ Files copied into `corpus/` by hand (tiff, exr, raw) must be MIT, BSD or CC0.
 - assets/app-icon/photocraft.ico, photocraft-1024.png and hicolor PNG variants: resized from the user's StudyTibetan Logo.png, supplied for use in Tibetan Design. No public asset license is asserted.
 
 - Embedded Tibetan UI face (external build input TIBETAN_UI_FONT): Noto Serif Tibetan, The Noto Project Authors, https://github.com/google/fonts/tree/main/ofl/notoseriftibetan, SIL Open Font License 1.1 (assets/app-icon/OFL-Tibetan.txt). Font binary is cached outside tracked source.
+
+- macOS Tibetan Design.app/Contents/Resources/Tibetan Design.icns: generated at packaging time from assets/app-icon/photocraft-1024.png using macOS sips/iconutil; supplied StudyTibetan logo, same user-provided provenance and asset-license limitations as above.

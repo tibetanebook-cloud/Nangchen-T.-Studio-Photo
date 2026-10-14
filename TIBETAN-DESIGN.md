@@ -37,3 +37,14 @@ GitHub Windows runner after this source is placed in a repository you control.
 From **Actions → Tibetan Design Windows → Run workflow**, run the build and download
 the **Tibetan-Design-Windows** artifact. It contains the MSI and portable ZIP. The
 workflow does not publish a release. Without signing credentials, packages are unsigned.
+
+
+## macOS build preview
+
+A dedicated **Tibetan Design macOS** workflow now builds Apple Silicon and Intel
+DMGs with the supplied logo, Tibetan font and native Mac menus. These Mac packages
+still require a successful GitHub build and real-device testing. See
+[Mac build and signing instructions](docs/macos-tibetan-design.md).
+
+Without Apple Developer ID and notarization credentials, the workflow produces
+ad-hoc signed test packages, not a notarized public release.

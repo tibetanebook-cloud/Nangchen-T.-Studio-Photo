@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Check the macOS release artifacts exactly as users download them:
 #
-#   $DIST/photocraft-<version>-macos-<arch>.dmg       signed, notarized, ticket stapled
-#   $DIST/photocraft-cli-<version>-macos-<arch>.zip   unpacked here; the binary inside must be
+#   $DIST/tibetan-design-<version>-macos-<arch>.dmg       signed, notarized, ticket stapled
+#   $DIST/tibetan-design-cli-<version>-macos-<arch>.zip   unpacked here; the binary inside must be
 #                                                    Developer ID signed with the hardened runtime,
 #                                                    timestamped and notarized
 #
@@ -37,8 +37,8 @@ case "$ARCH" in
   *) echo "unknown --arch $ARCH" >&2; exit 2 ;;
 esac
 
-DMG="$DIST/photocraft-$VERSION-macos-$ARCH.dmg"
-CLI_ZIP="$DIST/photocraft-cli-$VERSION-macos-$ARCH.zip"
+DMG="$DIST/tibetan-design-$VERSION-macos-$ARCH.dmg"
+CLI_ZIP="$DIST/tibetan-design-cli-$VERSION-macos-$ARCH.zip"
 IDENTITY="${MACOS_SIGN_IDENTITY:--}"
 STRICT=0
 if [ "$IDENTITY" != "-" ] && [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
@@ -78,14 +78,52 @@ for f in "$DMG" "$CLI_ZIP"; do
 done
 
 WORK="$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/photocraft-verify.XXXXXX")"
-trap 'rm -rf "$WORK"' EXIT
+MOUNTED=0
+cleanup() {
+  if [ "$MOUNTED" = 1 ]; then hdiutil detach "$WORK/mounted" >/dev/null || true; fi
+  rm -rf "$WORK"
+}
+trap cleanup EXIT
+
+# Verify the actual app inside the downloadable image, not only the CLI or DMG signature.
+mkdir -p "$WORK/mounted"
+hdiutil attach -readonly -nobrowse -mountpoint "$WORK/mounted" "$DMG" >/dev/null
+MOUNTED=1
+APP="$WORK/mounted/Tibetan Design.app"
+EXE="$APP/Contents/MacOS/Tibetan Design"
+PLIST="$APP/Contents/Info.plist"
+test -x "$EXE"
+codesign --verify --strict --deep --verbose=2 "$APP"
+for key in CFBundleName CFBundleDisplayName CFBundleExecutable CFBundleIconFile; do
+  value="$(plutil -extract "$key" raw -o - "$PLIST")"
+  [ "$value" = 'Tibetan Design' ] || { echo "Wrong bundle $key: $value" >&2; exit 1; }
+done
+[ "$(plutil -extract CFBundleIdentifier raw -o - "$PLIST")" = 'com.tibetanebook.tibetan-design' ]
+test -s "$APP/Contents/Resources/Tibetan Design.icns"
+for notice in LICENSE-MIT LICENSE-APACHE NOTICE ATTRIBUTION.md OFL-Tibetan.txt; do
+  test -s "$APP/Contents/Resources/Licenses/$notice"
+done
+archs="$(lipo -archs "$EXE")"
+for a in $WANT_ARCHS; do
+  case " $archs " in
+    *" $a "*) ;;
+    *) echo "Tibetan Design app lacks $a (has: $archs)" >&2; exit 1 ;;
+  esac
+done
+"$EXE" --version
+if [ "$STRICT" = 1 ]; then
+  xcrun stapler validate "$APP" || fail "no notarization ticket stapled to app"
+  assess --assess --type execute -vv "$APP" || fail "Gatekeeper rejects app"
+fi
+hdiutil detach "$WORK/mounted" >/dev/null
+MOUNTED=0
 
 # ---- CLI zip -----------------------------------------------------------------------------------
 echo "==> $(basename "$CLI_ZIP")"
 ditto -x -k "$CLI_ZIP" "$WORK/cli"
-CLI="$WORK/cli/photocraft-cli-$VERSION-macos-$ARCH/photocraft-cli"
+CLI="$WORK/cli/tibetan-design-cli-$VERSION-macos-$ARCH/photocraft-cli"
 if [ ! -x "$CLI" ]; then
-  echo "error: $(basename "$CLI_ZIP") has no executable photocraft-cli-$VERSION-macos-$ARCH/photocraft-cli" >&2
+  echo "error: $(basename "$CLI_ZIP") has no executable tibetan-design-cli-$VERSION-macos-$ARCH/photocraft-cli" >&2
   exit 1
 fi
 
