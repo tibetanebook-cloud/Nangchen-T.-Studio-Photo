@@ -1,0 +1,16 @@
+fontWeight|Thin|སྲབ་པོ
+fontWeight|ExtraLight|ཤིན་ཏུ་སྲབ་པོ
+fontWeight|UltraLight|ཤིན་ཏུ་སྲབ་པོ
+fontWeight|Light|སྲབ་པོ
+fontWeight|Regular|རྒྱུན་ལྡན
+fontWeight|Normal|རྒྱུན་ལྡན
+fontWeight|Medium|འབྲིང
+fontWeight|SemiBold|ཅུང་སྦོམ
+fontWeight|DemiBold|ཅུང་སྦོམ
+fontWeight|Bold|སྦོམ་པོ
+fontWeight|ExtraBold|ཤིན་ཏུ་སྦོམ་པོ
+fontWeight|UltraBold|ཤིན་ཏུ་སྦོམ་པོ
+fontWeight|Black|སྦོམ་ཤོས
+fontWeight|Heavy|སྦོམ་ཤོས
+fontWeight|Italic|གསེག་ཡིག
+fontWeight|Oblique|གསེག་པ

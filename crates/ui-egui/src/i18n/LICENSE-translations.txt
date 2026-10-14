@@ -1,0 +1,33 @@
+Tibetan Design's Korean, German, Brazilian Portuguese, Italian, Ukrainian, Dutch, Czech, Turkish,
+Hungarian and Serbian UI translation catalogs are licensed under MIT OR Apache-2.0, at your option.
+The full license texts are in ../../../../LICENSE-MIT and ../../../../LICENSE-APACHE.
+
+Korean translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+German translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Brazilian Portuguese translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Italian translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Ukrainian translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Dutch translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Czech translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Turkish translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Hungarian translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
+
+Serbian translations: Tibetan Design contributors, original translations of
+Tibetan Design's English labels; no proprietary translation resources were used.
