@@ -152,10 +152,16 @@ ditto "$APP" "$STAGE/Tibetan Design.app"
 ln -s /Applications "$STAGE/Applications"
 # Use Finder's default layout rather than the upstream branded background and icon positions.
 rm -f "$DMG" "$WORK/raw.dmg"
-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
-# The volume carries the product name while artifact filenames include the version.
-hdiutil makehybrid -hfs -hfs-volume-name "Tibetan Design" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
+# Create a real HFS+ filesystem: makehybrid synthesizes FinderInfo on files,
+# invalidating the signed bundle when the image is mounted (Apple QA1940).
+# Retry transient DiskImages resource contention on hosted runners.
+for attempt in 1 2 3; do
+  if hdiutil create -fs HFS+ -format UDRW -volname "Tibetan Design" -srcfolder "$STAGE" -ov "$WORK/raw.dmg"; then
+    break
+  fi
+  [ "$attempt" -lt 3 ] || { echo "Failed to create DMG filesystem" >&2; exit 1; }
+  sleep 5
+done
 hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
 rm -f "$WORK/raw.dmg"
 sign "$DMG"

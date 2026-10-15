@@ -34,6 +34,12 @@ class TibetanMacPackageTests(unittest.TestCase):
         self.assertIn('hdiutil attach -readonly', verify)
         self.assertIn('codesign --verify --strict --deep', verify)
 
+    def test_dmg_uses_real_filesystem_to_preserve_signed_bundle(self):
+        package = (ROOT / "packaging/macos/package.sh").read_text(encoding="utf-8")
+        self.assertIn('hdiutil create -fs HFS+ -format UDRW', package)
+        self.assertNotIn('hdiutil makehybrid ', package)
+        self.assertIn('hdiutil convert "$WORK/raw.dmg" -format UDZO', package)
+
     def test_font_input_and_license_are_checked_and_distributed(self):
         shell = (ROOT / "scripts/prepare-tibetan-font.sh").read_text(encoding="utf-8")
         windows = (ROOT / "scripts/prepare-tibetan-font.ps1").read_text(encoding="utf-8").lower()
