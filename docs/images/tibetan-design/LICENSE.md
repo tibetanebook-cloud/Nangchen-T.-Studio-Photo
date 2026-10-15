@@ -6,3 +6,5 @@ editor-tibetan.png: Tibetan interface with artwork, text, layers and color-mode 
 setup-1.png through setup-5.png: Windows setup wizard, supplied as 1.png through 5.png, in installation order.
 
 file-menu-tibetan.png: additional user-supplied screenshot on 2026-10-14 showing the Tibetan File menu, keyboard shortcuts and a selected text layer. The same supplied-screenshot provenance and license limitations above apply.
+
+layer-menu-tibetan.png: supplied on 2026-10-15 as home 2.png, showing Tibetan layer menus and a layered artwork project. The same provenance and license limitations apply. Home.png supplied on the same date is identical to file-menu-tibetan.png and is displayed using that existing file.

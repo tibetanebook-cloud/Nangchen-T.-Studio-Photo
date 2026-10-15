@@ -17,6 +17,10 @@
 
 *The Tibetan File menu with keyboard shortcuts, alongside artwork and an editable text layer.*
 
+![Tibetan Design with Tibetan layer menus and a layered artwork project](docs/images/tibetan-design/layer-menu-tibetan.png)
+
+*Tibetan layer menus alongside text, logo and artwork layers in the Layers panel.*
+
 <details>
 <summary><strong>Windows installation screenshots</strong></summary>
 
