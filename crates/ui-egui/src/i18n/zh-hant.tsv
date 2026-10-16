@@ -2732,3 +2732,20 @@ curves	Smooth	平滑
 @plural	{n} action|{n} actions	{n} 個動作
 	Auto Add/Delete	自動增加/刪除
 	ICO is limited to 256 × 256 pixels	ICO 最大為 256 × 256 像素
+
+# Release notifications
+	Check for Updates…	檢查更新…
+	Automatically Check for Updates	自動檢查更新
+	Software Update	軟體更新
+	A new version is available.	有新版本可用。
+	Download Update	下載更新
+	Later	稍後
+	Skip This Version	略過此版本
+	Check for updates automatically	自動檢查更新
+	Checking for updates…	正在檢查更新…
+	No newer release is available for this computer.	此電腦暫無更新的發行版本。
+	Could not check for updates. Please try again later.	無法檢查更新。請稍後再試。
+	Installed version: {version}	已安裝版本：{version}
+	Latest version: {version}	最新版本：{version}
+	Download the new installer from the official release page.	請從官方發行頁面下載新版安裝程式。
+	Open Downloads	開啟下載頁面

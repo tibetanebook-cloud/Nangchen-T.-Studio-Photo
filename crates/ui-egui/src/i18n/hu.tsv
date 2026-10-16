@@ -4058,3 +4058,20 @@ cameraRaw	Yellow	Sárga
 	Ink Characteristics	Festék jellemzői
 	Solidity:	Fedőképesség:
 	Redrawing	Újrarajzolás
+
+# Release notifications
+	Check for Updates…	Frissítések keresése…
+	Automatically Check for Updates	Frissítések automatikus keresése
+	Software Update	Szoftverfrissítés
+	A new version is available.	Új verzió érhető el.
+	Download Update	Frissítés letöltése
+	Later	Később
+	Skip This Version	Verzió kihagyása
+	Check for updates automatically	Frissítések automatikus keresése
+	Checking for updates…	Frissítések keresése…
+	No newer release is available for this computer.	Ehhez a számítógéphez nem érhető el újabb kiadás.
+	Could not check for updates. Please try again later.	Nem sikerült ellenőrizni a frissítéseket. Próbálja újra később.
+	Installed version: {version}	Telepített verzió: {version}
+	Latest version: {version}	Legújabb verzió: {version}
+	Download the new installer from the official release page.	Töltse le az új telepítőt a hivatalos kiadási oldalról.
+	Open Downloads	Letöltések megnyitása

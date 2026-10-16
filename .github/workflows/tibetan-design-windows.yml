@@ -11,6 +11,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate release notification catalogs
+        run: python scripts/check-update-catalogs.py
       - uses: dtolnay/rust-toolchain@stable
       - name: Resolve new update-check dependencies
         run: cargo update --workspace

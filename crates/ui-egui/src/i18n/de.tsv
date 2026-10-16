@@ -3135,3 +3135,20 @@ curves	Smooth	Glätten
 @plural	{n} action|{n} actions	{n} Aktion|{n} Aktionen
 	Auto Add/Delete	Autom. hinzuf./löschen
 	ICO is limited to 256 × 256 pixels	ICO ist auf 256 × 256 Pixel begrenzt
+
+# Release notifications
+	Check for Updates…	Nach Updates suchen…
+	Automatically Check for Updates	Automatisch nach Updates suchen
+	Software Update	Softwareupdate
+	A new version is available.	Eine neue Version ist verfügbar.
+	Download Update	Update herunterladen
+	Later	Später
+	Skip This Version	Diese Version überspringen
+	Check for updates automatically	Automatisch nach Updates suchen
+	Checking for updates…	Updates werden gesucht…
+	No newer release is available for this computer.	Für diesen Computer ist keine neuere Version verfügbar.
+	Could not check for updates. Please try again later.	Updates konnten nicht geprüft werden. Versuchen Sie es später erneut.
+	Installed version: {version}	Installierte Version: {version}
+	Latest version: {version}	Neueste Version: {version}
+	Download the new installer from the official release page.	Laden Sie das neue Installationsprogramm von der offiziellen Veröffentlichungsseite herunter.
+	Open Downloads	Downloads öffnen

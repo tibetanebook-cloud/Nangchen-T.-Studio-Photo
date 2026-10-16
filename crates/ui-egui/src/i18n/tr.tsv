@@ -3869,3 +3869,20 @@ cameraData	Lens	Lens
 	Ink Characteristics	Mürekkep Özellikleri
 	Solidity:	Doluluk:
 	Redrawing	Yeniden çiziliyor
+
+# Release notifications
+	Check for Updates…	Güncellemeleri denetle…
+	Automatically Check for Updates	Güncellemeleri otomatik denetle
+	Software Update	Yazılım güncellemesi
+	A new version is available.	Yeni bir sürüm mevcut.
+	Download Update	Güncellemeyi indir
+	Later	Daha sonra
+	Skip This Version	Bu sürümü atla
+	Check for updates automatically	Güncellemeleri otomatik denetle
+	Checking for updates…	Güncellemeler denetleniyor…
+	No newer release is available for this computer.	Bu bilgisayar için daha yeni bir sürüm yok.
+	Could not check for updates. Please try again later.	Güncellemeler denetlenemedi. Lütfen daha sonra tekrar deneyin.
+	Installed version: {version}	Yüklü sürüm: {version}
+	Latest version: {version}	En son sürüm: {version}
+	Download the new installer from the official release page.	Yeni yükleyiciyi resmî sürüm sayfasından indirin.
+	Open Downloads	İndirme sayfasını aç

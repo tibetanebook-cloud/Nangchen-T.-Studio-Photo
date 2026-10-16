@@ -3312,3 +3312,20 @@ curves	Smooth	매끄럽게
 @plural	{n} action|{n} actions	액션 {n}개
 	Auto Add/Delete	자동 추가/삭제
 	ICO is limited to 256 × 256 pixels	ICO는 256 × 256픽셀로 제한됩니다
+
+# Release notifications
+	Check for Updates…	업데이트 확인…
+	Automatically Check for Updates	자동으로 업데이트 확인
+	Software Update	소프트웨어 업데이트
+	A new version is available.	새 버전을 사용할 수 있습니다.
+	Download Update	업데이트 다운로드
+	Later	나중에
+	Skip This Version	이 버전 건너뛰기
+	Check for updates automatically	자동으로 업데이트 확인
+	Checking for updates…	업데이트 확인 중…
+	No newer release is available for this computer.	이 컴퓨터에 사용할 수 있는 새 릴리스가 없습니다.
+	Could not check for updates. Please try again later.	업데이트를 확인할 수 없습니다. 나중에 다시 시도하세요.
+	Installed version: {version}	설치된 버전: {version}
+	Latest version: {version}	최신 버전: {version}
+	Download the new installer from the official release page.	공식 릴리스 페이지에서 새 설치 프로그램을 다운로드하세요.
+	Open Downloads	다운로드 페이지 열기

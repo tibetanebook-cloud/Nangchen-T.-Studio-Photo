@@ -3373,7 +3373,7 @@ fontWeight	Italic	གསེག་ཡིག
 fontWeight	Oblique	གསེག་པ
 
 	English / བོད་ཡིག	English / བོད་ཡིག
-	Check for Updates…	ཐོན་གསར་ཡོད་མེད་བཤེར་བ།
+	Check for Updates…	ཐོན་གསར་ཡོད་མེད་བཤེར་བ།…
 	Automatically Check for Updates	རང་འགུལ་གྱིས་ཐོན་གསར་བཤེར་བ།
 	Software Update	མཉེན་ཆས་ཐོན་གསར།
 	A new version is available.	ཐོན་གསར་ཞིག་ཡོད།
@@ -3381,7 +3381,7 @@ fontWeight	Oblique	གསེག་པ
 	Later	རྗེས་སུ།
 	Skip This Version	ཐོན་རིམ་འདི་བརྒལ་བ།
 	Check for updates automatically	རང་འགུལ་གྱིས་ཐོན་གསར་བཤེར་བ།
-	Checking for updates…	ཐོན་གསར་བཤེར་བཞིན་ཡོད།
+	Checking for updates…	ཐོན་གསར་བཤེར་བཞིན་ཡོད།…
 	No newer release is available for this computer.	གློག་ཀླད་འདིའི་ཆེད་དུ་ཐོན་གསར་མེད།
 	Could not check for updates. Please try again later.	ཐོན་གསར་བཤེར་མ་ཐུབ། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས།
 	Installed version: {version}	བསྒྲིགས་ཟིན་པའི་ཐོན་རིམ། {version}

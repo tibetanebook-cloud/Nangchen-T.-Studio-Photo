@@ -3815,3 +3815,20 @@ curves	Smooth	スムーズ
 	Reset All Locked Settings	ロックされた設定をすべて初期化
 	Copy Texture to Other Tools	テクスチャを他のツールにコピー
 	ICO is limited to 256 × 256 pixels	ICO は 256 × 256 ピクセルまでです
+
+# Release notifications
+	Check for Updates…	アップデートを確認…
+	Automatically Check for Updates	アップデートを自動的に確認
+	Software Update	ソフトウェアアップデート
+	A new version is available.	新しいバージョンが利用可能です。
+	Download Update	アップデートをダウンロード
+	Later	後で
+	Skip This Version	このバージョンをスキップ
+	Check for updates automatically	アップデートを自動的に確認する
+	Checking for updates…	アップデートを確認中…
+	No newer release is available for this computer.	このコンピューター用の新しいリリースはありません。
+	Could not check for updates. Please try again later.	アップデートを確認できませんでした。後でもう一度お試しください。
+	Installed version: {version}	インストール済みバージョン: {version}
+	Latest version: {version}	最新バージョン: {version}
+	Download the new installer from the official release page.	公式リリースページから新しいインストーラーをダウンロードしてください。
+	Open Downloads	ダウンロードページを開く

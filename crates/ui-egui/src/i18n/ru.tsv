@@ -3103,3 +3103,20 @@ curves	Smooth	Сгладить
 	Gray Value (Median)	Уровень серого (медиана)
 	Integrated Density	Интегральная плотность
 	Length	Длина
+
+# Release notifications
+	Check for Updates…	Проверить обновления…
+	Automatically Check for Updates	Автоматически проверять обновления
+	Software Update	Обновление программы
+	A new version is available.	Доступна новая версия.
+	Download Update	Скачать обновление
+	Later	Позже
+	Skip This Version	Пропустить эту версию
+	Check for updates automatically	Автоматически проверять обновления
+	Checking for updates…	Проверка обновлений…
+	No newer release is available for this computer.	Для этого компьютера нет более новой версии.
+	Could not check for updates. Please try again later.	Не удалось проверить обновления. Повторите попытку позже.
+	Installed version: {version}	Установленная версия: {version}
+	Latest version: {version}	Последняя версия: {version}
+	Download the new installer from the official release page.	Скачайте новый установщик с официальной страницы выпусков.
+	Open Downloads	Открыть загрузки

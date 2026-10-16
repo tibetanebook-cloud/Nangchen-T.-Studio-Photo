@@ -3836,3 +3836,20 @@ curves	Smooth	Згладити
 @plural	{n} action|{n} actions	{n} операція|{n} операції|{n} операцій
 	Auto Add/Delete	Автододавання/видалення
 	ICO is limited to 256 × 256 pixels	ICO обмежено розміром 256 × 256 пікселів
+
+# Release notifications
+	Check for Updates…	Перевірити оновлення…
+	Automatically Check for Updates	Автоматично перевіряти оновлення
+	Software Update	Оновлення програми
+	A new version is available.	Доступна нова версія.
+	Download Update	Завантажити оновлення
+	Later	Пізніше
+	Skip This Version	Пропустити цю версію
+	Check for updates automatically	Автоматично перевіряти оновлення
+	Checking for updates…	Перевірка оновлень…
+	No newer release is available for this computer.	Для цього комп’ютера немає новішої версії.
+	Could not check for updates. Please try again later.	Не вдалося перевірити оновлення. Спробуйте пізніше.
+	Installed version: {version}	Установлена версія: {version}
+	Latest version: {version}	Найновіша версія: {version}
+	Download the new installer from the official release page.	Завантажте новий інсталятор з офіційної сторінки випусків.
+	Open Downloads	Відкрити завантаження

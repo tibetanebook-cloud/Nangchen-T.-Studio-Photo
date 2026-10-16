@@ -29,6 +29,8 @@ jobs:
       MACOSX_DEPLOYMENT_TARGET: '11.0'
     steps:
       - uses: actions/checkout@v4
+      - name: Validate release notification catalogs
+        run: python3 scripts/check-update-catalogs.py
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}

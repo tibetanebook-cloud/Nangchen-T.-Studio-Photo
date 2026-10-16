@@ -3139,3 +3139,20 @@ curves	Smooth	Lisser
 @plural	{n} action|{n} actions	{n} action|{n} actions
 	Auto Add/Delete	Ajout/suppr. auto
 	ICO is limited to 256 × 256 pixels	Le format ICO est limité à 256 × 256 pixels
+
+# Release notifications
+	Check for Updates…	Rechercher des mises à jour…
+	Automatically Check for Updates	Rechercher automatiquement les mises à jour
+	Software Update	Mise à jour du logiciel
+	A new version is available.	Une nouvelle version est disponible.
+	Download Update	Télécharger la mise à jour
+	Later	Plus tard
+	Skip This Version	Ignorer cette version
+	Check for updates automatically	Rechercher automatiquement les mises à jour
+	Checking for updates…	Recherche de mises à jour…
+	No newer release is available for this computer.	Aucune version plus récente n’est disponible pour cet ordinateur.
+	Could not check for updates. Please try again later.	Impossible de rechercher des mises à jour. Réessayez plus tard.
+	Installed version: {version}	Version installée : {version}
+	Latest version: {version}	Dernière version : {version}
+	Download the new installer from the official release page.	Téléchargez le nouvel installateur depuis la page officielle des versions.
+	Open Downloads	Ouvrir les téléchargements

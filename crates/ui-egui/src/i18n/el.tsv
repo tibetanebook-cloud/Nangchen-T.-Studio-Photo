@@ -3835,3 +3835,20 @@ curves	Smooth	Εξομάλυνση
 @plural	{n} action|{n} actions	{n} ενέργεια|{n} ενέργειες
 	Auto Add/Delete	Αυτόματη προσθήκη/διαγραφή
 	ICO is limited to 256 × 256 pixels	Το ICO περιορίζεται σε 256 × 256 εικονοστοιχεία
+
+# Release notifications
+	Check for Updates…	Έλεγχος για ενημερώσεις…
+	Automatically Check for Updates	Αυτόματος έλεγχος για ενημερώσεις
+	Software Update	Ενημέρωση λογισμικού
+	A new version is available.	Διατίθεται νέα έκδοση.
+	Download Update	Λήψη ενημέρωσης
+	Later	Αργότερα
+	Skip This Version	Παράλειψη αυτής της έκδοσης
+	Check for updates automatically	Αυτόματος έλεγχος για ενημερώσεις
+	Checking for updates…	Έλεγχος για ενημερώσεις…
+	No newer release is available for this computer.	Δεν διατίθεται νεότερη έκδοση για αυτόν τον υπολογιστή.
+	Could not check for updates. Please try again later.	Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις. Δοκιμάστε ξανά αργότερα.
+	Installed version: {version}	Εγκατεστημένη έκδοση: {version}
+	Latest version: {version}	Νεότερη έκδοση: {version}
+	Download the new installer from the official release page.	Κατεβάστε το νέο πρόγραμμα εγκατάστασης από την επίσημη σελίδα εκδόσεων.
+	Open Downloads	Άνοιγμα λήψεων

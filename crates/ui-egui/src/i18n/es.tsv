@@ -2822,3 +2822,20 @@ curves	Smooth	Suavizar
 @plural	{n} action|{n} actions	{n} acción|{n} acciones
 	Auto Add/Delete	Añadir/eliminar automáticamente
 	ICO is limited to 256 × 256 pixels	ICO está limitado a 256 × 256 píxeles
+
+# Release notifications
+	Check for Updates…	Buscar actualizaciones…
+	Automatically Check for Updates	Buscar actualizaciones automáticamente
+	Software Update	Actualización de software
+	A new version is available.	Hay una nueva versión disponible.
+	Download Update	Descargar actualización
+	Later	Más tarde
+	Skip This Version	Omitir esta versión
+	Check for updates automatically	Buscar actualizaciones automáticamente
+	Checking for updates…	Buscando actualizaciones…
+	No newer release is available for this computer.	No hay una versión más reciente para este equipo.
+	Could not check for updates. Please try again later.	No se pudieron buscar actualizaciones. Inténtalo de nuevo más tarde.
+	Installed version: {version}	Versión instalada: {version}
+	Latest version: {version}	Última versión: {version}
+	Download the new installer from the official release page.	Descarga el nuevo instalador desde la página oficial de versiones.
+	Open Downloads	Abrir descargas

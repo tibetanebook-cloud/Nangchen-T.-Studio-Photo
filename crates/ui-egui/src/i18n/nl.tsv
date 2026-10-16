@@ -3897,3 +3897,20 @@ curves	Smooth	Vloeiend maken
 @plural	{n} action|{n} actions	{n} handeling|{n} handelingen
 	Auto Add/Delete	Automatisch toevoegen/verwijderen
 	ICO is limited to 256 × 256 pixels	ICO is beperkt tot 256 × 256 pixels
+
+# Release notifications
+	Check for Updates…	Controleren op updates…
+	Automatically Check for Updates	Automatisch controleren op updates
+	Software Update	Software-update
+	A new version is available.	Er is een nieuwe versie beschikbaar.
+	Download Update	Update downloaden
+	Later	Later
+	Skip This Version	Deze versie overslaan
+	Check for updates automatically	Automatisch controleren op updates
+	Checking for updates…	Controleren op updates…
+	No newer release is available for this computer.	Er is geen nieuwere versie beschikbaar voor deze computer.
+	Could not check for updates. Please try again later.	Kan niet controleren op updates. Probeer het later opnieuw.
+	Installed version: {version}	Geïnstalleerde versie: {version}
+	Latest version: {version}	Nieuwste versie: {version}
+	Download the new installer from the official release page.	Download het nieuwe installatieprogramma van de officiële releasepagina.
+	Open Downloads	Downloads openen

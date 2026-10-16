@@ -4100,3 +4100,20 @@ navigator	Zoom	Zoom
 @plural	{n} action|{n} actions	{n} azione|{n} azioni
 	Auto Add/Delete	Aggiungi/elimina automaticamente
 	ICO is limited to 256 × 256 pixels	ICO è limitato a 256 × 256 pixel
+
+# Release notifications
+	Check for Updates…	Cerca aggiornamenti…
+	Automatically Check for Updates	Cerca aggiornamenti automaticamente
+	Software Update	Aggiornamento software
+	A new version is available.	È disponibile una nuova versione.
+	Download Update	Scarica aggiornamento
+	Later	Più tardi
+	Skip This Version	Salta questa versione
+	Check for updates automatically	Cerca aggiornamenti automaticamente
+	Checking for updates…	Ricerca aggiornamenti…
+	No newer release is available for this computer.	Non è disponibile una versione più recente per questo computer.
+	Could not check for updates. Please try again later.	Impossibile cercare aggiornamenti. Riprova più tardi.
+	Installed version: {version}	Versione installata: {version}
+	Latest version: {version}	Ultima versione: {version}
+	Download the new installer from the official release page.	Scarica il nuovo programma di installazione dalla pagina ufficiale delle versioni.
+	Open Downloads	Apri download

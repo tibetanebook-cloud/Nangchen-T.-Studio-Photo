@@ -3927,3 +3927,20 @@ layerLabel	No Color	Sem cor
 @plural	{n} action|{n} actions	{n} ação|{n} ações
 	Auto Add/Delete	Adicionar/excluir automaticamente
 	ICO is limited to 256 × 256 pixels	ICO é limitado a 256 × 256 pixels
+
+# Release notifications
+	Check for Updates…	Verificar atualizações…
+	Automatically Check for Updates	Verificar atualizações automaticamente
+	Software Update	Atualização do software
+	A new version is available.	Uma nova versão está disponível.
+	Download Update	Baixar atualização
+	Later	Mais tarde
+	Skip This Version	Ignorar esta versão
+	Check for updates automatically	Verificar atualizações automaticamente
+	Checking for updates…	Verificando atualizações…
+	No newer release is available for this computer.	Não há uma versão mais recente para este computador.
+	Could not check for updates. Please try again later.	Não foi possível verificar atualizações. Tente novamente mais tarde.
+	Installed version: {version}	Versão instalada: {version}
+	Latest version: {version}	Versão mais recente: {version}
+	Download the new installer from the official release page.	Baixe o novo instalador na página oficial de versões.
+	Open Downloads	Abrir downloads

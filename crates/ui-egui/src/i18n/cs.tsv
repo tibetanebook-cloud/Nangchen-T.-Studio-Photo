@@ -3745,3 +3745,20 @@ navigator	Zoom	Zvětšení
 @plural	{n} action|{n} actions	{n} akce|{n} akce|{n} akcí
 	Auto Add/Delete	Automaticky přidat/odstranit
 	ICO is limited to 256 × 256 pixels	ICO je omezen na 256 × 256 pixelů
+
+# Release notifications
+	Check for Updates…	Zkontrolovat aktualizace…
+	Automatically Check for Updates	Automaticky kontrolovat aktualizace
+	Software Update	Aktualizace softwaru
+	A new version is available.	Je dostupná nová verze.
+	Download Update	Stáhnout aktualizaci
+	Later	Později
+	Skip This Version	Přeskočit tuto verzi
+	Check for updates automatically	Automaticky kontrolovat aktualizace
+	Checking for updates…	Kontrola aktualizací…
+	No newer release is available for this computer.	Pro tento počítač není dostupné novější vydání.
+	Could not check for updates. Please try again later.	Aktualizace se nepodařilo zkontrolovat. Zkuste to znovu později.
+	Installed version: {version}	Nainstalovaná verze: {version}
+	Latest version: {version}	Nejnovější verze: {version}
+	Download the new installer from the official release page.	Stáhněte nový instalační program z oficiální stránky vydání.
+	Open Downloads	Otevřít stahování

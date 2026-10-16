@@ -3126,3 +3126,20 @@ curves	Smooth	Haluskan
 @plural	{n} action|{n} actions	{n} tindakan
 	Auto Add/Delete	Tambah/Hapus Otomatis
 	ICO is limited to 256 × 256 pixels	ICO dibatasi hingga 256 × 256 piksel
+
+# Release notifications
+	Check for Updates…	Periksa pembaruan…
+	Automatically Check for Updates	Periksa pembaruan secara otomatis
+	Software Update	Pembaruan perangkat lunak
+	A new version is available.	Versi baru tersedia.
+	Download Update	Unduh pembaruan
+	Later	Nanti
+	Skip This Version	Lewati versi ini
+	Check for updates automatically	Periksa pembaruan secara otomatis
+	Checking for updates…	Memeriksa pembaruan…
+	No newer release is available for this computer.	Tidak ada rilis yang lebih baru untuk komputer ini.
+	Could not check for updates. Please try again later.	Tidak dapat memeriksa pembaruan. Coba lagi nanti.
+	Installed version: {version}	Versi terpasang: {version}
+	Latest version: {version}	Versi terbaru: {version}
+	Download the new installer from the official release page.	Unduh penginstal baru dari halaman rilis resmi.
+	Open Downloads	Buka unduhan

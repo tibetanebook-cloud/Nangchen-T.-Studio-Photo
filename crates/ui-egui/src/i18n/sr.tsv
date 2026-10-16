@@ -4211,3 +4211,20 @@ shape	Appearance	Izgled
 	Ink Characteristics	Karakteristike mastila
 	Solidity:	Punoća:
 	Redrawing	Ponovno iscrtavanje
+
+# Release notifications
+	Check for Updates…	Proveri ažuriranja…
+	Automatically Check for Updates	Automatski proveravaj ažuriranja
+	Software Update	Ažuriranje programa
+	A new version is available.	Dostupna je nova verzija.
+	Download Update	Preuzmi ažuriranje
+	Later	Kasnije
+	Skip This Version	Preskoči ovu verziju
+	Check for updates automatically	Automatski proveravaj ažuriranja
+	Checking for updates…	Provera ažuriranja…
+	No newer release is available for this computer.	Za ovaj računar nema novijeg izdanja.
+	Could not check for updates. Please try again later.	Provera ažuriranja nije uspela. Pokušajte ponovo kasnije.
+	Installed version: {version}	Instalirana verzija: {version}
+	Latest version: {version}	Najnovija verzija: {version}
+	Download the new installer from the official release page.	Preuzmite novi instalacioni program sa zvanične stranice izdanja.
+	Open Downloads	Otvori preuzimanja

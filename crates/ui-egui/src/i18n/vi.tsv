@@ -3624,3 +3624,20 @@ curves	Smooth	Làm mượt
 	Choose a gradient file (.grd).	Chọn tệp chuyển sắc (.grd).
 	Auto Add/Delete	Tự động thêm/xóa
 	ICO is limited to 256 × 256 pixels	ICO giới hạn ở 256 × 256 pixel
+
+# Release notifications
+	Check for Updates…	Kiểm tra bản cập nhật…
+	Automatically Check for Updates	Tự động kiểm tra bản cập nhật
+	Software Update	Cập nhật phần mềm
+	A new version is available.	Đã có phiên bản mới.
+	Download Update	Tải bản cập nhật
+	Later	Để sau
+	Skip This Version	Bỏ qua phiên bản này
+	Check for updates automatically	Tự động kiểm tra bản cập nhật
+	Checking for updates…	Đang kiểm tra bản cập nhật…
+	No newer release is available for this computer.	Không có bản phát hành mới hơn cho máy tính này.
+	Could not check for updates. Please try again later.	Không thể kiểm tra bản cập nhật. Vui lòng thử lại sau.
+	Installed version: {version}	Phiên bản đã cài: {version}
+	Latest version: {version}	Phiên bản mới nhất: {version}
+	Download the new installer from the official release page.	Tải trình cài đặt mới từ trang phát hành chính thức.
+	Open Downloads	Mở trang tải xuống

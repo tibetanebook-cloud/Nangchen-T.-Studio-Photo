@@ -3735,3 +3735,20 @@ curves	Smooth	Wygładź
 @plural	{n} action|{n} actions	{n} operacja|{n} operacje|{n} operacji
 	Auto Add/Delete	Automatyczne dodawanie/usuwanie
 	ICO is limited to 256 × 256 pixels	ICO jest ograniczony do 256 × 256 pikseli
+
+# Release notifications
+	Check for Updates…	Sprawdź aktualizacje…
+	Automatically Check for Updates	Automatycznie sprawdzaj aktualizacje
+	Software Update	Aktualizacja programu
+	A new version is available.	Dostępna jest nowa wersja.
+	Download Update	Pobierz aktualizację
+	Later	Później
+	Skip This Version	Pomiń tę wersję
+	Check for updates automatically	Automatycznie sprawdzaj aktualizacje
+	Checking for updates…	Sprawdzanie aktualizacji…
+	No newer release is available for this computer.	Dla tego komputera nie ma nowszego wydania.
+	Could not check for updates. Please try again later.	Nie udało się sprawdzić aktualizacji. Spróbuj ponownie później.
+	Installed version: {version}	Zainstalowana wersja: {version}
+	Latest version: {version}	Najnowsza wersja: {version}
+	Download the new installer from the official release page.	Pobierz nowy instalator z oficjalnej strony wydań.
+	Open Downloads	Otwórz stronę pobierania
