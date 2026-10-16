@@ -212,6 +212,23 @@ mod tests {
         )
     }
     #[test]
+    fn native_app_frame_polls_the_update_service_without_a_document_command() {
+        let release = Release { version: "9.0.0".into(), url: RELEASES.into() };
+        let offered = release.clone();
+        let mut harness = egui_kittest::Harness::builder().with_size(egui::vec2(1200.0, 800.0)).with_max_steps(64).build_eframe(move |cc| {
+            PhotocraftApp::setup_context(&cc.egui_ctx, Default::default());
+            let mut app = mock(Ok(Some(offered)));
+            request(&mut app, &cc.egui_ctx, true).unwrap();
+            app
+        });
+        harness.step();
+        harness.step();
+        assert_eq!(harness.state().update_state.offer, Some(release));
+        assert!(harness.state().update_state.pending.is_none());
+        assert!(harness.state().session.active().is_none());
+    }
+
+    #[test]
     fn update_schedule_is_daily_and_respects_opt_out_and_clock_changes() {
         let mut p = Preferences::default();
         assert!(due(&p, DAY));

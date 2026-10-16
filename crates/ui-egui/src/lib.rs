@@ -1101,7 +1101,6 @@ impl PhotocraftApp {
         self.perf.command_ms = gpu_canvas::now_ms() - t0;
         match &r {
             Ok(_) => {
-                updates::tick(self, ctx);
                 self.sync_views();
                 let removed = self.session.take_samplers_removed();
                 if removed > 0 {
@@ -1683,6 +1682,7 @@ impl PhotocraftApp {
 impl eframe::App for PhotocraftApp {
     fn logic(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
         i18n::set_current(i18n::Lang::from_pref(&self.session.prefs().interface.language));
+        updates::tick(self, ctx);
         // Caps Lock state read from the OS once per frame (see `Services::caps_lock`): the canvas
         // cursor block needs it before the frame renders. `None` (Wayland/web) keeps `false`.
         self.caps_lock = self.services.caps_lock.as_mut().is_some_and(|f| f());
