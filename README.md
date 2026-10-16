@@ -17,10 +17,6 @@
 
 *The Tibetan File menu with keyboard shortcuts, alongside artwork and an editable text layer.*
 
-![Tibetan Design Photo with Tibetan layer menus and a layered artwork project](docs/images/tibetan-design/layer-menu-tibetan.png)
-
-*Tibetan layer menus alongside text, logo and artwork layers in the Layers panel.*
-
 <details>
 <summary><strong>Windows installation screenshots</strong></summary>
 
@@ -59,17 +55,13 @@ Tibetan menus and tools are translated. Some descriptions, errors and status mes
 
 ## Download for Windows
 
-Visit [Tibetan Design Photo on Nangchen.com](https://nangchen.com/tibetan-design) for the Windows download and application information.
-
-Repository maintainers can also download build artifacts:
-
 1. Open [Tibetan Design Photo Windows builds](https://github.com/tibetanebook-cloud/tibetan-design/actions/workflows/tibetan-design-windows.yml).
 2. Select a successful run with a green checkmark.
 3. Download the **Tibetan-Design-Windows** artifact.
 4. Extract the downloaded ZIP.
 5. Open **`tibetan-design-0.8.2-windows-x64.msi`** to install, or extract the portable ZIP to run without installing.
 
-Artifact downloads from this private repository require a GitHub account with repository access. Packages built without signing credentials are unsigned and remain subject to Windows security checks.
+Artifact downloads from this private repository require a GitHub account with repository access. No public release/download page has been published yet. Packages built without signing credentials are unsigned and remain subject to Windows security checks.
 
 ## Language
 
