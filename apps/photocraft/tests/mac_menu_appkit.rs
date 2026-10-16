@@ -97,13 +97,13 @@ fn main() {
     // The Mac layout, as AppKit has it.
     let bar = main_menu();
     let tops: Vec<String> = (0..bar.numberOfItems()).filter_map(|i| bar.itemAtIndex(i)?.submenu()).map(|m| m.title().to_string()).collect();
-    assert_eq!(tops, ["Tibetan Design", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "Help"]);
-    let app_menu = submenu(&bar, "Tibetan Design");
+    assert_eq!(tops, ["Tibetan Design Photo", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "English / བོད་ཡིག", "Help"]);
+    let app_menu = submenu(&bar, "Tibetan Design Photo");
     let names = titles(&app_menu);
-    for want in ["About Tibetan Design", "Settings", "Language", "Appearance", "Hide Tibetan Design", "Quit Tibetan Design"] {
+    for want in ["About Tibetan Design Photo", "Settings", "Language", "Appearance", "Hide Tibetan Design Photo", "Quit Tibetan Design Photo"] {
         assert!(names.iter().any(|n| n == want), "{want} missing from the app menu: {names:?}");
     }
-    let quit = app_menu.itemAtIndex(index(&app_menu, "Quit Tibetan Design")).expect("Quit");
+    let quit = app_menu.itemAtIndex(index(&app_menu, "Quit Tibetan Design Photo")).expect("Quit");
     assert_eq!(quit.keyEquivalent().to_string(), "q");
     assert_eq!(quit.keyEquivalentModifierMask(), NSEventModifierFlags::Command);
     assert!(!titles(&submenu(&bar, "File")).iter().any(|n| n == "Exit"), "Exit moved to the app menu as Quit");

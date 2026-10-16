@@ -1,4 +1,4 @@
-name: Tibetan Design macOS
+name: Tibetan Design Photo macOS
 
 on:
   workflow_dispatch:
@@ -32,6 +32,13 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target }}
+      - name: Resolve new update-check dependencies
+        run: cargo update --workspace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Resolved-lock-macOS-${{ matrix.arch }}
+          path: Cargo.lock
+          if-no-files-found: error
       - name: Prepare Tibetan font
         run: |
           source scripts/prepare-tibetan-font.sh
@@ -45,6 +52,12 @@ jobs:
           cargo test -p photocraft-ui-egui --lib i18n:: --locked
           cargo test -p photocraft-ui-egui --lib egui_fonts::tests::optional_tibetan_face_covers_the_catalog --locked
           cargo test -p photocraft-ui-egui --lib font_preview::tests::prepared_tibetan_face_renders_a_real_tibetan_sample --locked
+      - name: Check language switch and release notifications
+        run: |
+          cargo test -p photocraft-ui-egui --lib updates:: --locked
+          cargo test -p photocraft-ui-egui --lib bilingual_language_menu --locked
+          cargo test -p photocraft-ui-egui --lib brand:: --locked
+          cargo test -p photocraft --bin photocraft updates:: --locked
       - name: Check native Mac menus
         run: cargo test -p photocraft --test mac_menu_appkit --locked
       - name: Import optional Apple signing certificate
@@ -53,7 +66,7 @@ jobs:
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: bash packaging/macos/import-cert.sh
-      - name: Build Tibetan Design DMG
+      - name: Build Tibetan Design Photo DMG
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}

@@ -204,6 +204,7 @@ pub mod tiff_options_ui;
 mod tile_overlay;
 mod timeline_ui;
 mod titlebar;
+pub mod updates;
 pub use titlebar::{Caption, CaptionFamily, CaptionIcon, CaptionIcons, CaptionStyle, RenderIconFn};
 pub mod tone;
 mod tool_cursor;
@@ -392,6 +393,9 @@ pub type WindowFrameFn = Box<dyn FnMut()>;
 /// The caption buttons' current style ([`Services::caption_style`]).
 pub type CaptionStyleFn = Box<dyn Fn(&egui::Context) -> CaptionStyle>;
 
+/// Native release-check callback; web builds leave this service unset.
+pub type CheckUpdatesFn = dyn Fn(&egui::Context) -> Result<updates::Pending, String>;
+
 /// Platform services injected by the app binary (file dialogs, codecs), keeping this crate free of
 /// I/O dependencies.
 #[derive(Default)]
@@ -426,6 +430,8 @@ pub struct Services {
     pub encode_png: Option<EncodePngFn>,
     /// Open a URL in the system browser (native). Falls back to `ctx.open_url` (web) when unset.
     pub open_url: Option<OpenUrlFn>,
+    /// Native HTTPS release check; absent on the web.
+    pub check_updates: Option<Box<CheckUpdatesFn>>,
     /// Preferences ▸ General ▸ Beep When Done: the platform's default beep, played when a
     /// background job finishes successfully. `None` in the web build (and in tests).
     pub beep: Option<fn()>,
@@ -498,6 +504,7 @@ pub struct PhotocraftApp {
     pub session: Session,
     pub ui: UiState,
     pub services: Services,
+    update_state: updates::State,
     /// Canvas caches per (document, display): CPU textures hold monitor values; the GPU
     /// canvas state is shared (`canvas::GPU_OUTPUT`).
     canvases: HashMap<(DocId, u32), canvas::CanvasCache>,
@@ -766,6 +773,7 @@ impl PhotocraftApp {
             session,
             ui: UiState::default(),
             services,
+            update_state: Default::default(),
             canvases: HashMap::new(),
             navigator_textures: HashMap::new(),
             display_memo: HashMap::new(),
@@ -1093,6 +1101,7 @@ impl PhotocraftApp {
         self.perf.command_ms = gpu_canvas::now_ms() - t0;
         match &r {
             Ok(_) => {
+                updates::tick(self, ctx);
                 self.sync_views();
                 let removed = self.session.take_samplers_removed();
                 if removed > 0 {
@@ -1906,6 +1915,7 @@ impl eframe::App for PhotocraftApp {
         // A menu or dialog can start a filter after `jobs_ui::tick` ran in this frame. Keep
         // polling it even when the platform would otherwise put the event loop to sleep.
         jobs_ui::keep_polling(self, &ctx);
+        updates::show(self, &ctx);
         // Menus and buttons in this frame may have asked for a file dialog.
         self.poll_file_dialog(&ctx, Some(frame));
     }
@@ -2187,7 +2197,7 @@ impl PhotocraftApp {
         theme::apply(ctx, kind);
         // Right-click in any text field: its Cut / Copy / Paste menu (text_field_menu.rs).
         ctx.add_plugin(text_field_menu::TextFieldMenu);
-        // egui's own ⌘+ / ⌘- / ⌘0 scale the whole interface; Tibetan Design zooms the canvas instead
+        // egui's own ⌘+ / ⌘- / ⌘0 scale the whole interface; Tibetan Design Photo zooms the canvas instead
         // (shortcuts.rs), like Photoshop.
         ctx.options_mut(|o| o.zoom_with_keyboard = false);
         // ⌘/Ctrl + wheel scrolls sideways, as in Photoshop; only a pinch zooms (wheel_nav.rs).

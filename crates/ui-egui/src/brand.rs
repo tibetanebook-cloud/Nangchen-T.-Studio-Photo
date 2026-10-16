@@ -1,4 +1,4 @@
-//! The Tibetan Design brand mark at the left of the title bar: the app icon (the kitsune,
+//! The Tibetan Design Photo brand mark at the left of the title bar: the app icon (the kitsune,
 //! `assets/app-icon/`, see its README), where Photoshop shows its "Ps" tile. The PNG carries the
 //! icon's rounded corners; it is decoded once per context into a mipmapped texture, so it stays
 //! crisp at the title bar's size on any display scale.
@@ -58,8 +58,8 @@ mod tests {
     fn the_supplied_logo_decodes_to_a_nonempty_128_px_tile() {
         let img = decode();
         assert_eq!(img.size, [128, 128]);
-        // The supplied circular logo has transparent corners and a transparent centre.
-        assert_eq!(img.pixels[0].a(), 0);
+        // The supplied camera artwork has opaque cream corners.
+        assert_eq!(img.pixels[0].a(), 255);
         assert!(img.pixels.iter().any(|p| p.a() == 255));
     }
 

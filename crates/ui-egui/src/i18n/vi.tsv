@@ -15,7 +15,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Vietnamese computing and image-editing vocabulary. No proprietary localisation resource, string
 # table or product UI was consulted or copied; add entries the same way. Product and technology
-# names (Tibetan Design, ArtCraft, OpenType, RGB, CMYK, Lab, PSD, PNG, JPEG, WebP, OpenEXR, AVIF …)
+# names (Tibetan Design Photo, ArtCraft, OpenType, RGB, CMYK, Lab, PSD, PNG, JPEG, WebP, OpenEXR, AVIF …)
 # stay as they are; the trailing "…" of dialog commands is kept. Plural rule: one form
 # (`plural_none` in i18n/mod.rs).
 
@@ -652,7 +652,7 @@
 	3-up Vertical	3 cửa sổ dọc
 	4-up	4 cửa sổ
 	6-up	6 cửa sổ
-	About Tibetan Design	Giới thiệu Tibetan Design
+	About Tibetan Design Photo	Giới thiệu Tibetan Design Photo
 	Actions	Thao tác
 	ArtCraft Website	Trang web ArtCraft
 	Brush Settings	Thiết lập cọ
@@ -694,8 +694,8 @@
 	Paragraph Styles	Kiểu đoạn văn
 	Paths	Đường dẫn
 	Patterns	Họa tiết
-	Tibetan Design on GitHub	Tibetan Design trên GitHub
-	Tibetan Design Website	Trang web Tibetan Design
+	Tibetan Design Photo on GitHub	Tibetan Design Photo trên GitHub
+	Tibetan Design Photo Website	Trang web Tibetan Design Photo
 	Photography	Nhiếp ảnh
 	Pixel Art	Pixel Art
 	Pro Medium Gray Theme	Chủ đề Pro xám vừa
@@ -1519,7 +1519,7 @@ cameraRaw	Shadows	Vùng tối
 	Subdivisions	Phân chia
 	System title bar	Thanh tiêu đề hệ thống
 	Text file	Tệp văn bản
-	These settings aren't available in Tibetan Design yet.	Các thiết lập này chưa có trong Tibetan Design.
+	These settings aren't available in Tibetan Design Photo yet.	Các thiết lập này chưa có trong Tibetan Design Photo.
 	Tiny	Rất nhỏ
 	Traditional (72.27 points/inch)	Truyền thống (72,27 point/inch)
 	Transparency & Gamut	Độ trong suốt & gam màu
@@ -1548,7 +1548,7 @@ cameraRaw	Shadows	Vùng tối
 	About	Giới thiệu
 	Contributors	Người đóng góp
 	Models	Mô hình
-	Tibetan Design — an open-source, native image editor written in Rust.	Tibetan Design — trình chỉnh sửa ảnh gốc mã nguồn mở viết bằng Rust.
+	Tibetan Design Photo — an open-source, native image editor written in Rust.	Tibetan Design Photo — trình chỉnh sửa ảnh gốc mã nguồn mở viết bằng Rust.
 	Version {version}	Phiên bản {version}
 	Unsaved changes	Thay đổi chưa lưu
 	Answer the unsaved-changes prompt first	Hãy trả lời hộp thoại thay đổi chưa lưu trước
@@ -1584,10 +1584,10 @@ cameraRaw	Shadows	Vùng tối
 	Convert document's colors to the working space	Chuyển màu tài liệu sang không gian làm việc
 	Discard the embedded profile (don't color manage)	Bỏ hồ sơ nhúng (không quản lý màu)
 	Native file drag-and-drop is unavailable	Kéo thả tệp gốc không khả dụng
-	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or run Tibetan Design under XWayland with `WAYLAND_DISPLAY= photocraft`.	Kéo thả tệp gốc chưa được hỗ trợ trên Wayland. Dùng Tệp › Mở, hoặc chạy Tibetan Design dưới XWayland với `WAYLAND_DISPLAY= photocraft`.
+	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or run Tibetan Design Photo under XWayland with `WAYLAND_DISPLAY= photocraft`.	Kéo thả tệp gốc chưa được hỗ trợ trên Wayland. Dùng Tệp › Mở, hoặc chạy Tibetan Design Photo dưới XWayland với `WAYLAND_DISPLAY= photocraft`.
 	Switched to CPU rendering	Đã chuyển sang kết xuất CPU
 	GPU acceleration could not continue. Your documents are unchanged.	Không thể tiếp tục tăng tốc GPU. Tài liệu của bạn không đổi.
-	Tibetan Design is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design đang dùng bộ kết hợp ảnh CPU. Cửa sổ vẫn có thể dùng bộ điều hợp đồ họa của bạn.
+	Tibetan Design Photo is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design Photo đang dùng bộ kết hợp ảnh CPU. Cửa sổ vẫn có thể dùng bộ điều hợp đồ họa của bạn.
 	Retry GPU	Thử lại GPU
 	Retry GPU requires a restart. Save your work first.	Thử lại GPU cần khởi động lại. Hãy lưu công việc trước.
 	Keep Using CPU	Tiếp tục dùng CPU
@@ -1963,7 +1963,7 @@ colorRange	Invert	Đảo ngược
 # Visual QA finalization
 	New document…	Tài liệu mới…
 	Join us on Discord	Tham gia Discord
-	Tibetan Design website	Trang web Tibetan Design
+	Tibetan Design Photo website	Trang web Tibetan Design Photo
 	Anchor:	Neo:
 	Canvas extension color:	Màu mở rộng canvas:
 layers	Fill	Độ tô
@@ -2122,7 +2122,7 @@ layers	Fill:	Độ tô:
 	A save to {name} is still running; try again when it finishes	Đang lưu {name}; thử lại khi hoàn tất
 	Adwaita Dark Theme	Chủ đề Adwaita tối
 	Adwaita Light Theme	Chủ đề Adwaita sáng
-	All shortcuts reset to Tibetan Design defaults.	Đã đặt lại mọi phím tắt về mặc định Tibetan Design.
+	All shortcuts reset to Tibetan Design Photo defaults.	Đã đặt lại mọi phím tắt về mặc định Tibetan Design Photo.
 	Appearance Mode	Chế độ giao diện
 	Auto Hide	Tự động ẩn
 	Click to add a point, right-click to remove	Nhấp để thêm điểm, nhấp chuột phải để xóa
@@ -2205,7 +2205,7 @@ layers	Fill:	Độ tô:
 	Vector Mask from Current Path	Mặt nạ vector từ đường dẫn hiện tại
 	{label} is writing the file and can no longer be cancelled	{label} đang ghi tệp và không thể hủy nữa
 	{name} options	Tùy chọn {name}
-	{n} commands are not in Tibetan Design.	{n} lệnh không có trong Tibetan Design.
+	{n} commands are not in Tibetan Design Photo.	{n} lệnh không có trong Tibetan Design Photo.
 	{size} (was {old})	{size} (trước là {old})
 	{w} px x {h} px ({ppi} ppi)	{w} px x {h} px ({ppi} ppi)
 	…and {n} more	…và {n} nữa
@@ -2220,7 +2220,7 @@ layers	Fill:	Độ tô:
 	Corner Crop Marks	Dấu cắt góc
 	Default printer	Máy in mặc định
 	No Color Management	Không quản lý màu
-	Tibetan Design Manages Colors	Tibetan Design quản lý màu
+	Tibetan Design Photo Manages Colors	Tibetan Design Photo quản lý màu
 	Printer	Máy in
 	Printer Manages Colors	Máy in quản lý màu
 	Printer Setup	Thiết lập máy in
@@ -2342,7 +2342,7 @@ shape	Appearance	Diện mạo
 	Inverse	Đảo vùng chọn
 	Lighten	Làm sáng
 	Missing delete command	Thiếu lệnh xóa
-	Tibetan Design	Tibetan Design
+	Tibetan Design Photo	Tibetan Design Photo
 	Reset	Đặt lại
 	Tetrahedral	Tetrahedral
 	Top	Trên
@@ -2351,7 +2351,7 @@ shape	Appearance	Diện mạo
 # Phase 5.6 — upstream kys first-launch import prompt
 	Show channels in color	Hiện kênh bằng màu
 	Import keyboard shortcuts?	Nhập phím tắt?
-	Tibetan Design found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design's. Import it?	Tibetan Design tìm thấy bộ phím tắt {set} từ trình chỉnh sửa ảnh khác trên máy này: {n} phím tắt khác với Tibetan Design. Nhập vào?
+	Tibetan Design Photo found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design Photo's. Import it?	Tibetan Design Photo tìm thấy bộ phím tắt {set} từ trình chỉnh sửa ảnh khác trên máy này: {n} phím tắt khác với Tibetan Design Photo. Nhập vào?
 	Edit › Keyboard Shortcuts › Reset All to Defaults undoes an import.	Chỉnh sửa › Phím tắt › Đặt lại tất cả về mặc định sẽ hoàn tác lần nhập.
 	Don't Import	Không nhập
 	The keyboard shortcut set was not imported: {error}	Không nhập được bộ phím tắt: {error}
@@ -2364,7 +2364,7 @@ shape	Appearance	Diện mạo
 	Next Document	Tài liệu tiếp theo
 	Open EXR Parts…	Mở các phần EXR…
 	Pencil	Bút chì
-	Tibetan Design — Screen Color Picker	Tibetan Design — Bộ chọn màu màn hình
+	Tibetan Design Photo — Screen Color Picker	Tibetan Design Photo — Bộ chọn màu màn hình
 	Previous Document	Tài liệu trước
 	Refine	Tinh chỉnh
 	Remove from Recent	Xóa khỏi Gần đây
@@ -2552,8 +2552,8 @@ shape	Appearance	Diện mạo
 	Basic	Cơ bản
 	Brush Preset picker	Bộ chọn cài đặt cọ
 	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or copy the image in your file manager and paste it with {paste}.	Chưa hỗ trợ kéo-thả tệp gốc trên Wayland. Hãy dùng Tệp › Mở, hoặc sao chép ảnh trong trình quản lý tệp và dán bằng {paste}.
-	To drop files, start Tibetan Design under XWayland: `{command}`	Để thả tệp, hãy khởi chạy Tibetan Design dưới XWayland: `{command}`
-	Or set Preferences › Performance › Linux display server to X11: Tibetan Design then always starts under XWayland.	Hoặc đặt Tùy chọn › Hiệu năng › Máy chủ hiển thị Linux thành X11: Tibetan Design sẽ luôn khởi chạy dưới XWayland.
+	To drop files, start Tibetan Design Photo under XWayland: `{command}`	Để thả tệp, hãy khởi chạy Tibetan Design Photo dưới XWayland: `{command}`
+	Or set Preferences › Performance › Linux display server to X11: Tibetan Design Photo then always starts under XWayland.	Hoặc đặt Tùy chọn › Hiệu năng › Máy chủ hiển thị Linux thành X11: Tibetan Design Photo sẽ luôn khởi chạy dưới XWayland.
 	Kerning	Điều chỉnh khoảng cách chữ
 	Layout	Bố cục
 	Metrics	Số đo
@@ -2582,7 +2582,7 @@ shape	Appearance	Diện mạo
 	Could not use Puppet Warp: the layer is empty	Không thể dùng Uốn búp bê: lớp rỗng
 	Crosswise	Ngang
 	Current Tool	Công cụ hiện tại
-	Default Tibetan Design Size	Kích thước mặc định của Tibetan Design
+	Default Tibetan Design Photo Size	Kích thước mặc định của Tibetan Design Photo
 	Delete Workspace	Xoá không gian làm việc
 	Document Dimensions	Kích thước tài liệu
 	Document Profile	Hồ sơ tài liệu
@@ -3602,7 +3602,7 @@ curves	Smooth	Làm mượt
 	{name} (Photoshop)	{name} (Photoshop)
 	{message} ({note})	{message} ({note})
 @plural	Loaded {n} action from {file}|Loaded {n} actions from {file}	Đã nạp {n} hành động từ {file}
-@plural	{n} step has no Tibetan Design equivalent yet|{n} steps have no Tibetan Design equivalent yet	{n} bước chưa có chức năng tương ứng trong Tibetan Design
+@plural	{n} step has no Tibetan Design Photo equivalent yet|{n} steps have no Tibetan Design Photo equivalent yet	{n} bước chưa có chức năng tương ứng trong Tibetan Design Photo
 @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Đã lưu {n} hành động vào {file}
 @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Đã bỏ qua {n} bước không có chức năng tương ứng trong Photoshop
 

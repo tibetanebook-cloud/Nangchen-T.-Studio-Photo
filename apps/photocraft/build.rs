@@ -13,9 +13,9 @@ fn main() {
     }
     let mut res = winresource::WindowsResource::new();
     res.set_icon("../../assets/app-icon/photocraft.ico")
-        .set("ProductName", "Tibetan Design")
-        .set("FileDescription", "Tibetan Design image editor")
-        .set("CompanyName", "Tibetan Design")
+        .set("ProductName", "Tibetan Design Photo")
+        .set("FileDescription", "Tibetan Design Photo image editor")
+        .set("CompanyName", "Tibetan Design Photo")
         .set("LegalCopyright", "Copyright (c) the PhotoCraft authors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "photocraft.exe")
         .set("InternalName", "photocraft");

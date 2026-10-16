@@ -89,17 +89,17 @@ trap cleanup EXIT
 mkdir -p "$WORK/mounted"
 hdiutil attach -readonly -nobrowse -mountpoint "$WORK/mounted" "$DMG" >/dev/null
 MOUNTED=1
-APP="$WORK/mounted/Tibetan Design.app"
-EXE="$APP/Contents/MacOS/Tibetan Design"
+APP="$WORK/mounted/Tibetan Design Photo.app"
+EXE="$APP/Contents/MacOS/Tibetan Design Photo"
 PLIST="$APP/Contents/Info.plist"
 test -x "$EXE"
 codesign --verify --strict --deep --verbose=2 "$APP"
 for key in CFBundleName CFBundleDisplayName CFBundleExecutable CFBundleIconFile; do
   value="$(plutil -extract "$key" raw -o - "$PLIST")"
-  [ "$value" = 'Tibetan Design' ] || { echo "Wrong bundle $key: $value" >&2; exit 1; }
+  [ "$value" = 'Tibetan Design Photo' ] || { echo "Wrong bundle $key: $value" >&2; exit 1; }
 done
 [ "$(plutil -extract CFBundleIdentifier raw -o - "$PLIST")" = 'com.tibetanebook.tibetan-design' ]
-test -s "$APP/Contents/Resources/Tibetan Design.icns"
+test -s "$APP/Contents/Resources/Tibetan Design Photo.icns"
 for notice in LICENSE-MIT LICENSE-APACHE NOTICE ATTRIBUTION.md OFL-Tibetan.txt; do
   test -s "$APP/Contents/Resources/Licenses/$notice"
 done
@@ -107,7 +107,7 @@ archs="$(lipo -archs "$EXE")"
 for a in $WANT_ARCHS; do
   case " $archs " in
     *" $a "*) ;;
-    *) echo "Tibetan Design app lacks $a (has: $archs)" >&2; exit 1 ;;
+    *) echo "Tibetan Design Photo app lacks $a (has: $archs)" >&2; exit 1 ;;
   esac
 done
 "$EXE" --version

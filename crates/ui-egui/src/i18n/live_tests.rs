@@ -34,9 +34,11 @@ fn ukrainian_native_app_menu_keeps_product_and_language_names() {
     with_language(Lang::EN, || {
         let h = harness();
         let layout = crate::native_menu::photocraft_layout(&crate::menus::menu_items(h.state()), lang("uk"), "uk");
-        for (id, label) in
-            [("help.about", "Про Tibetan Design"), (crate::native_menu::HIDE, "Приховати Tibetan Design"), ("file.exit", "Вийти з Tibetan Design")]
-        {
+        for (id, label) in [
+            ("help.about", "Про Tibetan Design Photo"),
+            (crate::native_menu::HIDE, "Приховати Tibetan Design Photo"),
+            ("file.exit", "Вийти з Tibetan Design Photo"),
+        ] {
             assert_eq!(layout.bar.find(id).map(|item| item.label.as_str()), Some(label), "{id}");
         }
         assert_eq!(layout.bar.find("app.language.uk").map(|item| (item.label.as_str(), item.checked)), Some(("Українська", Some(true))));
@@ -381,7 +383,7 @@ fn czech_status_notices_and_navigator_draw_translated_text() {
             crate::notices::post(
                 h.state_mut(),
                 "Preferences can't be saved",
-                vec!["Tibetan Design keeps retrying; until a save succeeds, preference changes are lost when it closes.".into()],
+                vec!["Tibetan Design Photo keeps retrying; until a save succeeds, preference changes are lost when it closes.".into()],
                 true,
                 None,
             );

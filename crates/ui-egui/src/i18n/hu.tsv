@@ -12,7 +12,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Hungarian image-editing vocabulary (réteg, maszk, kijelölés ...). No proprietary localisation
 # resource, string table or product UI was consulted or copied; add entries the same way.
-# Product and technology names (Tibetan Design, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
+# Product and technology names (Tibetan Design Photo, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
 # letters; the trailing "…" of dialog commands is kept. Plural rule: a count is followed by the
 # singular noun in Hungarian, so every @plural entry has a single form.
 
@@ -430,7 +430,7 @@
 	32-bit Preview Options…	32 bites előnézet beállításai…
 	4-up	4 nézet
 	6-up	6 nézet
-	About Tibetan Design	A Tibetan Design névjegye
+	About Tibetan Design Photo	A Tibetan Design Photo névjegye
 	About {app}	Névjegy: {app}
 	Actions	Műveletsorok
 	Activate Panel	Panel aktiválása
@@ -707,9 +707,9 @@
 	Paths	Útvonalak
 	Paths to Illustrator	Útvonalak Illustrator-fájlba
 	Pattern Preview	Mintázat előnézete
-	Tibetan Design	Tibetan Design
-	Tibetan Design on GitHub	Tibetan Design a GitHubon
-	Tibetan Design Website	Tibetan Design-weboldal
+	Tibetan Design Photo	Tibetan Design Photo
+	Tibetan Design Photo on GitHub	Tibetan Design Photo a GitHubon
+	Tibetan Design Photo Website	Tibetan Design Photo-weboldal
 	Photography	Fotózás
 	Picture Frame…	Képkeret…
 	Pinch…	Becsípés…
@@ -2632,7 +2632,7 @@ cameraRaw	Yellow	Sárga
 	Advanced	Speciális
 	Adwaita dark	Adwaita sötét
 	All	Mind
-	All shortcuts reset to Tibetan Design defaults.	Minden billentyűparancs visszaállt a Tibetan Design alapértékére.
+	All shortcuts reset to Tibetan Design Photo defaults.	Minden billentyűparancs visszaállt a Tibetan Design Photo alapértékére.
 	All Slices	Összes szelet
 	All User Slices	Összes felhasználói szelet
 	Always create smart objects when placing	Elhelyezéskor mindig intelligens objektum létrehozása
@@ -2725,7 +2725,7 @@ cameraRaw	Yellow	Sárga
 	Data	Adatok
 	Date	Dátum
 	Day For Night	Nappali éjszaka
-	Default Tibetan Design Size	Alapértelmezett Tibetan Design-méret
+	Default Tibetan Design Photo Size	Alapértelmezett Tibetan Design Photo-méret
 	Default printer	Alapértelmezett nyomtató
 	Default restored.	Alapértelmezés visszaállítva.
 	Defaults	Alapértékek
@@ -2870,10 +2870,10 @@ cameraRaw	Yellow	Sárga
 	Permission denied	Hozzáférés megtagadva
 	Phone	Telefon
 	Photo	Fotó
-	Tibetan Design found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design's. Import it?	A Tibetan Design egy másik képszerkesztő billentyűparancs-készletét találta ezen a számítógépen: {set}. Ebben {n} billentyűparancs eltér a Tibetan Designétól. Importálod?
-	Tibetan Design keeps retrying; until a save succeeds, preference changes are lost when it closes.	A Tibetan Design tovább próbálkozik; amíg a mentés nem sikerül, a beállítások módosításai bezáráskor elvesznek.
-	Tibetan Design Manages Colors	A Tibetan Design kezeli a színeket
-	Tibetan Design — an open-source, native image editor written in Rust.	Tibetan Design – nyílt forráskódú, natív képszerkesztő Rust nyelven.
+	Tibetan Design Photo found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design Photo's. Import it?	A Tibetan Design Photo egy másik képszerkesztő billentyűparancs-készletét találta ezen a számítógépen: {set}. Ebben {n} billentyűparancs eltér a Tibetan Design Photoétól. Importálod?
+	Tibetan Design Photo keeps retrying; until a save succeeds, preference changes are lost when it closes.	A Tibetan Design Photo tovább próbálkozik; amíg a mentés nem sikerül, a beállítások módosításai bezáráskor elvesznek.
+	Tibetan Design Photo Manages Colors	A Tibetan Design Photo kezeli a színeket
+	Tibetan Design Photo — an open-source, native image editor written in Rust.	Tibetan Design Photo – nyílt forráskódú, natív képszerkesztő Rust nyelven.
 	Picas	Pica
 	Pixels	Pixel
 	Pixels/Centimeter	Pixel/centiméter
@@ -2984,7 +2984,7 @@ cameraRaw	Yellow	Sárga
 	The document does not have an embedded colour profile. Working space: {working}.	A dokumentumnak nincs beágyazott színprofilja. Munkaszíntér: {working}.
 	The document has an embedded colour profile that does not match the working space.\nEmbedded: {embedded}\nWorking: {working}	A dokumentum beágyazott színprofilja eltér a munkaszíntértől.\nBeágyazott: {embedded}\nMunkaszíntér: {working}
 	The keyboard shortcut set was not imported: {error}	A billentyűparancs-készlet importálása nem sikerült: {error}
-	These settings aren't available in Tibetan Design yet.	Ezek a beállítások a Tibetan Designban még nem érhetők el.
+	These settings aren't available in Tibetan Design Photo yet.	Ezek a beállítások a Tibetan Design Photoban még nem érhetők el.
 	This fill layer must be rasterized before proceeding. Its fill content will no longer be editable. Rasterize the layer?	A folytatáshoz a kitöltőréteget raszterizálni kell. A kitöltés tartalma ezután nem lesz szerkeszthető. Raszterizálod a réteget?
 	This layer must be rasterized before proceeding.	A folytatáshoz a réteget raszterizálni kell.
 	This shape layer must be rasterized before proceeding. It will no longer be editable as a shape. Rasterize the shape?	A folytatáshoz az alakzatréteget raszterizálni kell. Ezután alakzatként nem lesz szerkeszthető. Raszterizálod az alakzatot?
@@ -3020,7 +3020,7 @@ cameraRaw	Yellow	Sárga
 	Y	Y
 	Yes	Igen
 	Your keyboard shortcut set {set} is in use here: {n} shortcuts differ from the defaults. Edit › Keyboard Shortcuts shows them; Reset All to Defaults undoes this.	A billentyűparancs-készleted itt is használatban van: {set}. Ebből {n} billentyűparancs eltér az alapértelmezettől. A Szerkesztés › Billentyűparancsok alatt láthatod őket; az Összes visszaállítása alapértékre paranccsal ez visszavonható.
-	{n} commands are not in Tibetan Design.	{n} parancs nem érhető el a Tibetan Designban.
+	{n} commands are not in Tibetan Design Photo.	{n} parancs nem érhető el a Tibetan Design Photoban.
 	{shortcut} assigned.	Billentyűparancs hozzárendelve: {shortcut}
 	{shortcut} is already in use by {commands} and will be removed from it when you click OK.	A billentyűparancs már foglalt: {shortcut}. Jelenlegi parancs: {commands}. Az OK gombra kattintva onnan törlődik.
 
@@ -3408,7 +3408,7 @@ cameraRaw	Yellow	Sárga
 	Opened {name}	Megnyitva: {name}
 	Opened {url}	Megnyitva: {url}
 	Opening…	Megnyitás…
-	Or set Preferences › Performance › Linux display server to X11: Tibetan Design then always starts under XWayland.	Vagy állítsd X11-re a Beállítások › Teljesítmény › Linuxos megjelenítőszerver értékét: a Tibetan Design ekkor mindig XWayland alatt indul.
+	Or set Preferences › Performance › Linux display server to X11: Tibetan Design Photo then always starts under XWayland.	Vagy állítsd X11-re a Beállítások › Teljesítmény › Linuxos megjelenítőszerver értékét: a Tibetan Design Photo ekkor mindig XWayland alatt indul.
 	Original Ratio	Eredeti arány
 	Other	Egyéb
 	Out	Végpont
@@ -3427,9 +3427,9 @@ cameraRaw	Yellow	Sárga
 	Performance	Teljesítmény
 	Perimeter	Kerület
 	Perspective Crop Tool	Perspektivikus körbevágás
-	Tibetan Design is using the CPU image compositor. The window may still use your graphics adapter.	A Tibetan Design a CPU-s képösszeállítót használja. Az ablak megjelenítése ettől még használhatja a grafikus adaptert.
-	Tibetan Design website	Tibetan Design-weboldal
-	Tibetan Design — Screen Color Picker	Tibetan Design — Képernyő-színválasztó
+	Tibetan Design Photo is using the CPU image compositor. The window may still use your graphics adapter.	A Tibetan Design Photo a CPU-s képösszeállítót használja. Az ablak megjelenítése ettől még használhatja a grafikus adaptert.
+	Tibetan Design Photo website	Tibetan Design Photo-weboldal
+	Tibetan Design Photo — Screen Color Picker	Tibetan Design Photo — Képernyő-színválasztó
 	Photomerge	Fotóegyesítés
 	Pick a screen pixel or press Esc to cancel	Válassz egy pixelt a képernyőn, vagy nyomd meg az Esc billentyűt a megszakításhoz
 	Pick screen color	Szín kiválasztása a képernyőről
@@ -3507,7 +3507,7 @@ cameraRaw	Yellow	Sárga
 	Sample a pixel anywhere on the screen	Mintavétel a képernyő bármely pixeléből
 	Sampler	Színmintavevő
 	Save in background	Mentés a háttérben
-	Save your work and restart Tibetan Design to retry GPU acceleration. CPU rendering remains active for this session.	A GPU-gyorsítás újrapróbálásához mentsd a munkádat, majd indítsd újra a Tibetan Designot. Ebben a munkamenetben a CPU-s megjelenítés marad aktív.
+	Save your work and restart Tibetan Design Photo to retry GPU acceleration. CPU rendering remains active for this session.	A GPU-gyorsítás újrapróbálásához mentsd a munkádat, majd indítsd újra a Tibetan Design Photoot. Ebben a munkamenetben a CPU-s megjelenítés marad aktív.
 	Saved a copy as {path}	Másolat mentve: {path}
 	Saved {name}	Mentve: {name}
 	Saved {path}; image assets: {n} in {dir}	Mentve: {path}; képelemek: {n} ({dir})
@@ -3595,7 +3595,7 @@ cameraRaw	Yellow	Sárga
 	This session: {reason}	Ebben a munkamenetben: {reason}
 	Tiny	Apró
 	To Center	Középre
-	To drop files, start Tibetan Design under XWayland: `{command}`	Fájlok behúzásához indítsd a Tibetan Designot XWayland alatt: `{command}`
+	To drop files, start Tibetan Design Photo under XWayland: `{command}`	Fájlok behúzásához indítsd a Tibetan Design Photoot XWayland alatt: `{command}`
 	Tool	Eszköz
 	Top Left	Bal felső
 	Top Right	Jobb felső
@@ -3857,7 +3857,7 @@ cameraRaw	Yellow	Sárga
 	Modify Date	Módosítás dátuma
 	Mouse Controls	Egérvezérlés
 	Mouse Coordinates	Egérkoordináták
-	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or run Tibetan Design under XWayland with `WAYLAND_DISPLAY= photocraft`.	A fájlok natív behúzása Waylanden még nem támogatott. Használd a Fájl › Megnyitás parancsot, vagy futtasd a Tibetan Designot XWaylanden: `WAYLAND_DISPLAY= photocraft`.
+	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or run Tibetan Design Photo under XWayland with `WAYLAND_DISPLAY= photocraft`.	A fájlok natív behúzása Waylanden még nem támogatott. Használd a Fájl › Megnyitás parancsot, vagy futtasd a Tibetan Design Photoot XWaylanden: `WAYLAND_DISPLAY= photocraft`.
 	New channel only	Csak új csatorna
 	New document…     ⌘N	Új dokumentum…     ⌘N
 	New Layer from Brush	Új réteg ecsetből
@@ -3901,7 +3901,7 @@ cameraRaw	Yellow	Sárga
 	Profile Mismatches: Ask When Opening	Profileltérés: rákérdezés megnyitáskor
 	Province / State	Megye / állam
 	Quick Sync	Gyors szinkronizálás
-	Quit Tibetan Design	Kilépés a Tibetan Designból
+	Quit Tibetan Design Photo	Kilépés a Tibetan Design Photoból
 	Recent Items	Legutóbbi elemek
 	Reference point location	Viszonyítási pont helye
 	Rendering…	Renderelés…
@@ -4022,7 +4022,7 @@ cameraRaw	Yellow	Sárga
 	{name} (Photoshop)	{name} (Photoshop)
 	{message} ({note})	{message} ({note})
 @plural	Loaded {n} action from {file}|Loaded {n} actions from {file}	{n} művelet betöltve. Forrás: {file}
-@plural	{n} step has no Tibetan Design equivalent yet|{n} steps have no Tibetan Design equivalent yet	{n} lépésnek még nincs megfelelője a Tibetan Designban
+@plural	{n} step has no Tibetan Design Photo equivalent yet|{n} steps have no Tibetan Design Photo equivalent yet	{n} lépésnek még nincs megfelelője a Tibetan Design Photoban
 @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} művelet mentve. Cél: {file}
 @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} Photoshop-megfelelő nélküli lépés kihagyva
 

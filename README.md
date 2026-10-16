@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/app-icon/photocraft-1024.png" alt="Tibetan Design logo" width="112">
+  <img src="assets/app-icon/photocraft-1024.png" alt="Tibetan Design Photo logo" width="112">
 </p>
 
-<h1 align="center">Tibetan Design</h1>
+<h1 align="center">Tibetan Design Photo</h1>
 
 <p align="center">
   A native image editor with Tibetan and English menus and tools.
@@ -10,14 +10,14 @@
 
 ## Screenshots
 
-![Tibetan Design editor showing Tibetan menus, text, layers and color-mode options](docs/images/tibetan-design/editor-tibetan.png)
+![Tibetan Design Photo editor showing Tibetan menus, text, layers and color-mode options](docs/images/tibetan-design/editor-tibetan.png)
 
-*Tibetan Design running on Windows with Tibetan menus and Tibetan text in an image project.*
-![Tibetan Design with the Tibetan File menu open and a selected text layer](docs/images/tibetan-design/file-menu-tibetan.png)
+*Tibetan Design Photo running on Windows with Tibetan menus and Tibetan text in an image project.*
+![Tibetan Design Photo with the Tibetan File menu open and a selected text layer](docs/images/tibetan-design/file-menu-tibetan.png)
 
 *The Tibetan File menu with keyboard shortcuts, alongside artwork and an editable text layer.*
 
-![Tibetan Design with Tibetan layer menus and a layered artwork project](docs/images/tibetan-design/layer-menu-tibetan.png)
+![Tibetan Design Photo with Tibetan layer menus and a layered artwork project](docs/images/tibetan-design/layer-menu-tibetan.png)
 
 *Tibetan layer menus alongside text, logo and artwork layers in the Layers panel.*
 
@@ -26,29 +26,29 @@
 
 ### 1. Welcome
 
-![Tibetan Design setup welcome screen](docs/images/tibetan-design/setup-1.png)
+![Tibetan Design Photo setup welcome screen](docs/images/tibetan-design/setup-1.png)
 
 ### 2. Choose the installation folder
 
-![Tibetan Design setup destination folder](docs/images/tibetan-design/setup-2.png)
+![Tibetan Design Photo setup destination folder](docs/images/tibetan-design/setup-2.png)
 
 ### 3. Ready to install
 
-![Tibetan Design setup ready to install](docs/images/tibetan-design/setup-3.png)
+![Tibetan Design Photo setup ready to install](docs/images/tibetan-design/setup-3.png)
 
 ### 4. Installation in progress
 
-![Tibetan Design setup installation progress](docs/images/tibetan-design/setup-4.png)
+![Tibetan Design Photo setup installation progress](docs/images/tibetan-design/setup-4.png)
 
 ### 5. Finish and launch
 
-![Tibetan Design setup completed with the launch option](docs/images/tibetan-design/setup-5.png)
+![Tibetan Design Photo setup completed with the launch option](docs/images/tibetan-design/setup-5.png)
 
 </details>
 
 ## Create and edit
 
-Tibetan Design brings image editing tools into a Tibetan and English interface, with layers, masks, brushes, text, adjustments and PSD support inherited from its original editing engine.
+Tibetan Design Photo brings image editing tools into a Tibetan and English interface, with layers, masks, brushes, text, adjustments and PSD support inherited from its original editing engine.
 
 - Switch between Tibetan and English using **Edit → Language**.
 - Use Tibetan names for your layers and documents.
@@ -59,11 +59,11 @@ Tibetan menus and tools are translated. Some descriptions, errors and status mes
 
 ## Download for Windows
 
-Visit [Tibetan Design on Nangchen.com](https://nangchen.com/tibetan-design) for the Windows download and application information.
+Visit [Tibetan Design Photo on Nangchen.com](https://nangchen.com/tibetan-design) for the Windows download and application information.
 
 Repository maintainers can also download build artifacts:
 
-1. Open [Tibetan Design Windows builds](https://github.com/tibetanebook-cloud/tibetan-design/actions/workflows/tibetan-design-windows.yml).
+1. Open [Tibetan Design Photo Windows builds](https://github.com/tibetanebook-cloud/tibetan-design/actions/workflows/tibetan-design-windows.yml).
 2. Select a successful run with a green checkmark.
 3. Download the **Tibetan-Design-Windows** artifact.
 4. Extract the downloaded ZIP.
@@ -81,7 +81,7 @@ In Tibetan, the menu path is **རྩོམ་སྒྲིག → སྐད་�
 
 ## Build and contribute
 
-See [Tibetan Design build instructions](TIBETAN-DESIGN.md) for Windows prerequisites and the GitHub Actions build workflow.
+See [Tibetan Design Photo build instructions](TIBETAN-DESIGN.md) for Windows prerequisites and the GitHub Actions build workflow.
 
 Translation sources are in `tibetan-terms.txt` and `tibetan-context-terms.txt`. Rebuild the embedded catalog after editing them:
 
@@ -102,6 +102,6 @@ Explore more apps and resources at:
 
 ## Attribution and licenses
 
-Tibetan Design is a customization of [PhotoCraft](https://github.com/storytold/photocraft). Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors. Original contributor credits and required notices are retained.
+Tibetan Design Photo is a customization of [PhotoCraft](https://github.com/storytold/photocraft). Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors. Original contributor credits and required notices are retained.
 
-The inherited code is licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE). See [NOTICE](NOTICE) and [asset attribution](ATTRIBUTION.md) for third-party notices and asset licenses. The supplied Tibetan Design logo and terminology reference do not acquire a public license through these code licenses.
+The inherited code is licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE). See [NOTICE](NOTICE) and [asset attribution](ATTRIBUTION.md) for third-party notices and asset licenses. The supplied Tibetan Design Photo logo and terminology reference do not acquire a public license through these code licenses.

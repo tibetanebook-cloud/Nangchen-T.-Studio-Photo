@@ -4,7 +4,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # Dutch computing vocabulary (laag, selectie, masker, aanpassingslaag, penseel, verloop ...). No
 # proprietary localisation resource, string table or product UI was consulted or copied; add
-# entries the same way. Product and technology names (Tibetan Design, ArtCraft, OpenType, CMYK, Lab ...)
+# entries the same way. Product and technology names (Tibetan Design Photo, ArtCraft, OpenType, CMYK, Lab ...)
 # stay as they are; the trailing "…" of dialog commands is kept. UI text addresses the user
 # informally ("je") and uses sentence case.
 
@@ -769,9 +769,9 @@
 	Timeline	Tijdlijn
 	Tool Presets	Gereedschapsvoorinstellingen
 	Tools	Gereedschappen
-	About Tibetan Design	Over Tibetan Design
-	Tibetan Design Website	Website van Tibetan Design
-	Tibetan Design on GitHub	Tibetan Design op GitHub
+	About Tibetan Design Photo	Over Tibetan Design Photo
+	Tibetan Design Photo Website	Website van Tibetan Design Photo
+	Tibetan Design Photo on GitHub	Tibetan Design Photo op GitHub
 	ArtCraft Website	Website van ArtCraft
 	Join the ArtCraft Discord…	Deelnemen aan de ArtCraft-Discord…
 	Report an Issue…	Probleem melden…
@@ -824,7 +824,7 @@
 	All Caps	Alleen hoofdletters
 	All Slices	Alle segmenten
 	All User Slices	Alle gebruikerssegmenten
-	All shortcuts reset to Tibetan Design defaults.	Alle sneltoetsen zijn teruggezet naar de standaardwaarden van Tibetan Design.
+	All shortcuts reset to Tibetan Design Photo defaults.	Alle sneltoetsen zijn teruggezet naar de standaardwaarden van Tibetan Design Photo.
 	Alt	Alt
 	Always use pressure for opacity	Altijd druk gebruiken voor dekking
 	Always use pressure for size	Altijd druk gebruiken voor grootte
@@ -1077,8 +1077,8 @@
 	Drop an image or PSD anywhere to open it.	Sleep een afbeelding of PSD ergens naartoe om deze te openen.
 	Native file drag-and-drop is unavailable	Bestanden slepen en neerzetten is niet beschikbaar
 	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or copy the image in your file manager and paste it with {paste}.	Bestanden slepen en neerzetten wordt nog niet ondersteund onder Wayland. Gebruik Bestand › Openen, of kopieer de afbeelding in je bestandsbeheerder en plak deze met {paste}.
-	To drop files, start Tibetan Design under XWayland: `{command}`	Start Tibetan Design onder XWayland om bestanden neer te zetten: `{command}`
-	Or set Preferences › Performance › Linux display server to X11: Tibetan Design then always starts under XWayland.	Of zet Voorkeuren › Prestaties › Linux-weergaveserver op X11: Tibetan Design start dan altijd onder XWayland.
+	To drop files, start Tibetan Design Photo under XWayland: `{command}`	Start Tibetan Design Photo onder XWayland om bestanden neer te zetten: `{command}`
+	Or set Preferences › Performance › Linux display server to X11: Tibetan Design Photo then always starts under XWayland.	Of zet Voorkeuren › Prestaties › Linux-weergaveserver op X11: Tibetan Design Photo start dan altijd onder XWayland.
 	Edit › Paste	Bewerken › Plakken
 	Duplicate Layers…	Lagen dupliceren…
 	Duplicate style	Stijl dupliceren
@@ -1326,9 +1326,9 @@
 	Perspective Warp is not active	Perspectiefvervorming is niet actief
 	Perspective Warp: draw planes along the image's perspective, then switch to Warp	Perspectiefvervorming: teken vlakken langs het perspectief van de afbeelding en schakel daarna naar Verbuigen
 	Photo Filter	Fotofilter
-	Tibetan Design	Tibetan Design
-	Tibetan Design Manages Colors	Tibetan Design beheert kleuren
-	Tibetan Design — an open-source, native image editor written in Rust.	Tibetan Design — een opensource, native afbeeldingseditor geschreven in Rust.
+	Tibetan Design Photo	Tibetan Design Photo
+	Tibetan Design Photo Manages Colors	Tibetan Design Photo beheert kleuren
+	Tibetan Design Photo — an open-source, native image editor written in Rust.	Tibetan Design Photo — een opensource, native afbeeldingseditor geschreven in Rust.
 	Pin Depth:	Speldiepte:
 	Pixel Length:	Pixellengte:
 	Pixels/Centimeter	Pixels/centimeter
@@ -1403,11 +1403,11 @@
 	Import Shortcuts…	Sneltoetsen importeren…
 	Load a keyboard shortcut set saved as .kys	Een als .kys opgeslagen sneltoetsenset laden
 	Imported {n} shortcuts from {file}. Click OK to keep them.	{n} sneltoetsen geïmporteerd uit {file}. Klik op OK om ze te behouden.
-	{n} commands are not in Tibetan Design.	{n} opdrachten bestaan niet in Tibetan Design.
+	{n} commands are not in Tibetan Design Photo.	{n} opdrachten bestaan niet in Tibetan Design Photo.
 	Keyboard shortcuts imported	Sneltoetsen geïmporteerd
 	Your keyboard shortcut set {set} is in use here: {n} shortcuts differ from the defaults. Edit › Keyboard Shortcuts shows them; Reset All to Defaults undoes this.	Je sneltoetsenset {set} wordt hier gebruikt: {n} sneltoetsen wijken af van de standaardwaarden. Bewerken › Sneltoetsen toont ze; Alles terugzetten naar standaard maakt dit ongedaan.
 	Import keyboard shortcuts?	Sneltoetsen importeren?
-	Tibetan Design found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design's. Import it?	Tibetan Design heeft op deze computer je sneltoetsenset {set} van een andere beeldbewerker gevonden: {n} van de sneltoetsen wijken af van die van Tibetan Design. Importeren?
+	Tibetan Design Photo found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design Photo's. Import it?	Tibetan Design Photo heeft op deze computer je sneltoetsenset {set} van een andere beeldbewerker gevonden: {n} van de sneltoetsen wijken af van die van Tibetan Design Photo. Importeren?
 	Edit › Keyboard Shortcuts › Reset All to Defaults undoes an import.	Bewerken › Sneltoetsen › Alles terugzetten naar standaard maakt een import ongedaan.
 	Don't Import	Niet importeren
 	The keyboard shortcut set was not imported: {error}	De sneltoetsenset is niet geïmporteerd: {error}
@@ -1629,7 +1629,7 @@
 	Current Tool	Huidig gereedschap
 	Custom Shape Tool	Gereedschap Aangepaste vorm
 	Cyans	Cyaantinten
-	Default Tibetan Design Size	Standaardgrootte Tibetan Design
+	Default Tibetan Design Photo Size	Standaardgrootte Tibetan Design Photo
 	Delete Workspace	Werkruimte verwijderen
 	Diamond	Ruit
 	Dimensions:	Afmetingen:
@@ -1740,7 +1740,7 @@
 	Pen Tool	Pengereedschap
 	Convert Point Tool	Punt-converteergereedschap
 	Photo	Foto
-	Tibetan Design website	Website van Tibetan Design
+	Tibetan Design Photo website	Website van Tibetan Design Photo
 	Picas	Pica's
 	Pillow Emboss	Kussenreliëf
 	Pixel Replacement	Pixelvervanging
@@ -2066,7 +2066,7 @@
 	System Info	Systeeminformatie
 	More panels	Meer panelen
 	More documents	Meer documenten
-	These settings aren't available in Tibetan Design yet.	Deze instellingen zijn nog niet beschikbaar in Tibetan Design.
+	These settings aren't available in Tibetan Design Photo yet.	Deze instellingen zijn nog niet beschikbaar in Tibetan Design Photo.
 	Graphics	Grafisch
 	Reset GPU Backend	GPU-backend herstellen
 	Applies at next launch.	Wordt toegepast bij de volgende start.
@@ -2268,7 +2268,7 @@
 	Automatic uses GPU acceleration when available and falls back to CPU rendering on errors.	Automatisch gebruikt GPU-versnelling indien beschikbaar en valt bij fouten terug op CPU-rendering.
 	Switched to CPU rendering	Overgeschakeld naar CPU-rendering
 	GPU acceleration could not continue. Your documents are unchanged.	GPU-versnelling kon niet doorgaan. Je documenten zijn ongewijzigd.
-	Tibetan Design is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design gebruikt de CPU-beeldcompositor. Het venster kan nog steeds je grafische adapter gebruiken.
+	Tibetan Design Photo is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design Photo gebruikt de CPU-beeldcompositor. Het venster kan nog steeds je grafische adapter gebruiken.
 	Retry GPU requires a restart. Save your work first.	GPU opnieuw proberen vereist een herstart. Sla eerst je werk op.
 	Keep Using CPU	CPU blijven gebruiken
 	Retry GPU	GPU opnieuw proberen
@@ -2652,7 +2652,7 @@ cameraRaw	Color	Kleur
 	Restart Required	Herstart vereist
 	Restart	Opnieuw starten
 	Quit	Afsluiten
-	Quit Tibetan Design	Tibetan Design afsluiten
+	Quit Tibetan Design Photo	Tibetan Design Photo afsluiten
 	Close Window	Venster sluiten
 	New Window	Nieuw venster
 	Open Image	Afbeelding openen
@@ -3421,7 +3421,7 @@ cameraRaw	Color	Kleur
 	Modify Date	Wijzigingsdatum
 	Mosaic	Mozaïek
 	Motion Blur	Bewegingsonscherpte
-	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or run Tibetan Design under XWayland with `WAYLAND_DISPLAY= photocraft`.	Bestanden slepen en neerzetten wordt nog niet ondersteund onder Wayland. Gebruik Bestand › Openen, of start Tibetan Design onder XWayland met `WAYLAND_DISPLAY= photocraft`.
+	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or run Tibetan Design Photo under XWayland with `WAYLAND_DISPLAY= photocraft`.	Bestanden slepen en neerzetten wordt nog niet ondersteund onder Wayland. Gebruik Bestand › Openen, of start Tibetan Design Photo onder XWayland met `WAYLAND_DISPLAY= photocraft`.
 	Neon Glow	Neongloed
 	New Guide Layout	Nieuwe hulplijnindeling
 	New Path	Nieuw pad
@@ -3784,7 +3784,7 @@ cameraData	Lens	Lens
 	There is no crop size or ratio to save	Er is geen uitsnijformaat of verhouding om op te slaan
 	Search settings…	Instellingen zoeken…
 	No matching settings	Geen overeenkomende instellingen
-	Tibetan Design — Screen Color Picker	Tibetan Design — Schermkleurkiezer
+	Tibetan Design Photo — Screen Color Picker	Tibetan Design Photo — Schermkleurkiezer
 	Loading fonts…	Lettertypen laden…
 	Simulate Pressure	Druk simuleren
 	Stroke Path…	Pad omlijnen…
@@ -3879,7 +3879,7 @@ curves	Smooth	Vloeiend maken
 	{name} (Photoshop)	{name} (Photoshop)
 	{message} ({note})	{message} ({note})
 @plural	Loaded {n} action from {file}|Loaded {n} actions from {file}	{n} handeling geladen uit {file}|{n} handelingen geladen uit {file}
-@plural	{n} step has no Tibetan Design equivalent yet|{n} steps have no Tibetan Design equivalent yet	{n} stap heeft nog geen equivalent in Tibetan Design|{n} stappen hebben nog geen equivalent in Tibetan Design
+@plural	{n} step has no Tibetan Design Photo equivalent yet|{n} steps have no Tibetan Design Photo equivalent yet	{n} stap heeft nog geen equivalent in Tibetan Design Photo|{n} stappen hebben nog geen equivalent in Tibetan Design Photo
 @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} handeling opgeslagen in {file}|{n} handelingen opgeslagen in {file}
 @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} stap zonder Photoshop-equivalent weggelaten|{n} stappen zonder Photoshop-equivalent weggelaten
 

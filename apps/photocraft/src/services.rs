@@ -16,7 +16,7 @@ use std::sync::Arc;
 #[cfg(test)]
 mod recovery_tests;
 
-/// Everything File › Open reads: Tibetan Design, Photoshop, OpenRaster, Krita and Affinity documents, flat images, and
+/// Everything File › Open reads: Tibetan Design Photo, Photoshop, OpenRaster, Krita and Affinity documents, flat images, and
 /// Photoshop brushes (.abr), gradients (.grd), swatches (.aco, .ase) and keyboard shortcut sets
 /// (.kys), which go to the preset libraries and Edit › Keyboard Shortcuts.
 const OPEN_EXTS: &[&str] = &[
@@ -37,11 +37,11 @@ fn open_filter_extensions(extensions: &[&str]) -> Vec<String> {
 }
 
 /// An explicit SVG filter keeps vector artwork discoverable even when a native picker defaults to
-/// the Tibetan Design-only filter. SVG is also included in All Formats for normal multi-format opens.
+/// the Tibetan Design Photo-only filter. SVG is also included in All Formats for normal multi-format opens.
 fn open_filters() -> Vec<(&'static str, Vec<String>)> {
     vec![
         ("All Formats", open_filter_extensions(OPEN_EXTS)),
-        ("Tibetan Design", open_filter_extensions(&["pcraft"])),
+        ("Tibetan Design Photo", open_filter_extensions(&["pcraft"])),
         ("OpenRaster", open_filter_extensions(&["ora"])),
         ("Krita", open_filter_extensions(&["kra", "krz"])),
         ("SVG", open_filter_extensions(SVG_EXTS)),
@@ -53,14 +53,14 @@ fn open_filters() -> Vec<(&'static str, Vec<String>)> {
 /// keeps defaulting to PSD.
 const SAVE_FILTERS: &[(&str, &[&str])] = &[
     ("PSD Document", &["psd", "psb"]),
-    ("Tibetan Design", &["pcraft"]),
+    ("Tibetan Design Photo", &["pcraft"]),
     ("OpenRaster", &["ora"]),
     ("PNG", &["png"]),
     ("JPEG", &["jpg"]),
     ("WebP", &["webp"]),
     ("TIFF", &["tif"]),
     ("Targa", &["tga"]),
-    // Also in Photoshop's Save As list; ICO is Tibetan Design's own (#4357): up to 256×256, with alpha.
+    // Also in Photoshop's Save As list; ICO is Tibetan Design Photo's own (#4357): up to 256×256, with alpha.
     ("BMP", &["bmp"]),
     ("GIF", &["gif"]),
     ("ICO", &["ico"]),
@@ -95,7 +95,7 @@ fn save_filters(suggested: &str) -> Vec<(String, Vec<String>)> {
 }
 
 /// The name the save dialog starts with. On Windows a visible extension stays put when the user
-/// picks another type (with File name extensions shown, `image.psd` saved as Tibetan Design stayed
+/// picks another type (with File name extensions shown, `image.psd` saved as Tibetan Design Photo stayed
 /// `image.psd`, #4394), while a bare name gets the chosen type's extension, so there the dialog
 /// gets the stem and the suggested type (listed first by [`save_filters`]) supplies `.psd`. A
 /// stem that still has a dot (`scan.jpg.psd`: Windows could keep `scan.jpg`) or an upper-case
@@ -194,7 +194,7 @@ fn block_on<T>(future: impl Future<Output = T>) -> T {
     }
 }
 
-/// Per-user settings directory: `PHOTOCRAFT_CONFIG_DIR`, else `<exe dir>/Tibetan DesignData` in
+/// Per-user settings directory: `PHOTOCRAFT_CONFIG_DIR`, else `<exe dir>/Tibetan Design PhotoData` in
 /// portable mode, else the platform convention. Everything the app persists lives under it; see
 /// [`crate::app_dirs`].
 pub fn config_dir() -> Option<PathBuf> {
@@ -460,6 +460,7 @@ pub fn native(automation: Option<photocraft_automation::AuthorizedWorkspace>) ->
         })),
         inbox: None,
         open_url: Some(Box::new(|url: &str| open::that(url).map_err(|e| e.to_string()))),
+        check_updates: Some(Box::new(crate::updates::check)),
         beep: Some(platform_beep),
         clipboard_set_image: Some({
             let clip = clip.clone();
@@ -735,7 +736,7 @@ mod tests {
         assert_eq!(save_filters("Untitled")[0].0, "PSD Document", "no extension keeps the default");
     }
 
-    /// Every flat format Save As offers is one Tibetan Design writes, and ICO is among them (#4357).
+    /// Every flat format Save As offers is one Tibetan Design Photo writes, and ICO is among them (#4357).
     #[test]
     fn save_as_offers_only_writable_formats_including_ico() {
         let layered = ["psd", "psb", "pcraft", "ora"];
@@ -763,7 +764,7 @@ mod tests {
     }
 
     /// #4394: with File name extensions shown, Windows kept `image.psd` when the type was changed to
-    /// Tibetan Design. Given the bare `image`, it adds the extension of whichever type is picked
+    /// Tibetan Design Photo. Given the bare `image`, it adds the extension of whichever type is picked
     /// (checked by hand with rfd 0.17.2 on Windows 11), defaulting to the first type's.
     #[test]
     fn the_windows_save_dialog_gets_a_bare_name_so_the_type_picks_the_extension() {

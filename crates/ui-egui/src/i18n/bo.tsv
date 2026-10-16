@@ -59,9 +59,9 @@
 	AI Integrations	མི་ཐབས་རིག་ནུས་འབྲེལ་སྦྱོར
 	AI Integrations:	མི་ཐབས་རིག་ནུས་འབྲེལ་སྦྱོར:
 	AI Integrations…	མི་ཐབས་རིག་ནུས་འབྲེལ་སྦྱོར…
-	About Tibetan Design	Tibetan Design སྐོར
-	About Tibetan Design:	Tibetan Design སྐོར:
-	About Tibetan Design…	Tibetan Design སྐོར…
+	About Tibetan Design Photo	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། སྐོར
+	About Tibetan Design Photo:	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། སྐོར:
+	About Tibetan Design Photo…	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། སྐོར…
 	Actions	བྱ་སྤྱོད
 	Actions:	བྱ་སྤྱོད:
 	Actions…	བྱ་སྤྱོད…
@@ -3054,15 +3054,15 @@
 	Threshold:	མཚམས་ཐིག:
 	Threshold…	མཚམས་ཐིག…
 	Tibetan	བོད་ཡིག
-	Tibetan Design Website	Tibetan Design དྲ་ཚིགས
-	Tibetan Design Website:	Tibetan Design དྲ་ཚིགས:
-	Tibetan Design Website…	Tibetan Design དྲ་ཚིགས…
-	Tibetan Design on GitHub	GitHub ནང་གི་Tibetan Design
-	Tibetan Design on GitHub:	GitHub ནང་གི་Tibetan Design:
-	Tibetan Design on GitHub…	GitHub ནང་གི་Tibetan Design…
-	Tibetan Design website	Tibetan Design དྲ་ཚིགས
-	Tibetan Design website:	Tibetan Design དྲ་ཚིགས:
-	Tibetan Design website…	Tibetan Design དྲ་ཚིགས…
+	Tibetan Design Photo Website	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། དྲ་ཚིགས
+	Tibetan Design Photo Website:	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། དྲ་ཚིགས:
+	Tibetan Design Photo Website…	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། དྲ་ཚིགས…
+	Tibetan Design Photo on GitHub	GitHub ནང་གི་བོད་ཀྱི་པར་རིས་བཟོ་བཀོད།
+	Tibetan Design Photo on GitHub:	GitHub ནང་གི་བོད་ཀྱི་པར་རིས་བཟོ་བཀོད།:
+	Tibetan Design Photo on GitHub…	GitHub ནང་གི་བོད་ཀྱི་པར་རིས་བཟོ་བཀོད།…
+	Tibetan Design Photo website	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། དྲ་ཚིགས
+	Tibetan Design Photo website:	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། དྲ་ཚིགས:
+	Tibetan Design Photo website…	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད། དྲ་ཚིགས…
 	Tibetan:	བོད་ཡིག:
 	Tibetan…	བོད་ཡིག…
 	Tile	ལེབ་སྒྲིག
@@ -3371,3 +3371,21 @@ fontWeight	Black	སྦོམ་ཤོས
 fontWeight	Heavy	སྦོམ་ཤོས
 fontWeight	Italic	གསེག་ཡིག
 fontWeight	Oblique	གསེག་པ
+
+	English / བོད་ཡིག	English / བོད་ཡིག
+	Check for Updates…	ཐོན་གསར་ཡོད་མེད་བཤེར་བ།
+	Automatically Check for Updates	རང་འགུལ་གྱིས་ཐོན་གསར་བཤེར་བ།
+	Software Update	མཉེན་ཆས་ཐོན་གསར།
+	A new version is available.	ཐོན་གསར་ཞིག་ཡོད།
+	Download Update	ཐོན་གསར་ཕབ་ལེན།
+	Later	རྗེས་སུ།
+	Skip This Version	ཐོན་རིམ་འདི་བརྒལ་བ།
+	Check for updates automatically	རང་འགུལ་གྱིས་ཐོན་གསར་བཤེར་བ།
+	Checking for updates…	ཐོན་གསར་བཤེར་བཞིན་ཡོད།
+	No newer release is available for this computer.	གློག་ཀླད་འདིའི་ཆེད་དུ་ཐོན་གསར་མེད།
+	Could not check for updates. Please try again later.	ཐོན་གསར་བཤེར་མ་ཐུབ། རྗེས་སུ་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས།
+	Installed version: {version}	བསྒྲིགས་ཟིན་པའི་ཐོན་རིམ། {version}
+	Latest version: {version}	ཐོན་རིམ་གསར་ཤོས། {version}
+	Download the new installer from the official release page.	དངོས་གཞིའི་ཐོན་གསར་དྲ་ངོས་ནས་ཕབ་ལེན་བྱོས།
+	Open Downloads	ཕབ་ལེན་དྲ་ངོས་ཁ་ཕྱེ།
+	Tibetan Design Photo	བོད་ཀྱི་པར་རིས་བཟོ་བཀོད།

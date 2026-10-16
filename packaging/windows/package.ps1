@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-  Build, sign and package Tibetan Design for Windows.
+  Build, sign and package Tibetan Design Photo for Windows.
 
 .DESCRIPTION
   Produces, in $env:DIST (default: dist/release):
     tibetan-design-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
-    tibetan-design-<version>-windows-<arch>-portable.zip   Tibetan Design.exe + photocraft-cli.exe + portable.txt
+    tibetan-design-<version>-windows-<arch>-portable.zip   Tibetan Design Photo.exe + photocraft-cli.exe + portable.txt
 
   The binaries link the C runtime statically (+crt-static), so neither the MSI nor the portable
   zip needs the Visual C++ redistributable. Signing is delegated to sign.ps1 (skipped with a
@@ -55,7 +55,7 @@ New-Item -ItemType Directory -Force -Path $Dist | Out-Null
 if (-not $env:PHOTOCRAFT_BUILD_SHA) { $env:PHOTOCRAFT_BUILD_SHA = (git -C $Root rev-parse HEAD 2>$null) }
 if (-not $env:PHOTOCRAFT_BUILD_DATE) { $env:PHOTOCRAFT_BUILD_DATE = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd') }
 
-Write-Output "Tibetan Design $Version for Windows $Arch ($Target)"
+Write-Output "Tibetan Design Photo $Version for Windows $Arch ($Target)"
 
 if (-not $SkipBuild) {
   # Static CRT: no VC++ redistributable needed. Scoped to the target so host build scripts and
@@ -105,7 +105,7 @@ Copy-Item -LiteralPath (Join-Path $Root 'assets/app-icon/OFL-Tibetan.txt') -Dest
 & (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'photocraft.exe') (Join-Path $Stage 'photocraft-cli.exe')
 
 # ---- MSI ---------------------------------------------------------------------------------------
-# The setup wizard's art, drawn here from the app icon so the MSI shows Tibetan Design rather than
+# The setup wizard's art, drawn here from the app icon so the MSI shows Tibetan Design Photo rather than
 # WiX's stock bitmaps: a 493x58 banner across the top of the inner pages (the page title is drawn
 # over its left side, so that stays white) and a 493x312 backdrop for the Welcome and Finish pages
 # (their text sits on the right; the left 164 px are ours). Both must be 24-bit BMPs.
@@ -165,7 +165,7 @@ Assert-PackagePath $Portable
 Remove-Item -LiteralPath $Portable -Recurse -Force -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $Portable | Out-Null
 Copy-Item (Join-Path $Stage '*.exe') $Portable
-Rename-Item -LiteralPath (Join-Path $Portable 'photocraft.exe') -NewName 'Tibetan Design.exe'
+Rename-Item -LiteralPath (Join-Path $Portable 'photocraft.exe') -NewName 'Tibetan Design Photo.exe'
 Copy-Item (Join-Path $Root 'assets/app-icon/OFL-Tibetan.txt') $Portable
 foreach ($f in 'TIBETAN-DESIGN.md', 'README.md', 'NOTICE', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
   $p = Join-Path $Root $f
@@ -180,7 +180,7 @@ if ($env:CRAFT_FONTS_DIR) {
   }
 }
 # portable.txt beside photocraft.exe switches on portable mode: settings, presets and recovery
-# files go to Tibetan DesignData\ next to the exe instead of %APPDATA% (#228; see app_dirs.rs).
+# files go to Tibetan Design PhotoData\ next to the exe instead of %APPDATA% (#228; see app_dirs.rs).
 Copy-Item (Join-Path $PSScriptRoot 'portable.txt') $Portable
 $Zip = Join-Path $Dist "tibetan-design-$Version-windows-$Arch-portable.zip"
 Remove-Item -Force $Zip -ErrorAction SilentlyContinue

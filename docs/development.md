@@ -28,7 +28,7 @@ This error indicates an application-control restriction; moving `CARGO_TARGET_DI
 reinstalling Rust does not establish that the blocked executable is trusted. See Microsoft's
 [Smart App Control FAQ](https://support.microsoft.com/en-us/windows/security/threat-malware-protection/smart-app-control-frequently-asked-questions)
 for the available controls; there is no per-app exception. On a managed device, ask your
-administrator about an approved development environment. If you only want to run PhotoCraft,
+administrator about an approved development environment. If you only want to run Tibetan Design Photo,
 use the [packaged Windows release](https://github.com/storytold/photocraft/releases) to avoid
 building locally; the downloaded app is still subject to Windows application-control checks.
 
@@ -97,7 +97,7 @@ If the device is lost while running (#243), every GPU entry point checks the dev
 
 The desktop app writes its `log` records to standard error and to `logs/photocraft.log` in the settings directory (Linux `~/.config/photocraft/logs/`, macOS `~/Library/Application Support/Photocraft/logs/`, Windows `%APPDATA%\Photocraft\logs\`, or under `PHOTOCRAFT_CONFIG_DIR` / the portable data folder). A start launched from a desktop menu or the Dock has no terminal, so this file is what to attach to a bug report: GPU startup fallbacks, a lost device and the crash guard's panic report all land there. Each launch moves the previous log to `photocraft.1.log` (and that one to `photocraft.2.log`), so the log of a run that crashed survives the next start. The file stops growing at 16 MiB. `--version` and command-line errors write no file.
 
-By default PhotoCraft's own crates log at `info` and everything else at `warn`. `RUST_LOG` replaces that with env_logger-style directives, for example `RUST_LOG=debug`, `RUST_LOG=warn,photocraft_gpu=trace` or `RUST_LOG=info,wgpu_core=warn`; a directive ending in `*` covers every target starting with it (`photocraft*=debug`). The logger is `apps/photocraft/src/logging.rs`; the web build logs to the browser console instead.
+By default Tibetan Design Photo's own crates log at `info` and everything else at `warn`. `RUST_LOG` replaces that with env_logger-style directives, for example `RUST_LOG=debug`, `RUST_LOG=warn,photocraft_gpu=trace` or `RUST_LOG=info,wgpu_core=warn`; a directive ending in `*` covers every target starting with it (`photocraft*=debug`). The logger is `apps/photocraft/src/logging.rs`; the web build logs to the browser console instead.
 
 ## Environment variables
 
@@ -291,7 +291,7 @@ translations do not affect the denominator. Unregistered locale TSV files are ig
 
 ## Scorecard and performance budgets
 
-[`docs/scorecard.md`](scorecard.md) says, with numbers, where PhotoCraft stands per area. It is
+[`docs/scorecard.md`](scorecard.md) says, with numbers, where Tibetan Design Photo stands per area. It is
 generated; never edit it by hand.
 
 ```sh
@@ -373,7 +373,7 @@ How the web shell (`apps/photocraft-web/src/web.rs`) differs from desktop:
 - **Open** uses `rfd::AsyncFileDialog`. The bytes arrive asynchronously in `Services::inbox`, which the app drains every frame.
 - **Save / Save As / Export** trigger a browser download of the encoded bytes. The shell does this with a Blob, an object URL and a temporary `<a download>`, all created from Rust. There is no save dialog, so the suggested name becomes the download name.
 - **Drag-and-drop:** `WebShell` takes the frame's `dropped_files` before the app sees them. It reads each file with `DroppedFile::bytes_async` and pushes the bytes into the inbox.
-- **Startup failures:** `index.html` shows "Loading PhotoCraft…" until the app removes it, or replaces it with the error when the web runner fails to start. If the `.wasm` never downloads or doesn't match the page's `.js` (a stale cached `index.html` after a deploy), no Rust runs at all, so the page itself (CSS only, no script) adds a hint with a Reload link after 20 seconds.
+- **Startup failures:** `index.html` shows "Loading Tibetan Design Photo…" until the app removes it, or replaces it with the error when the web runner fails to start. If the `.wasm` never downloads or doesn't match the page's `.js` (a stale cached `index.html` after a deploy), no Rust runs at all, so the page itself (CSS only, no script) adds a hint with a Reload link after 20 seconds.
 - **No control server:** browsers can't listen on TCP. To automate the web build, drive headless Chrome with `--remote-debugging-port`. `Page.setInterceptFileChooserDialog` plus `DOM.setFileInputFiles` covers Open, `Input.dispatchDragEvent` with `files` covers drops, and `Browser.setDownloadBehavior` captures downloads.
 - Headless Chrome on macOS (`--headless=new --enable-unsafe-webgpu`) gets a real WebGPU adapter.
 
@@ -548,9 +548,9 @@ their own modes, an upper stroke covering lower ones.
 ## System printing
 
 `file.print` and `file.printOneCopy` keep PDF layout, scaling, marks and ICC conversion in
-PhotoCraft and submit the rendered bytes through `craft-print` at the Git revision pinned in
+Tibetan Design Photo and submit the rendered bytes through `craft-print` at the Git revision pinned in
 `Cargo.toml`. CUPS streams the PDF on macOS/Linux; Windows uses the shared Windows PDF backend.
-The driver receives exact physical sheet size so it does not scale PhotoCraft's layout twice.
+The driver receives exact physical sheet size so it does not scale Tibetan Design Photo's layout twice.
 Windows raster printing does not establish physical-printer colour fidelity; test critical
 photo output with the actual printer and its profile.
 

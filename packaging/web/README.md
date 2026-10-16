@@ -1,4 +1,4 @@
-# Hosting PhotoCraft for the web
+# Hosting Tibetan Design Photo for the web
 
 `photocraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
 static site in `photocraft-web-<version>/`:
@@ -86,7 +86,7 @@ Per-file upload limits: Cloudflare Pages and Workers static assets reject any fi
 it ever grows past 24 MiB, so a release can't ship a file a common host refuses. (Releases up to
 0.2.0 shipped a 25.8 MiB wasm, which Cloudflare rejected; issue #198.) The size comes from the
 `wasm-release` Cargo profile (fat LTO, size-optimized code with the pixel and file-decoding
-crates kept at speed) plus `wasm-opt -Oz`, and from storing the bundled fonts (PhotoCraft's and
+crates kept at speed) plus `wasm-opt -Oz`, and from storing the bundled fonts (Tibetan Design Photo's and
 egui's) and the translation catalogs compressed, unpacked on first use.
 
 ## Any path works
@@ -108,7 +108,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
   `.js` files, and `no-cache` on `index.html`.
 - **HTTPS:** WebGPU (and the clipboard) only work in a secure context, which means `https://`
   or `http://localhost`. Over plain HTTP elsewhere, the app falls back to WebGL2.
-- **No special isolation headers:** PhotoCraft doesn't use `SharedArrayBuffer`, so it doesn't
+- **No special isolation headers:** Tibetan Design Photo doesn't use `SharedArrayBuffer`, so it doesn't
   need `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-Policy`. If your site already sends
   COEP `require-corp`, also send `Cross-Origin-Resource-Policy: same-origin` (or `cross-origin`
   when the files live on a CDN) on the app's files.
@@ -167,7 +167,7 @@ fetches them with `fetch()`, so a Content Security Policy needs them allowed by 
 ```html
 <iframe
   src="https://example.com/photocraft/"
-  title="PhotoCraft image editor"
+  title="Tibetan Design Photo image editor"
   style="width: 100%; height: 720px; border: 0;"
   allow="fullscreen; clipboard-read; clipboard-write"
   allowfullscreen>
@@ -187,7 +187,7 @@ fetches them with `fetch()`, so a Content Security Policy needs them allowed by 
 
 ## Renderer selection and fallback flags
 
-PhotoCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
+Tibetan Design Photo renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
 **WebGL2** on its own. URL query flags override this, and they work on the iframe `src` too:
 
 | Flag | Effect |

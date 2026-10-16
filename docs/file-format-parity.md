@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-12 · **Last updated:** 2026-10-13 · **Change:** minor (palette PNGs open in Indexed Color mode, #4804; earlier: CMYK Invert, Posterize and Threshold on the inks; 16-bit Lab Invert; Photoshop-oracle floor 145/258; `.atn` import maps 112 events; DDS textures open, #1327; DPX read and write, #1049; #2465 fixed: CS2 placed layers with only a `PlLd` block open their contents; Photoshop Actions `.atn` read and write; `.shc` contour files read and write; earlier the same day: indexed BMP palette mode; Save keeps a JPEG's quality and a WebP's encoding) · **Target:** Adobe Photoshop 2026
 
-Every format Photoshop 2026 (27.11.0) reads or writes, with PhotoCraft's support, fidelity and
+Every format Photoshop 2026 (27.11.0) reads or writes, with Tibetan Design Photo's support, fidelity and
 tests. Photoshop's list comes from its `Info.plist` `CFBundleDocumentTypes`, the PiPL read/write
 flags of `Contents/PlugIns/Required/File Formats`, and format names in the main binary (Open/Save
 As behaviour from Adobe's documentation where the bundle doesn't say). Ours comes from
@@ -19,7 +19,7 @@ XL are missing (gap G10). Remaining: 300–500 h including PSD fidelity.
 
 ## Photoshop's formats
 
-| Format | Photoshop | PhotoCraft read | PhotoCraft write | Fidelity and tests |
+| Format | Photoshop | Tibetan Design Photo read | Tibetan Design Photo write | Fidelity and tests |
 |---|---|---|---|---|
 | PSD | R/W | yes | yes | 1/8/16/32-bit; Bitmap, Gray, Indexed, RGB, CMYK, Multichannel, Lab, Duotone; layers, groups, masks, vector masks, adjustment and fill layers, effects, text, shapes, smart objects (SoLd/lnk2; CS2 PlLd/lnkD read with their warp, kept as is or re-saved as SoLd once edited), smart filters (14 mapped, rest verbatim), slices, comps, Advanced Blending. Oracle floors: Photoshop-authored 145/258, io 146/170, psd-tools 236/309; round trip ≥ 169/170, 308/309, 258/256. Known failures: #1281, #2469 (#2374, text layers, closed 2026-10-10; #2465, CS2 `PlLd`-only smart objects, fixed 2026-10-12) |
 | PSB | R/W | yes | yes | Auto-switches above 2 GB (REL-212-2); 4–5 GB fixtures generated (FILE-216-2); > 4 GB fails on Windows (#375) |
@@ -61,7 +61,7 @@ Photoshop opens raws through Camera Raw 18.7 (the bundle registers cr2, crw, dcr
 fff, 3fr, mef, mfw, iiq, nrw, rwl, srw, mrw, nef, orf, pef, raf, srf, x3f; Camera Raw itself
 supports many more, including CR3).
 
-| Camera format | PhotoCraft | Evidence |
+| Camera format | Tibetan Design Photo | Evidence |
 |---|---|---|
 | DNG (incl. LJPEG and JPEG XL tiles) | yes; lossy DNG no | FILE-215-11 |
 | Canon CR2 | yes | |
@@ -122,7 +122,7 @@ remaining gaps in #1606 stay tracked with per-sample corpus ceilings.
 
 ## Presets and data files
 
-| Format | Photoshop | PhotoCraft | Notes |
+| Format | Photoshop | Tibetan Design Photo | Notes |
 |---|---|---|---|
 | Brushes `.abr` | R/W | R/W | `psd/src/abr.rs` (v6/v12) |
 | Gradients `.grd` | R/W | R/W | |

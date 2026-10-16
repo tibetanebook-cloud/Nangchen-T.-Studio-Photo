@@ -1,6 +1,6 @@
-# Tibetan Design terminology and review
+# Tibetan Design Photo terminology and review
 
-Tibetan Design is a customization of PhotoCraft, using its native Rust editor, tools,
+Tibetan Design Photo is a customization of Tibetan Design Photo, using its native Rust editor, tools,
 document formats and command IDs. Upstream base: `99e1138877e6aa7e856c6883b415e708d042fc59`
 (0.8.2). The supplied 0.7.0 MSI was not modified or used as source code.
 
@@ -55,7 +55,7 @@ layer and preset names are never translated.
 
 ## Fonts and visual checking
 
-PhotoCraft's existing Tibetan-script fallback chooses installed Himalaya,
+Tibetan Design Photo's existing Tibetan-script fallback chooses installed Himalaya,
 Noto Serif Tibetan, Kailasa, Jomolhari or Tibetan Machine Uni. Windows on the
 development machine supplies `C:/Windows/Fonts/himalaya.ttf`. No Microsoft font is
 copied or redistributed. The Windows packaging script embeds the open-license
@@ -85,5 +85,5 @@ Remove-Item Env:PHOTOCRAFT_GPU_SYNC
 
 ## Live font previews
 
-The upstream 0.8.2 editor previews a hovered family on the canvas and commits only on selection. Its existing tests cover cancelling previews, preserving undo history and applying a font to selected characters. Tibetan Design additionally shows a real Tibetan sample beside Latin for Tibetan-capable faces; a Tibetan-only face shows Tibetan as its primary sample. Faces lacking the Tibetan glyphs never get a misleading fallback sample.
+The upstream 0.8.2 editor previews a hovered family on the canvas and commits only on selection. Its existing tests cover cancelling previews, preserving undo history and applying a font to selected characters. Tibetan Design Photo additionally shows a real Tibetan sample beside Latin for Tibetan-capable faces; a Tibetan-only face shows Tibetan as its primary sample. Faces lacking the Tibetan glyphs never get a misleading fallback sample.
 

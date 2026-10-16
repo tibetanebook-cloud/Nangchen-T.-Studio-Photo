@@ -17,7 +17,8 @@ pub(crate) fn modal_allows(app: &PhotocraftApp, id: &str) -> bool {
 }
 
 /// Top-level menus in Photoshop order.
-pub const TOP_MENUS: [&str; 10] = ["File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "Help"];
+pub const LANGUAGE_MENU: &str = "English / བོད་ཡིག";
+pub const TOP_MENUS: [&str; 11] = ["File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", LANGUAGE_MENU, "Help"];
 
 /// UI-level commands (handled by the shell rather than the engine): id, label, menu, shortcut.
 pub const UI_COMMANDS: &[(&str, &str, &[&str], Option<&str>)] = &[
@@ -94,12 +95,14 @@ pub const UI_COMMANDS: &[(&str, &str, &[&str], Option<&str>)] = &[
     ("window.theme.system", "Sync with system", &["Window", "Theme"], None),
     ("edit.search", "Search…", &["Edit"], Some("Cmd+F")),
     ("help.discord", "Join the ArtCraft Discord…", &["Help"], None),
-    ("help.website", "Tibetan Design Website", &["Help"], None),
+    ("help.website", "Tibetan Design Photo Website", &["Help"], None),
     ("help.artcraftWebsite", "ArtCraft Website", &["Help"], None),
-    ("help.github", "Tibetan Design on GitHub", &["Help"], None),
+    ("help.github", "Tibetan Design Photo on GitHub", &["Help"], None),
     ("help.reportIssue", "Report an Issue…", &["Help"], None),
     ("help.systemInfo", "System Info…", &["Help"], None),
-    ("help.about", "About Tibetan Design", &["Help"], None),
+    ("help.checkUpdates", "Check for Updates…", &["Help"], None),
+    ("help.autoUpdates", "Automatically Check for Updates", &["Help"], None),
+    ("help.about", "About Tibetan Design Photo", &["Help"], None),
 ];
 
 /// Window › <document>: the open documents, listed at the end of the Window menu as in Photoshop.
@@ -407,6 +410,14 @@ pub(crate) fn invoke_unguarded(app: &mut PhotocraftApp, ctx: &egui::Context, id:
         }
         "edit.search" => {
             app.ui.palette_open = !app.ui.palette_open;
+            Ok(Value::Null)
+        }
+        "help.checkUpdates" => {
+            crate::updates::request(app, ctx, true)?;
+            Ok(Value::Null)
+        }
+        "help.autoUpdates" => {
+            crate::updates::toggle_automatic(app, ctx);
             Ok(Value::Null)
         }
         "help.about" => Ok(json!({"dialog": app.ui.open_dialog(DialogKind::About, Default::default())})),
@@ -743,6 +754,7 @@ pub fn is_enabled(app: &PhotocraftApp, id: &str) -> bool {
         return e;
     }
     match id {
+        "help.checkUpdates" | "help.autoUpdates" => app.services.check_updates.is_some(),
         "window.panel.activate" | "window.panel.layout" => true,
         "window.panel.group" | "window.panel.move" | "window.panel.float" | "window.panel.dock" | "window.panel.close" => !app.session.prefs().workspace_locked,
         "file.open" | "file.exit" | "file.clearRecent" | "file.removeRecent" | "help.about" | "help.systemInfo" | "edit.search" => true,
@@ -801,6 +813,9 @@ const MODE_CHECKS: [&str; 11] = ["rgb", "grayscale", "cmyk", "lab", "multichanne
 
 /// Is a UI-level panel toggle currently on (for checkmarks)?
 fn checked(app: &PhotocraftApp, id: &str) -> Option<bool> {
+    if id == "help.autoUpdates" {
+        return Some(app.ui.update_preferences.automatic);
+    }
     if let Some(checked) = crate::panel_docking::checked(app, id) {
         return Some(checked);
     }
@@ -1083,7 +1098,7 @@ pub fn menu_items(app: &PhotocraftApp) -> Vec<MenuItem> {
         items.push(MenuItem {
             id: format!("{}{code}", crate::native_menu::LANGUAGE_PREFIX),
             label: name.into(),
-            path: vec!["Edit".into(), "Language".into()],
+            path: vec![LANGUAGE_MENU.into()],
             shortcut: None,
             enabled: true,
             checked: Some(app.session.prefs().interface.language == code),
@@ -1210,7 +1225,14 @@ pub fn menu_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui) -> f32 {
             for top in TOP_MENUS {
                 // egui's menu_button toggles on release; these titles open on the press (one
                 // gesture can press, drag to an item and release), so each drives its popup.
-                let title = ui.add(egui::Button::new(egui::RichText::new(crate::i18n::tr(lang, top)).color(t.text_dim)));
+                let button = if top == LANGUAGE_MENU {
+                    egui::Button::new(egui::RichText::new(LANGUAGE_MENU).strong().color(t.accent))
+                        .fill(t.accent_soft)
+                        .stroke(egui::Stroke::new(1.0, t.accent_border))
+                } else {
+                    egui::Button::new(egui::RichText::new(crate::i18n::tr(lang, top)).color(t.text_dim))
+                };
+                let title = ui.add(button);
                 // The bar's close behaviour and style, as a menu (not bar) config so submenus inside
                 // render as submenus.
                 let bar = egui::containers::menu::MenuConfig::find(ui);
@@ -1626,6 +1648,25 @@ mod tests {
     }
 
     #[test]
+    fn bilingual_language_menu_is_next_to_help_and_preserves_the_document() {
+        assert_eq!(&TOP_MENUS[TOP_MENUS.len() - 2..], &[LANGUAGE_MENU, "Help"]);
+        let mut app = PhotocraftApp::new(photocraft_engine::Session::new(), crate::Services::default());
+        let ctx = egui::Context::default();
+        app.run("file.new", json!({"width": 16, "height": 16})).unwrap();
+        let document = app.session.active().unwrap().doc.id;
+        for code in ["bo", "en"] {
+            let id = format!("app.language.{code}");
+            invoke(&mut app, &ctx, &id, json!({})).unwrap();
+            assert_eq!(app.session.prefs().interface.language, code);
+            assert_eq!(app.session.active().unwrap().doc.id, document);
+            let items = menu_items(&app);
+            let item = items.iter().find(|item| item.id == id).unwrap();
+            assert_eq!(item.path, [LANGUAGE_MENU]);
+            assert_eq!(item.checked, Some(true));
+        }
+    }
+
+    #[test]
     fn live_lookup_finds_engine_and_shell_commands() {
         for command in photocraft_engine::commands::command_specs() {
             assert!(is_live(command.id), "{}", command.id);
@@ -1867,7 +1908,7 @@ mod tests {
                 }
                 h.run_steps(3);
             };
-            let open = |h: &Harness<'_, PhotocraftApp>| h.query_by_label_contains("About Tibetan Design").is_some();
+            let open = |h: &Harness<'_, PhotocraftApp>| h.query_by_label_contains("About Tibetan Design Photo").is_some();
             let field_id = egui::Id::new("help-menu-search").with("field");
             let help = h.get_by_label("Help").rect().center();
             click(&mut h, help);

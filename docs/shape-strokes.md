@@ -2,7 +2,7 @@
 
 Updated 2026-10-11: direct editing, compact layout, and clickable colour/style controls.
 
-PhotoCraft's Shape tool options bar has a Stroke Options button beside the existing width
+Tibetan Design Photo's Shape tool options bar has a Stroke Options button beside the existing width
 and colour controls. It sets defaults for new Rectangle, Ellipse, Triangle, Polygon, Line
 and Custom Shape layers. Pen in Shape mode uses the same style defaults; open Pen shapes retain
 their existing foreground colour and minimum 1 px width. To edit an existing shape,
@@ -95,4 +95,4 @@ fields, colour pickers, and ComboBoxes remain native egui controls.
   describes the tool options and Properties entry points, and its
   [cap/join reference](https://helpx.adobe.com/ca/illustrator/desktop/paint-and-fill/apply-and-edit-strokes/change-the-caps-or-joins-of-a-line.html)
   defines endpoint and corner behavior and the 1–500 miter range. Dash units reuse
-  PhotoCraft's existing documented `ShapeStroke`/`vstk` convention.
+  Tibetan Design Photo's existing documented `ShapeStroke`/`vstk` convention.

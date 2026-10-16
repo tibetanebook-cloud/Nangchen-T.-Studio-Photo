@@ -13,7 +13,7 @@
 # graphics-editor vocabulary (Слой, Каналы, Маска, Выделение, Кривые ...), matching Photoshop's
 # Russian menu tradition where it is unambiguous. No proprietary localisation resource was
 # consulted or copied; entries are added the same way.
-# Product and technology names (Tibetan Design, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
+# Product and technology names (Tibetan Design Photo, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
 # letters; the trailing "…" of dialog commands is kept; the colon of a label ("Width:") becomes
 # the Russian typographic equivalent, with the space the source carries.
 
@@ -525,9 +525,9 @@
 	Hide All	Скрыть все
 
 # Help
-	About Tibetan Design	О программе Tibetan Design
-	Tibetan Design Website	Сайт Tibetan Design
-	Tibetan Design on GitHub	Tibetan Design на GitHub
+	About Tibetan Design Photo	О программе Tibetan Design Photo
+	Tibetan Design Photo Website	Сайт Tibetan Design Photo
+	Tibetan Design Photo on GitHub	Tibetan Design Photo на GitHub
 	Report an Issue…	Сообщить о проблеме…
 	ArtCraft Website	Сайт ArtCraft
 	Join the ArtCraft Discord…	Discord сообщества ArtCraft…
@@ -608,11 +608,11 @@
 	Import Shortcuts…	Импортировать сочетания клавиш…
 	Load a keyboard shortcut set saved as .kys	Загрузить набор сочетаний клавиш, сохранённый как .kys
 	Imported {n} shortcuts from {file}. Click OK to keep them.	Импортировано сочетаний: {n} из {file}. Нажмите OK, чтобы сохранить их.
-	{n} commands are not in Tibetan Design.	Команд, которых нет в Tibetan Design: {n}.
+	{n} commands are not in Tibetan Design Photo.	Команд, которых нет в Tibetan Design Photo: {n}.
 	Keyboard shortcuts imported	Сочетания клавиш импортированы
 	Your keyboard shortcut set {set} is in use here: {n} shortcuts differ from the defaults. Edit › Keyboard Shortcuts shows them; Reset All to Defaults undoes this.	Здесь используется ваш набор сочетаний клавиш {set}: сочетаний, отличных от стандартных: {n}. Их показывает Редактирование › Сочетания клавиш; «Сбросить всё к значениям по умолчанию» отменяет импорт.
 	Import keyboard shortcuts?	Импортировать сочетания клавиш?
-	Tibetan Design found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design's. Import it?	Tibetan Design нашёл на этом компьютере ваш набор сочетаний клавиш {set} из другого графического редактора: сочетаний, отличных от Tibetan Design: {n}. Импортировать его?
+	Tibetan Design Photo found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design Photo's. Import it?	Tibetan Design Photo нашёл на этом компьютере ваш набор сочетаний клавиш {set} из другого графического редактора: сочетаний, отличных от Tibetan Design Photo: {n}. Импортировать его?
 	Edit › Keyboard Shortcuts › Reset All to Defaults undoes an import.	Редактирование › Сочетания клавиш › «Сбросить всё к значениям по умолчанию» отменяет импорт.
 	Don't Import	Не импортировать
 	The keyboard shortcut set was not imported: {error}	Набор сочетаний клавиш не импортирован: {error}
@@ -917,7 +917,7 @@
 	Embed Color Profile	Встроить цветовой профиль
 	Assign Profile…	Назначить профиль…
 	Convert to Profile…	Преобразовать в профиль…
-	Tibetan Design Manages Colors	Tibetan Design управляет цветами
+	Tibetan Design Photo Manages Colors	Tibetan Design Photo управляет цветами
 	Printer Manages Colors	Принтер управляет цветами
 	(print to the printer)	(печать на принтере)
 	Absolute Colorimetric	Абсолютный колориметрический
@@ -1507,15 +1507,15 @@
 	Use File › Open, or paste a copied image with {paste}.	Выберите Файл › Открыть или вставьте скопированное изображение с помощью {paste}.
 	Native file drag-and-drop is unavailable	Нативное перетаскивание файлов в Wayland недоступно
 	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or copy the image in your file manager and paste it with {paste}.	Нативное перетаскивание файлов в Wayland пока не поддерживается. Откройте файл через Файл › Открыть или скопируйте изображение в файловом менеджере и вставьте его с помощью {paste}.
-	To drop files, start Tibetan Design under XWayland: `{command}`	Чтобы перетаскивать файлы, запустите Tibetan Design в XWayland: `{command}`
-	Or set Preferences › Performance › Linux display server to X11: Tibetan Design then always starts under XWayland.	Или выберите в Настройки › Производительность › Дисплейный сервер Linux значение X11: Tibetan Design будет всегда запускаться в XWayland.
+	To drop files, start Tibetan Design Photo under XWayland: `{command}`	Чтобы перетаскивать файлы, запустите Tibetan Design Photo в XWayland: `{command}`
+	Or set Preferences › Performance › Linux display server to X11: Tibetan Design Photo then always starts under XWayland.	Или выберите в Настройки › Производительность › Дисплейный сервер Linux значение X11: Tibetan Design Photo будет всегда запускаться в XWayland.
 	Edit › Paste	Редактирование › Вставить
 	Photo	Фото
 	Print	Печать
 	Art & Illustration	Искусство и иллюстрация
 	Mobile	Мобильные
 	Film & Video	Кино и видео
-	Default Tibetan Design Size	Размер Tibetan Design по умолчанию
+	Default Tibetan Design Photo Size	Размер Tibetan Design Photo по умолчанию
 	Clipboard	Буфер обмена
 	Photo (2 × 3 in)	Фото (2 × 3 дюйма)
 	Photo (4 × 6 in)	Фото (4 × 6 дюйма)
@@ -1667,7 +1667,7 @@
 	Reverse	Обратить
 	Align with layer	По слою
 	Join us on Discord	Мы в Discord
-	Tibetan Design website	Сайт Tibetan Design
+	Tibetan Design Photo website	Сайт Tibetan Design Photo
 	ArtCraft	ArtCraft
 	GitHub	GitHub
 	No character style	Нет стиля символов
@@ -1693,9 +1693,9 @@
 	Don't Save	Не сохранять
 	No	Нет
 	Yes	Да
-	These settings aren't available in Tibetan Design yet.	Эти параметры пока недоступны в Tibetan Design.
+	These settings aren't available in Tibetan Design Photo yet.	Эти параметры пока недоступны в Tibetan Design Photo.
 	Shortcut removed.	Комбинация клавиш удалена.
-	All shortcuts reset to Tibetan Design defaults.	Все комбинации клавиш сброшены к стандартным Tibetan Design.
+	All shortcuts reset to Tibetan Design Photo defaults.	Все комбинации клавиш сброшены к стандартным Tibetan Design Photo.
 	Delete Shortcut	Удалить комбинацию
 	Press keys…	Нажмите клавиши…
 	shortcut	комбинация
@@ -2177,8 +2177,8 @@
 	Output:	Выход:
 	Paint Overlay	Перекрытие краской
 	Pattern Size	Размер паттерна
-	Tibetan Design	Tibetan Design
-	Tibetan Design — an open-source, native image editor written in Rust.	Tibetan Design — открытый нативный графический редактор на Rust.
+	Tibetan Design Photo	Tibetan Design Photo
+	Tibetan Design Photo — an open-source, native image editor written in Rust.	Tibetan Design Photo — открытый нативный графический редактор на Rust.
 	Position and Size	Положение и размер
 	Preserve Details	Сохранять детали
 	Preserve Luminosity	Сохранять светлоту
@@ -2503,7 +2503,7 @@
 	Automatic uses GPU acceleration when available and falls back to CPU rendering on errors.	Автоматический режим использует GPU, когда он доступен, и переходит на CPU при ошибках.
 	Switched to CPU rendering	Включена отрисовка на CPU
 	GPU acceleration could not continue. Your documents are unchanged.	Ускорение GPU остановлено. Документы не изменены.
-	Tibetan Design is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design обрабатывает изображения на CPU. Окно может продолжать использовать графический адаптер.
+	Tibetan Design Photo is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design Photo обрабатывает изображения на CPU. Окно может продолжать использовать графический адаптер.
 	Retry GPU requires a restart. Save your work first.	Для повтора GPU нужен перезапуск. Сначала сохраните работу.
 	Keep Using CPU	Продолжить с CPU
 	Retry GPU	Повторить GPU
@@ -2752,7 +2752,7 @@ fontWeight	Italic	Курсив
 	Color to Alpha…	Цвет в альфа-канал…
 	Transparency Threshold	Порог прозрачности
 	Opacity Threshold	Порог непрозрачности
-	Tibetan Design — Screen Color Picker	Tibetan Design — Пипетка цвета экрана
+	Tibetan Design Photo — Screen Color Picker	Tibetan Design Photo — Пипетка цвета экрана
 
 	Rasterize svg groups deeper than	Растеризовать группы SVG глубже этого уровня
 	0 turns this threshold off; SVG groups nested deeper than 100 levels are always rasterized.	0 отключает этот порог; группы SVG с вложенностью более 100 уровней всегда растрируются.
@@ -3065,7 +3065,7 @@ curves	Smooth	Сгладить
 	{name} (Photoshop)	{name} (Photoshop)
 	{message} ({note})	{message} ({note})
 @plural	Loaded {n} action from {file}|Loaded {n} actions from {file}	Загружена {n} операция из {file}|Загружены {n} операции из {file}|Загружено {n} операций из {file}
-@plural	{n} step has no Tibetan Design equivalent yet|{n} steps have no Tibetan Design equivalent yet	{n} шаг пока не имеет эквивалента в Tibetan Design|{n} шага пока не имеют эквивалента в Tibetan Design|{n} шагов пока не имеют эквивалента в Tibetan Design
+@plural	{n} step has no Tibetan Design Photo equivalent yet|{n} steps have no Tibetan Design Photo equivalent yet	{n} шаг пока не имеет эквивалента в Tibetan Design Photo|{n} шага пока не имеют эквивалента в Tibetan Design Photo|{n} шагов пока не имеют эквивалента в Tibetan Design Photo
 @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Сохранена {n} операция в {file}|Сохранены {n} операции в {file}|Сохранено {n} операций в {file}
 @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Пропущен {n} шаг без эквивалента в Photoshop|Пропущены {n} шага без эквивалента в Photoshop|Пропущено {n} шагов без эквивалента в Photoshop
 

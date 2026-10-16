@@ -1,4 +1,4 @@
-name: Tibetan Design Windows
+name: Tibetan Design Photo Windows
 
 on:
   workflow_dispatch:
@@ -12,6 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+      - name: Resolve new update-check dependencies
+        run: cargo update --workspace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Resolved-lock-Windows
+          path: Cargo.lock
+          if-no-files-found: error
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
@@ -25,6 +32,15 @@ jobs:
         run: |
           ./scripts/prepare-tibetan-font.ps1
           cargo test -p photocraft-ui-egui --lib i18n:: --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cargo test -p photocraft-ui-egui --lib updates:: --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cargo test -p photocraft-ui-egui --lib bilingual_language_menu --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cargo test -p photocraft-ui-egui --lib brand:: --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cargo test -p photocraft --bin photocraft updates:: --locked
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build Windows installer and portable archive
         shell: pwsh
         run: ./packaging/windows/package.ps1 -Arch x64

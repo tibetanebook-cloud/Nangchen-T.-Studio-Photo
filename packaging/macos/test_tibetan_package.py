@@ -1,4 +1,4 @@
-"""Platform-independent regression checks for Tibetan Design Mac packaging."""
+"""Platform-independent regression checks for Tibetan Design Photo Mac packaging."""
 import hashlib
 from pathlib import Path
 import plistlib
@@ -11,7 +11,7 @@ class TibetanMacPackageTests(unittest.TestCase):
     def test_bundle_identity_and_language_preserve_format_compatibility(self):
         info = plistlib.loads((ROOT / "packaging/macos/Info.plist.in").read_bytes())
         for key in ("CFBundleName", "CFBundleDisplayName", "CFBundleExecutable", "CFBundleIconFile"):
-            self.assertEqual(info[key], "Tibetan Design")
+            self.assertEqual(info[key], "Tibetan Design Photo")
         self.assertEqual(info["CFBundleIdentifier"], "com.tibetanebook.tibetan-design")
         self.assertIn("bo", info["CFBundleLocalizations"])
         self.assertIn("en", info["CFBundleLocalizations"])
@@ -29,8 +29,8 @@ class TibetanMacPackageTests(unittest.TestCase):
         self.assertIn("assets/app-icon/photocraft-1024.png", package)
         self.assertNotIn('cp "$ROOT/assets/app-icon/photocraft.icns"', package)
         self.assertNotIn('cp "$HERE/dmg/background.tiff"', package)
-        self.assertIn('Contents/MacOS/Tibetan Design', package)
-        self.assertIn('Contents/MacOS/Tibetan Design', verify)
+        self.assertIn('Contents/MacOS/Tibetan Design Photo', package)
+        self.assertIn('Contents/MacOS/Tibetan Design Photo', verify)
         self.assertIn('hdiutil attach -readonly', verify)
         self.assertIn('codesign --verify --strict --deep', verify)
 

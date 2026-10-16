@@ -5,7 +5,7 @@ This note goes with the review of the Spanish catalog
 aligned its wording with the terminology a Spanish-speaking Photoshop user already knows, fixed
 mistranslations, and made the register consistent. No proprietary translation resources, fonts,
 screenshots or user documents are included: the terms are the ones a Spanish Photoshop user sees
-in the product and its public help, and each was checked against the meaning of PhotoCraft's own
+in the product and its public help, and each was checked against the meaning of Tibetan Design Photo's own
 English label.
 
 ## Register and style

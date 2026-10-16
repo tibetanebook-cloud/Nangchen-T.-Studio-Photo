@@ -119,7 +119,7 @@ Files copied into `corpus/` by hand (tiff, exr, raw) must be MIT, BSD or CC0.
 ## Tibetan Design customization
 
 - Tibetan catalog and glossary: dictionary-guided original translations for this customization; see docs/localization-bo.md. The supplied dictionary is not redistributed.
-- assets/app-icon/photocraft.ico, photocraft-1024.png and hicolor PNG variants: resized from the user's StudyTibetan Logo.png, supplied for use in Tibetan Design. No public asset license is asserted.
+- assets/app-icon/photocraft.ico, photocraft.icns, photocraft-1024.png and hicolor PNG variants: generated from the camera icon supplied by the project owner on 2026-10-16 for Tibetan Design Photo. No public asset license is asserted. Legacy upstream SVG files retain their original license notices.
 
 - Embedded Tibetan UI face (external build input TIBETAN_UI_FONT): Noto Serif Tibetan, The Noto Project Authors, https://github.com/google/fonts/tree/main/ofl/notoseriftibetan, SIL Open Font License 1.1 (assets/app-icon/OFL-Tibetan.txt). Font binary is cached outside tracked source.
 - docs/images/tibetan-design/*.png: six screenshots supplied by the user on 2026-10-14 for the Tibetan Design homepage, including the editor artwork and Windows setup wizard. No separate public asset license is asserted; see docs/images/tibetan-design/LICENSE.md.

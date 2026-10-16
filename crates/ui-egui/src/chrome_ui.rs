@@ -342,11 +342,11 @@ mod tests {
         assert_eq!(profile_name(&gray), "Dot Gain 20%-compatible (gamma 1.732, Photocraft)");
 
         let mut custom = (*photocraft_engine::color_cmds::working_profile(photocraft_doc::ColorMode::Cmyk)).clone();
-        custom.description = "Tibetan Design Studio CMYK".into();
+        custom.description = "Tibetan Design Photo Studio CMYK".into();
         let mut custom_doc = doc();
         custom_doc.mode = photocraft_doc::ColorMode::Cmyk;
         custom_doc.icc_profile = Some(custom.with_encoded_bytes().to_bytes());
-        assert_eq!(profile_name(&custom_doc), "Tibetan Design Studio CMYK");
+        assert_eq!(profile_name(&custom_doc), "Tibetan Design Photo Studio CMYK");
     }
 
     #[test]

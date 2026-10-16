@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Build, sign and (optionally) notarize the macOS release artifacts:
 #
-#   $DIST/tibetan-design-<version>-macos-<arch>.dmg      Tibetan Design.app on a drag-to-Applications DMG
+#   $DIST/tibetan-design-<version>-macos-<arch>.dmg      Tibetan Design Photo.app on a drag-to-Applications DMG
 #   $DIST/tibetan-design-cli-<version>-macos-<arch>.zip  the headless CLI
 #
 # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
@@ -41,7 +41,7 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
 IDENTITY="${MACOS_SIGN_IDENTITY:--}"
 SHORT_VERSION="${VERSION%%-*}"
 WORK="$CARGO_TARGET_DIR/macos-package"
-APP="$WORK/Tibetan Design.app"
+APP="$WORK/Tibetan Design Photo.app"
 DMG="$DIST/tibetan-design-$VERSION-macos-$ARCH.dmg"
 CLI_ZIP="$DIST/tibetan-design-cli-$VERSION-macos-$ARCH.zip"
 
@@ -54,7 +54,7 @@ else
   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
 fi
 
-echo "==> Tibetan Design $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
+echo "==> Tibetan Design Photo $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
 
 # ---- build -------------------------------------------------------------------------------------
 if [ "$SKIP_BUILD" = 0 ]; then
@@ -100,20 +100,20 @@ notarize() {
   fi
 }
 
-# ---- Tibetan Design.app ----------------------------------------------------------------------------
+# ---- Tibetan Design Photo.app ----------------------------------------------------------------------------
 echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
-cp "$WORK/bin/photocraft" "$APP/Contents/MacOS/Tibetan Design"
-# Build the ICNS from the supplied Tibetan Design PNG, never the upstream SVG/ICNS.
-ICONSET="$WORK/Tibetan Design.iconset"
+cp "$WORK/bin/photocraft" "$APP/Contents/MacOS/Tibetan Design Photo"
+# Build the ICNS from the supplied Tibetan Design Photo PNG, never the upstream SVG/ICNS.
+ICONSET="$WORK/Tibetan Design Photo.iconset"
 mkdir -p "$ICONSET"
 for size in 16 32 128 256 512; do
   sips -z "$size" "$size" "$ROOT/assets/app-icon/photocraft-1024.png" --out "$ICONSET/icon_${size}x${size}.png" >/dev/null
   double=$((size * 2))
   sips -z "$double" "$double" "$ROOT/assets/app-icon/photocraft-1024.png" --out "$ICONSET/icon_${size}x${size}@2x.png" >/dev/null
 done
-iconutil -c icns -o "$APP/Contents/Resources/Tibetan Design.icns" "$ICONSET"
+iconutil -c icns -o "$APP/Contents/Resources/Tibetan Design Photo.icns" "$ICONSET"
 mkdir -p "$APP/Contents/Resources/Licenses"
 for notice in LICENSE-MIT LICENSE-APACHE NOTICE ATTRIBUTION.md; do
   cp "$ROOT/$notice" "$APP/Contents/Resources/Licenses/"
@@ -132,13 +132,13 @@ printf 'APPL????' >"$APP/Contents/PkgInfo"
 
 # Sign inside-out: nested code first, then the bundle itself (no --deep on the final signature).
 # Today the only nested code is the main executable; frameworks/helpers would be signed here too.
-sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/Tibetan Design"
+sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/Tibetan Design Photo"
 sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP"
 codesign --verify --strict --deep --verbose=2 "$APP"
 
 if [ "$NOTARIZE" = 1 ]; then
-  ditto -c -k --keepParent "$APP" "$WORK/Tibetan Design-notarize.zip"
-  notarize "$WORK/Tibetan Design-notarize.zip"
+  ditto -c -k --keepParent "$APP" "$WORK/Tibetan Design Photo-notarize.zip"
+  notarize "$WORK/Tibetan Design Photo-notarize.zip"
   xcrun stapler staple "$APP"
   xcrun stapler validate "$APP"
   spctl --assess --type execute -vvv "$APP"
@@ -148,7 +148,7 @@ fi
 echo "==> building $DMG"
 STAGE="$WORK/dmg"
 mkdir -p "$STAGE"
-ditto "$APP" "$STAGE/Tibetan Design.app"
+ditto "$APP" "$STAGE/Tibetan Design Photo.app"
 ln -s /Applications "$STAGE/Applications"
 # Use Finder's default layout rather than the upstream branded background and icon positions.
 rm -f "$DMG" "$WORK/raw.dmg"
@@ -156,7 +156,7 @@ rm -f "$DMG" "$WORK/raw.dmg"
 # invalidating the signed bundle when the image is mounted (Apple QA1940).
 # Retry transient DiskImages resource contention on hosted runners.
 for attempt in 1 2 3; do
-  if hdiutil create -fs HFS+ -format UDRW -volname "Tibetan Design" -srcfolder "$STAGE" -ov "$WORK/raw.dmg"; then
+  if hdiutil create -fs HFS+ -format UDRW -volname "Tibetan Design Photo" -srcfolder "$STAGE" -ov "$WORK/raw.dmg"; then
     break
   fi
   [ "$attempt" -lt 3 ] || { echo "Failed to create DMG filesystem" >&2; exit 1; }

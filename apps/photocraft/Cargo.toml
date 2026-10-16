@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 default-run = "photocraft"
-description = "Photocraft: an open-source, native image editor"
+description = "Tibetan Design Photo: a native Tibetan and English image editor"
 build = "build.rs"
 
 [features]
@@ -40,6 +40,9 @@ arboard = { version = "3.6", features = ["wayland-data-control"] }
 open = "5"
 # Reads the saved window layout (eframe persistence) to drop values that would abort startup.
 ron = "0.12"
+# Native HTTPS release metadata with a strict response-size limit and timeout.
+ureq = { version = "=3.4.2", default-features = false, features = ["rustls"] }
+semver = "=1.0.28"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 # Safe CoreGraphics bindings, compatible with the existing macOS 11 deployment target.

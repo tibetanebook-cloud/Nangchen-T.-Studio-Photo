@@ -401,10 +401,10 @@ pub struct Panels {
     /// What Tab hid (toolbar, options bar, dock), so a second Tab brings back just those.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub hidden_by_tab: Option<[bool; 3]>,
-    /// The right dock's icon rail. An app that embeds Tibetan Design's UI can hide it for a simpler view.
+    /// The right dock's icon rail. An app that embeds Tibetan Design Photo's UI can hide it for a simpler view.
     #[serde(default = "yes")]
     pub rail: bool,
-    /// The title bar with the in-window menus. An app that embeds Tibetan Design's UI and draws its own
+    /// The title bar with the in-window menus. An app that embeds Tibetan Design Photo's UI and draws its own
     /// bar can hide it; the caption buttons of a custom title bar go with it.
     #[serde(default = "yes")]
     pub menu_bar: bool,
@@ -1043,6 +1043,8 @@ pub struct ColorPanelState {
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UiState {
+    #[serde(default)]
+    pub update_preferences: crate::updates::Preferences,
     pub tool: Tool,
     /// The last tool used in each shortcut group (the tools sharing a key, [`Tool::key`]), at most
     /// one per group: the group's key brings it back, as in Photoshop (#2608).
@@ -1269,6 +1271,7 @@ pub struct UiState {
 impl Default for UiState {
     fn default() -> Self {
         Self {
+            update_preferences: Default::default(),
             tool: Tool::Brush,
             group_tools: Vec::new(),
             spring: None,

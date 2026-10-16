@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Tibetan Design MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
+  Tibetan Design Photo MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
   `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
 
     wix build photocraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
@@ -8,27 +8,27 @@
       -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
 
   Per-machine install with a setup wizard that names the version: Welcome, install folder
-  (Program Files\Tibetan Design by default, remembered for upgrades), Ready, a progress page, and a
-  Finish page with a ticked "Launch Tibetan Design" box. Installs a Start Menu shortcut, makes
-  Tibetan Design the owner of `.pcraft`, and offers it under "Open with" for PSD/PSB and the image
+  (Program Files\Tibetan Design Photo by default, remembered for upgrades), Ready, a progress page, and a
+  Finish page with a ticked "Launch Tibetan Design Photo" box. Installs a Start Menu shortcut, makes
+  Tibetan Design Photo the owner of `.pcraft`, and offers it under "Open with" for PSD/PSB and the image
   formats it reads (without taking over the user's default app for them), plus photocraft-cli.
   `msiexec /qn` still installs silently.
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
   <Package
-      Name="Tibetan Design"
-      Manufacturer="Tibetan Design"
+      Name="Tibetan Design Photo"
+      Manufacturer="Tibetan Design Photo"
       Version="$(var.Version)"
       UpgradeCode="F29F3671-13B5-4565-94B2-695F1D194412"
       Scope="perMachine"
       Compressed="yes"
       Language="1033">
-    <SummaryInformation Description="Tibetan Design image editor" Manufacturer="Tibetan Design" />
+    <SummaryInformation Description="Tibetan Design Photo image editor" Manufacturer="Tibetan Design Photo" />
     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
     <MajorUpgrade AllowSameVersionUpgrades="yes"
-        DowngradeErrorMessage="A newer version of Tibetan Design is already installed." />
+        DowngradeErrorMessage="A newer version of Tibetan Design Photo is already installed." />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
@@ -40,7 +40,7 @@
     <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLFOLDER" Name="Tibetan Design" />
+      <Directory Id="INSTALLFOLDER" Name="Tibetan Design Photo" />
     </StandardDirectory>
     <StandardDirectory Id="ProgramMenuFolder" />
 
@@ -49,7 +49,7 @@
       <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Tibetan Design" Name="InstallDir" Type="raw" />
     </Property>
 
-    <Feature Id="Main" Title="Tibetan Design" Level="1">
+    <Feature Id="Main" Title="Tibetan Design Photo" Level="1">
       <ComponentGroupRef Id="PhotocraftFiles" />
     </Feature>
 
@@ -71,8 +71,8 @@
     <Property Id="PhotocraftVersion" Value="$(var.DisplayVersion)" />
 
     <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Tibetan Design $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Tibetan Design" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Tibetan Design Photo $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Tibetan Design Photo" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
     <Property Id="WixShellExecTarget" Value="[#PhotocraftExe]" />
     <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
@@ -82,9 +82,9 @@
   <Fragment>
     <ComponentGroup Id="PhotocraftFiles" Directory="INSTALLFOLDER">
       <Component Id="PhotocraftApp" Guid="2CCBE47A-39AE-4249-AB95-728D51C55871">
-        <File Id="PhotocraftExe" Name="Tibetan Design.exe" Source="$(var.BinDir)\photocraft.exe" KeyPath="yes">
-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Tibetan Design"
-              Description="Tibetan Design image editor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+        <File Id="PhotocraftExe" Name="Tibetan Design Photo.exe" Source="$(var.BinDir)\photocraft.exe" KeyPath="yes">
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Tibetan Design Photo"
+              Description="Tibetan Design Photo image editor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
               Icon="PhotocraftIcon.exe" IconIndex="0" />
         </File>
         <File Id="TibetanFontLicense" Source="$(var.BinDir)\OFL-Tibetan.txt" />
@@ -93,8 +93,8 @@
         <File Id="UpstreamApacheLicense" Source="$(var.BinDir)\LICENSE-APACHE" />
         <File Id="UpstreamNotice" Source="$(var.BinDir)\NOTICE" />
 
-        <!-- .pcraft: Tibetan Design's own format; Tibetan Design is its default app. -->
-        <ProgId Id="TibetanDesign.Document" Description="Tibetan Design Document" Icon="PhotocraftExe" IconIndex="0">
+        <!-- .pcraft: Tibetan Design Photo's own format; Tibetan Design Photo is its default app. -->
+        <ProgId Id="TibetanDesign.Document" Description="Tibetan Design Photo Document" Icon="PhotocraftExe" IconIndex="0">
           <Extension Id="pcraft" ContentType="application/x-photocraft">
             <Verb Id="open" Command="Open" TargetFile="PhotocraftExe" Argument="&quot;%1&quot;" />
           </Extension>
@@ -126,30 +126,30 @@
         <RegistryValue Root="HKLM" Key="Software\Classes\.ico\OpenWithProgids" Name="TibetanDesign.Image" Value="" Type="string" />
 
         <!-- "Open with" app list and the Run dialog (Win+R "photocraft"). -->
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe" Name="FriendlyAppName" Value="Tibetan Design" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".pcraft" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".psd" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".psb" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".pdn" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".ora" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".kra" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".krz" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".png" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".tif" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".tiff" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".webp" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".gif" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".bmp" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".tga" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".exr" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".hdr" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".avif" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".qoi" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design.exe\SupportedTypes" Name=".ico" Value="" Type="string" />
-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\Tibetan Design.exe" Value="[#PhotocraftExe]" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe" Name="FriendlyAppName" Value="Tibetan Design Photo" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".pcraft" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".psd" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".psb" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".pdn" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".ora" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".kra" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".krz" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".png" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".tif" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".tiff" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".webp" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".gif" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".bmp" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".tga" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".exr" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".hdr" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".avif" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".qoi" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\Tibetan Design Photo.exe\SupportedTypes" Name=".ico" Value="" Type="string" />
+        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\Tibetan Design Photo.exe" Value="[#PhotocraftExe]" Type="string" />
         <RegistryValue Root="HKLM" Key="Software\Tibetan Design" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
       </Component>
 

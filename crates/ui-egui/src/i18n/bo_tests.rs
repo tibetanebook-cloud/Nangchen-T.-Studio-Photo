@@ -89,7 +89,7 @@ fn tibetan_welcome_screen_has_translations() {
         "Create a new document or open an existing file.",
         "Drop an image or PSD anywhere to open it.",
         "Join us on Discord",
-        "Tibetan Design website",
+        "Tibetan Design Photo website",
     ] {
         assert_ne!(tr(bo, source), source, "{source}");
     }

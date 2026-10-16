@@ -12,7 +12,7 @@
 # Clean-room: every entry was written from the plain meaning of the English label using ordinary
 # German image-editing vocabulary (Ebene, Maske, Auswahl, Weichzeichnen ...). No proprietary
 # localisation resource, string table or product UI was consulted or copied; add entries the same
-# way. Product and technology names (Tibetan Design, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
+# way. Product and technology names (Tibetan Design Photo, ArtCraft, OpenType, CMYK, Lab ...) stay in Latin
 # letters; the trailing "…" of dialog commands is kept. Plural rule: one|other (n != 1 -> other).
 
 # Channel Options and New Spot Channel (#3761)
@@ -782,9 +782,9 @@
 	Timeline	Zeitleiste
 	Tool Presets	Werkzeugvorgaben
 	Tools	Werkzeuge
-	About Tibetan Design	Über Tibetan Design
-	Tibetan Design Website	Tibetan Design-Website
-	Tibetan Design on GitHub	Tibetan Design auf GitHub
+	About Tibetan Design Photo	Über Tibetan Design Photo
+	Tibetan Design Photo Website	Tibetan Design Photo-Website
+	Tibetan Design Photo on GitHub	Tibetan Design Photo auf GitHub
 	ArtCraft Website	ArtCraft-Website
 	Join the ArtCraft Discord…	ArtCraft-Discord beitreten…
 	Report an Issue…	Problem melden…
@@ -837,7 +837,7 @@
 	All Caps	Großbuchstaben
 	All Slices	Alle Slices
 	All User Slices	Alle Benutzer-Slices
-	All shortcuts reset to Tibetan Design defaults.	Alle Kurzbefehle wurden auf die Tibetan Design-Standards zurückgesetzt.
+	All shortcuts reset to Tibetan Design Photo defaults.	Alle Kurzbefehle wurden auf die Tibetan Design Photo-Standards zurückgesetzt.
 	Alt	Alt
 	Always use pressure for opacity	Druck immer für Deckkraft verwenden
 	Always use pressure for size	Druck immer für Größe verwenden
@@ -1091,8 +1091,8 @@
 	Drop an image or PSD anywhere to open it.	Ziehe ein Bild oder PSD an eine beliebige Stelle, um es zu öffnen.
 	Native file drag-and-drop is unavailable	Natives Ziehen und Ablegen von Dateien ist nicht verfügbar
 	Native file drag-and-drop is not supported on Wayland yet. Use File › Open, or copy the image in your file manager and paste it with {paste}.	Natives Ziehen und Ablegen von Dateien wird unter Wayland noch nicht unterstützt. Nutze Datei › Öffnen oder kopiere das Bild im Dateimanager und füge es mit {paste} ein.
-	To drop files, start Tibetan Design under XWayland: `{command}`	Um Dateien abzulegen, starte Tibetan Design unter XWayland: `{command}`
-	Or set Preferences › Performance › Linux display server to X11: Tibetan Design then always starts under XWayland.	Oder stelle Voreinstellungen › Leistung › Linux-Anzeigeserver auf X11: Tibetan Design startet dann immer unter XWayland.
+	To drop files, start Tibetan Design Photo under XWayland: `{command}`	Um Dateien abzulegen, starte Tibetan Design Photo unter XWayland: `{command}`
+	Or set Preferences › Performance › Linux display server to X11: Tibetan Design Photo then always starts under XWayland.	Oder stelle Voreinstellungen › Leistung › Linux-Anzeigeserver auf X11: Tibetan Design Photo startet dann immer unter XWayland.
 	Edit › Paste	Bearbeiten › Einfügen
 	Duplicate Layers…	Ebenen duplizieren…
 	Duplicate style	Stil duplizieren
@@ -1340,9 +1340,9 @@
 	Perspective Warp is not active	Perspektivische Verkrümmung ist nicht aktiv
 	Perspective Warp: draw planes along the image's perspective, then switch to Warp	Perspektivische Verkrümmung: zeichne Flächen entlang der Bildperspektive, wechsle dann zu Verkrümmen
 	Photo Filter	Foto-Filter
-	Tibetan Design	Tibetan Design
-	Tibetan Design Manages Colors	Tibetan Design verwaltet die Farben
-	Tibetan Design — an open-source, native image editor written in Rust.	Tibetan Design — ein nativer Open-Source-Bildeditor, geschrieben in Rust.
+	Tibetan Design Photo	Tibetan Design Photo
+	Tibetan Design Photo Manages Colors	Tibetan Design Photo verwaltet die Farben
+	Tibetan Design Photo — an open-source, native image editor written in Rust.	Tibetan Design Photo — ein nativer Open-Source-Bildeditor, geschrieben in Rust.
 	Pin Depth:	Pin-Tiefe:
 	Pixel Length:	Pixel-Länge:
 	Pixels/Centimeter	Pixel/Zentimeter
@@ -1418,11 +1418,11 @@
 	Import Shortcuts…	Tastaturbefehle importieren…
 	Load a keyboard shortcut set saved as .kys	Einen als .kys gespeicherten Tastaturbefehlssatz laden
 	Imported {n} shortcuts from {file}. Click OK to keep them.	{n} Tastaturbefehle aus {file} importiert. Mit OK übernehmen.
-	{n} commands are not in Tibetan Design.	{n} Befehle gibt es in Tibetan Design nicht.
+	{n} commands are not in Tibetan Design Photo.	{n} Befehle gibt es in Tibetan Design Photo nicht.
 	Keyboard shortcuts imported	Tastaturbefehle importiert
 	Your keyboard shortcut set {set} is in use here: {n} shortcuts differ from the defaults. Edit › Keyboard Shortcuts shows them; Reset All to Defaults undoes this.	Dein Tastaturbefehlssatz {set} wird hier verwendet: {n} Tastaturbefehle weichen von den Standardwerten ab. Bearbeiten › Tastaturbefehle zeigt sie; Alles auf Standardwerte zurücksetzen macht es rückgängig.
 	Import keyboard shortcuts?	Tastaturbefehle importieren?
-	Tibetan Design found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design's. Import it?	Tibetan Design hat auf diesem Computer deinen Tastaturbefehlssatz {set} aus einem anderen Bildbearbeitungsprogramm gefunden: {n} seiner Tastaturbefehle weichen von denen in Tibetan Design ab. Importieren?
+	Tibetan Design Photo found your keyboard shortcut set {set} from another image editor on this computer: {n} of its shortcuts differ from Tibetan Design Photo's. Import it?	Tibetan Design Photo hat auf diesem Computer deinen Tastaturbefehlssatz {set} aus einem anderen Bildbearbeitungsprogramm gefunden: {n} seiner Tastaturbefehle weichen von denen in Tibetan Design Photo ab. Importieren?
 	Edit › Keyboard Shortcuts › Reset All to Defaults undoes an import.	Bearbeiten › Tastaturbefehle › Alles auf Standardwerte zurücksetzen macht einen Import rückgängig.
 	Don't Import	Nicht importieren
 	The keyboard shortcut set was not imported: {error}	Der Tastaturbefehlssatz wurde nicht importiert: {error}
@@ -1647,7 +1647,7 @@
 	Current Tool	Aktuelles Werkzeug
 	Custom Shape Tool	Werkzeug für benutzerdefinierte Formen
 	Cyans	Cyantöne
-	Default Tibetan Design Size	Standard-Tibetan Design-Größe
+	Default Tibetan Design Photo Size	Standard-Tibetan Design Photo-Größe
 	Delete Workspace	Arbeitsbereich löschen
 	Diamond	Raute
 	Dimensions:	Abmessungen:
@@ -1758,7 +1758,7 @@
 	Pen Tool	Stift-Werkzeug
 	Convert Point Tool	Punkt-umwandeln-Werkzeug
 	Photo	Foto
-	Tibetan Design website	Tibetan Design-Website
+	Tibetan Design Photo website	Tibetan Design Photo-Website
 	Picas	Pica
 	Pillow Emboss	Polsterrelief
 	Pixel Replacement	Pixelersatz
@@ -2086,7 +2086,7 @@
 	System Info	Systeminformationen
 	More panels	Weitere Bedienfelder
 	More documents	Weitere Dokumente
-	These settings aren't available in Tibetan Design yet.	Diese Einstellungen gibt es in Tibetan Design noch nicht.
+	These settings aren't available in Tibetan Design Photo yet.	Diese Einstellungen gibt es in Tibetan Design Photo noch nicht.
 	Graphics	Grafik
 	Reset GPU Backend	GPU-Backend zurücksetzen
 	Applies at next launch.	Wird beim nächsten Start angewendet.
@@ -2290,7 +2290,7 @@
 	Automatic uses GPU acceleration when available and falls back to CPU rendering on errors.	Automatisch nutzt GPU-Beschleunigung, wenn verfügbar, und fällt bei Fehlern auf CPU-Rendering zurück.
 	Switched to CPU rendering	Auf CPU-Rendering umgeschaltet
 	GPU acceleration could not continue. Your documents are unchanged.	GPU-Beschleunigung konnte nicht fortgesetzt werden. Deine Dokumente sind unverändert.
-	Tibetan Design is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design nutzt den CPU-Bildkompositor. Das Fenster kann weiterhin deinen Grafikadapter verwenden.
+	Tibetan Design Photo is using the CPU image compositor. The window may still use your graphics adapter.	Tibetan Design Photo nutzt den CPU-Bildkompositor. Das Fenster kann weiterhin deinen Grafikadapter verwenden.
 	Retry GPU requires a restart. Save your work first.	GPU erneut versuchen erfordert einen Neustart. Speichere zuerst deine Arbeit.
 	Keep Using CPU	CPU weiter verwenden
 	Retry GPU	GPU erneut versuchen
@@ -2524,7 +2524,7 @@ fontWeight	Italic	Kursiv
 	Color to Alpha…	Farbe zu Alpha…
 	Transparency Threshold	Transparenz-Schwellenwert
 	Opacity Threshold	Deckkraft-Schwellenwert
-	Tibetan Design — Screen Color Picker	Tibetan Design — Bildschirmfarbenauswahl
+	Tibetan Design Photo — Screen Color Picker	Tibetan Design Photo — Bildschirmfarbenauswahl
 
 	Rasterize svg groups deeper than	SVG-Gruppen ab dieser Tiefe rastern
 	0 turns this threshold off; SVG groups nested deeper than 100 levels are always rasterized.	0 schaltet diese Schwelle aus; SVG-Gruppen, die tiefer als 100 Ebenen verschachtelt sind, werden immer gerastert.
@@ -3117,7 +3117,7 @@ curves	Smooth	Glätten
 	{name} (Photoshop)	{name} (Photoshop)
 	{message} ({note})	{message} ({note})
 @plural	Loaded {n} action from {file}|Loaded {n} actions from {file}	{n} Aktion aus {file} geladen|{n} Aktionen aus {file} geladen
-@plural	{n} step has no Tibetan Design equivalent yet|{n} steps have no Tibetan Design equivalent yet	{n} Schritt hat noch keine Entsprechung in Tibetan Design|{n} Schritte haben noch keine Entsprechung in Tibetan Design
+@plural	{n} step has no Tibetan Design Photo equivalent yet|{n} steps have no Tibetan Design Photo equivalent yet	{n} Schritt hat noch keine Entsprechung in Tibetan Design Photo|{n} Schritte haben noch keine Entsprechung in Tibetan Design Photo
 @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} Aktion in {file} gespeichert|{n} Aktionen in {file} gespeichert
 @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} Schritt ohne Photoshop-Entsprechung ausgelassen|{n} Schritte ohne Photoshop-Entsprechung ausgelassen
 

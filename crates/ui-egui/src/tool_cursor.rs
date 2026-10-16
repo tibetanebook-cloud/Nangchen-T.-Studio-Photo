@@ -46,7 +46,7 @@ pub(crate) struct CursorLifecycle;
 
 impl egui::plugin::Plugin for CursorLifecycle {
     fn debug_name(&self) -> &'static str {
-        "Tibetan Design tool cursor"
+        "Tibetan Design Photo tool cursor"
     }
 
     fn on_begin_pass(&mut self, ui: &mut egui::Ui) {
