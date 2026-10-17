@@ -1,67 +1,105 @@
-name: Publish Tibetan Design 0.8.2
+name: Publish Tibetan Design Photo 0.8.3
 on:
   workflow_dispatch:
 permissions:
   actions: read
   contents: write
 concurrency:
-  group: publish-tibetan-design-0.8.2
+  group: publish-tibetan-design-0.8.3
   cancel-in-progress: false
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 180
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
+      SOURCE_SHA: 7703c595a11fca143728fed3d808db21641e5a50
     steps:
-      - name: Verify successful source builds
+      - name: Wait for and verify successful source builds
         shell: bash
         run: |
           set -euo pipefail
-          test "$(gh api repos/$GH_REPO/actions/runs/38504065592 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/38504065592 --jq .head_sha)" = 8e3c0ca37caa3cf3165b88fdd135d471db9e1d5d
-          test "$(gh api repos/$GH_REPO/actions/runs/38755426758 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/38755426758 --jq .head_sha)" = 5c67fb7f63c4131d88bf7275238e298b99cb85cb
+          for run in 38983701180 38983708765; do
+            complete=false
+            for attempt in $(seq 1 150); do
+              metadata=$(gh api "repos/$GH_REPO/actions/runs/$run")
+              test "$(jq -r .head_sha <<< "$metadata")" = "$SOURCE_SHA"
+              if [ "$(jq -r .status <<< "$metadata")" = completed ]; then
+                test "$(jq -r .conclusion <<< "$metadata")" = success
+                complete=true
+                break
+              fi
+              echo "Waiting for build $run ($attempt/150)"
+              sleep 60
+            done
+            test "$complete" = true
+          done
       - uses: actions/download-artifact@v4
         with:
           name: Tibetan-Design-Windows
           github-token: ${{ github.token }}
-          run-id: 38504065592
+          run-id: 38983701180
           path: artifacts/windows
       - uses: actions/download-artifact@v4
         with:
           name: Tibetan-Design-macOS-aarch64
           github-token: ${{ github.token }}
-          run-id: 38755426758
+          run-id: 38983708765
           path: artifacts/mac-arm
       - uses: actions/download-artifact@v4
         with:
           name: Tibetan-Design-macOS-x86_64
           github-token: ${{ github.token }}
-          run-id: 38755426758
+          run-id: 38983708765
           path: artifacts/mac-intel
-      - name: Verify and publish installers
+      - name: Prepare verified release assets and notes
         shell: bash
         run: |
           set -euo pipefail
           mkdir release-assets
-          for name in tibetan-design-0.8.2-windows-x64.msi tibetan-design-0.8.2-windows-x64-portable.zip tibetan-design-0.8.2-macos-aarch64.dmg tibetan-design-0.8.2-macos-x86_64.dmg; do
+          for name in tibetan-design-0.8.3-windows-x64.msi tibetan-design-0.8.3-windows-x64-portable.zip tibetan-design-0.8.3-macos-aarch64.dmg tibetan-design-0.8.3-macos-x86_64.dmg; do
             mapfile -t matches < <(find artifacts -type f -name "$name")
             test "${#matches[@]}" -eq 1
+            test -s "${matches[0]}"
             cp "${matches[0]}" "release-assets/$name"
           done
-          cd release-assets
-          cat > SHA256SUMS.txt <<'CHECKSUMS'
-          504be3e9c38397531fbce7c548a23b9330ee7c104e59a2c353d9608309bcc865  tibetan-design-0.8.2-macos-aarch64.dmg
-          e51925a59cb22347b44a4d9102d3be92af549a5b70e0ea441213b6751b9f2dea  tibetan-design-0.8.2-macos-x86_64.dmg
-          f5dac72f7a73545548f6ffcc1a36096413e143131b38ba84d16731c55696d166  tibetan-design-0.8.2-windows-x64-portable.zip
-          6bbc88d5da0071c0e74b4c37abcefe76d86c481043dae257febddd991a686f74  tibetan-design-0.8.2-windows-x64.msi
-          CHECKSUMS
-          sha256sum -c SHA256SUMS.txt
-          test "$(gh release view v0.8.2 --json isDraft --jq .isDraft)" = true
-          gh release upload v0.8.2 *.msi *.dmg *.zip SHA256SUMS.txt
-          gh release edit v0.8.2 --target 5c67fb7f63c4131d88bf7275238e298b99cb85cb --draft=false --latest
-          gh release view v0.8.2 --json url,assets,isDraft > "$GITHUB_WORKSPACE/published-release.json"
-          test "$(gh release view v0.8.2 --json isDraft --jq .isDraft)" = false
-          echo 'Published Windows and both Mac packages to https://github.com/tibetanebook-cloud/tibetan-design/releases/tag/v0.8.2' >> "$GITHUB_STEP_SUMMARY"
+          (cd release-assets && sha256sum *.msi *.dmg *.zip > SHA256SUMS.txt && sha256sum -c SHA256SUMS.txt)
+          cat > release-notes.md <<'NOTES'
+          Tibetan Design Photo — བོད་ཀྱི་པར་རིས་བཟོ་བཀོད།
+
+          Created by ནང་ཆེན་བཀྲ་ཤིས།
+
+          - New camera application icon and Tibetan Design Photo branding.
+          - Visible English / བོད་ཡིག language menu beside Help.
+          - Automatic new-version notifications and a manual Check for Updates command.
+
+          Downloads:
+          - Windows: choose the windows-x64.msi installer, or the portable ZIP.
+          - Mac with Apple Silicon (M-series): choose macos-aarch64.dmg.
+          - Mac with an Intel processor: choose macos-x86_64.dmg.
+
+          Existing 0.8.2 users should install this version manually once to get the new update notifications. Notifications open the release page; installers are not downloaded or installed automatically.
+
+          These packages are not publisher-signed/notarized and may show operating-system security prompts. SHA256SUMS.txt provides checksums for the four packages.
+
+          More apps: https://nangchen.com · https://studytibetan.com · https://tibetanebook.com
+
+          Source: 7703c595a11fca143728fed3d808db21641e5a50. Windows build: 38983701180. Mac build: 38983708765.
+          NOTES
+      - name: Publish complete release as latest
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v0.8.3 --json isDraft >/dev/null 2>&1; then
+            test "$(gh release view v0.8.3 --json isDraft --jq .isDraft)" = true
+            test "$(gh release view v0.8.3 --json targetCommitish --jq .targetCommitish)" = "$SOURCE_SHA"
+          else
+            gh release create v0.8.3 --target "$SOURCE_SHA" --title 'Tibetan Design Photo 0.8.3' --notes-file release-notes.md --draft
+          fi
+          gh release upload v0.8.3 release-assets/* --clobber
+          test "$(gh release view v0.8.3 --json assets --jq '.assets | length')" = 5
+          gh release edit v0.8.3 --notes-file release-notes.md --draft=false --latest
+          test "$(gh release view v0.8.3 --json isDraft --jq .isDraft)" = false
+          test "$(gh api repos/$GH_REPO/releases/latest --jq .tag_name)" = v0.8.3
+          echo 'Published: https://github.com/tibetanebook-cloud/tibetan-design/releases/tag/v0.8.3' >> "$GITHUB_STEP_SUMMARY"
