@@ -4,8 +4,8 @@
 
 .DESCRIPTION
   Produces, in $env:DIST (default: dist/release):
-    tibetan-design-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
-    tibetan-design-<version>-windows-<arch>-portable.zip   Tibetan Design Photo.exe + photocraft-cli.exe + portable.txt
+    photocraft-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
+    photocraft-<version>-windows-<arch>-portable.zip   photocraft.exe + photocraft-cli.exe + portable.txt
 
   The binaries link the C runtime statically (+crt-static), so neither the MSI nor the portable
   zip needs the Visual C++ redistributable. Signing is delegated to sign.ps1 (skipped with a
@@ -26,7 +26,6 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $Root = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
-& (Join-Path $Root 'scripts/prepare-tibetan-font.ps1')
 
 function Invoke-Native([string] $What, [scriptblock] $Block) {
   Write-Output "==> $What"
@@ -86,21 +85,9 @@ foreach ($check in @(@('photocraft.exe', 2), @('photocraft-cli.exe', 3))) {
   Write-Output "ok $($check[0]): $Arch, PE subsystem $($h.Subsystem)"
 }
 $Stage = Join-Path $TargetDir "windows-package\$Arch"
-function Assert-PackagePath([string] $Path) {
-  $base = [IO.Path]::GetFullPath($Root).TrimEnd('\', '/') + [IO.Path]::DirectorySeparatorChar
-  $resolved = [IO.Path]::GetFullPath($Path)
-  if (-not $resolved.StartsWith($base, [StringComparison]::OrdinalIgnoreCase)) {
-    throw "Packaging cleanup path must be inside this checkout: $resolved"
-  }
-}
-Assert-PackagePath $Stage
-Remove-Item -LiteralPath $Stage -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $Stage | Out-Null
 Copy-Item (Join-Path $Bin 'photocraft.exe'), (Join-Path $Bin 'photocraft-cli.exe') $Stage
-foreach ($f in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'TIBETAN-DESIGN.md') {
-  Copy-Item -LiteralPath (Join-Path $Root $f) -Destination $Stage
-}
-Copy-Item -LiteralPath (Join-Path $Root 'assets/app-icon/OFL-Tibetan.txt') -Destination $Stage
 
 & (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'photocraft.exe') (Join-Path $Stage 'photocraft-cli.exe')
 
@@ -142,7 +129,7 @@ $Banner = Join-Path $Stage 'installer-banner.bmp'
 $Dialog = Join-Path $Stage 'installer-dialog.bmp'
 New-InstallerArt (Join-Path $Root 'assets\app-icon\hicolor\256x256\apps\ai.storyteller.photocraft.png') $Banner $Dialog
 
-$Msi = Join-Path $Dist "tibetan-design-$Version-windows-$Arch.msi"
+$Msi = Join-Path $Dist "photocraft-$Version-windows-$Arch.msi"
 & (Join-Path $PSScriptRoot 'check-icons.ps1')
 Invoke-Native 'wix build' {
   wix build (Join-Path $PSScriptRoot 'photocraft.wxs') -arch $Arch `
@@ -160,14 +147,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
 & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
 
 # ---- portable zip ------------------------------------------------------------------------------
-$Portable = Join-Path $TargetDir "windows-package\tibetan-design-$Version-windows-$Arch-portable"
-Assert-PackagePath $Portable
-Remove-Item -LiteralPath $Portable -Recurse -Force -ErrorAction SilentlyContinue
+$Portable = Join-Path $TargetDir "windows-package\photocraft-$Version-windows-$Arch-portable"
+Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $Portable | Out-Null
 Copy-Item (Join-Path $Stage '*.exe') $Portable
-Rename-Item -LiteralPath (Join-Path $Portable 'photocraft.exe') -NewName 'Tibetan Design Photo.exe'
-Copy-Item (Join-Path $Root 'assets/app-icon/OFL-Tibetan.txt') $Portable
-foreach ($f in 'TIBETAN-DESIGN.md', 'README.md', 'NOTICE', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
   $p = Join-Path $Root $f
   if (Test-Path $p) { Copy-Item $p $Portable }
 }
@@ -182,7 +166,7 @@ if ($env:CRAFT_FONTS_DIR) {
 # portable.txt beside photocraft.exe switches on portable mode: settings, presets and recovery
 # files go to Tibetan Design PhotoData\ next to the exe instead of %APPDATA% (#228; see app_dirs.rs).
 Copy-Item (Join-Path $PSScriptRoot 'portable.txt') $Portable
-$Zip = Join-Path $Dist "tibetan-design-$Version-windows-$Arch-portable.zip"
+$Zip = Join-Path $Dist "photocraft-$Version-windows-$Arch-portable.zip"
 Remove-Item -Force $Zip -ErrorAction SilentlyContinue
 Compress-Archive -Path $Portable -DestinationPath $Zip
 

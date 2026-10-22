@@ -46,28 +46,22 @@
 
 Tibetan Design Photo brings image editing tools into a Tibetan and English interface, with layers, masks, brushes, text, adjustments and PSD support inherited from its original editing engine.
 
-- Switch between Tibetan and English using **Edit → Language**.
+- Switch between Tibetan and English from the highlighted **English / བོད་ཡིག** menu beside **Help**.
 - Use Tibetan names for your layers and documents.
 - Work with layers, masks, selections, brushes and text.
 - Open PSD files and save editable projects in the native `.pcraft` format.
 
 Tibetan menus and tools are translated. Some descriptions, errors and status messages still use English. See the [Tibetan terminology and review notes](docs/localization-bo.md) for coverage and review limitations.
 
-## Download for Windows
+## Download
 
-1. Open [Tibetan Design Photo Windows builds](https://github.com/tibetanebook-cloud/tibetan-design/actions/workflows/tibetan-design-windows.yml).
-2. Select a successful run with a green checkmark.
-3. Download the **Tibetan-Design-Windows** artifact.
-4. Extract the downloaded ZIP.
-5. Open **`tibetan-design-0.8.2-windows-x64.msi`** to install, or extract the portable ZIP to run without installing.
-
-Artifact downloads from this private repository require a GitHub account with repository access. No public release/download page has been published yet. Packages built without signing credentials are unsigned and remain subject to Windows security checks.
+Download install packages from the [GitHub Releases page](https://github.com/tibetanebook-cloud/Tibetan-Design-Photo/releases). A package is available only after a matching release has been published; check the release notes for supported platforms and signing status.
 
 ## Language
 
-**English:** Edit → Language → English
+**English:** **English / བོད་ཡིག** → English
 
-**Tibetan:** Edit → Language → བོད་ཡིག · Tibetan
+**Tibetan:** **English / བོད་ཡིག** → བོད་ཡིག · Tibetan
 
 In Tibetan, the menu path is **རྩོམ་སྒྲིག → སྐད་ཡིག**.
 
@@ -94,6 +88,6 @@ Explore more apps and resources at:
 
 ## Attribution and licenses
 
-Tibetan Design Photo is a customization of [PhotoCraft](https://github.com/storytold/photocraft). Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors. Original contributor credits and required notices are retained.
+Tibetan Design Photo is a localized and branded edition of the [original image editor](https://github.com/storytold/photocraft). Copyright (c) 2026 ArtCraft Team and the Tibetan Design Photo contributors. Original contributor credits and required notices are retained.
 
 The inherited code is licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE). See [NOTICE](NOTICE) and [asset attribution](ATTRIBUTION.md) for third-party notices and asset licenses. The supplied Tibetan Design Photo logo and terminology reference do not acquire a public license through these code licenses.

@@ -1,16 +1,16 @@
 # Tibetan Design Photo for macOS
 
-The native Rust editor already supports macOS. This update adds Tibetan Design Photo
-packaging and a manual GitHub Actions build for both Apple Silicon and Intel.
-The first Mac build and real-device testing are still required before announcing
-a Mac release. No DMG has been built on the Windows development machine.
+The upstream Rust editor supports macOS. Tibetan Design Photo keeps the upstream
+Mac packaging and uses the supplied brand assets. The reusable release workflow
+builds Apple Silicon and Intel packages; verify the completed workflow before
+publishing a GitHub release.
 
 ## Build on GitHub
 
-1. Commit and push the Mac update files to your existing private repository.
-2. Open **Actions → Tibetan Design Photo macOS → Run workflow**, using `main`.
+1. Merge the reviewed source update after its pull-request checks pass.
+2. Run the repository's release workflow for the release branch.
 3. Wait for both architecture jobs to finish successfully.
-4. Download the corresponding artifact:
+4. Download the corresponding artifact from the workflow run:
    - **Tibetan-Design-macOS-aarch64**: Apple Silicon (M-series).
    - **Tibetan-Design-macOS-x86_64**: Intel Macs.
 5. Extract the artifact ZIP and open its `.dmg` on the matching Mac.

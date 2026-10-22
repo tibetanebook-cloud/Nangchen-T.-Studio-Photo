@@ -40,7 +40,7 @@
   <key>CFBundleExecutable</key>
   <string>Tibetan Design Photo</string>
   <key>CFBundleIdentifier</key>
-  <string>com.tibetanebook.tibetan-design</string>
+  <string>ai.storyteller.photocraft</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundlePackageType</key>
@@ -72,7 +72,7 @@
   <key>NSHumanReadableCopyright</key>
   <string>Copyright © the PhotoCraft authors. MIT OR Apache-2.0.</string>
 
-  <!-- Photocraft's own format. -->
+  <!-- PhotoCraft's own format. -->
   <key>UTExportedTypeDeclarations</key>
   <array>
     <dict>

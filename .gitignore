@@ -11,10 +11,3 @@ target/
 /craft-fonts
 *.log
 __pycache__/
-
-/.build-tools/
-/rustup-init.exe
-/dictionary-reference.tsv
-/menu-labels.txt
-
-/engine-labels.txt

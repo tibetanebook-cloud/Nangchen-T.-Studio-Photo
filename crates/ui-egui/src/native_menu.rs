@@ -546,7 +546,7 @@ fn language_node(pref: &str, lang: Lang) -> Node {
         role: Some(ItemRole::Language),
     };
     let mut children = vec![Node::Item(item("auto", tr(lang, "Auto"))), Node::Separator];
-    children.extend(Lang::all().map(|l| Node::Item(item(l.code(), l.name()))));
+    children.extend(Lang::for_picker().into_iter().map(|l| Node::Item(item(l.code(), l.name()))));
     Node::Submenu { label: tr(lang, "Language").into(), children, role: Some(ItemRole::Language) }
 }
 
@@ -763,8 +763,6 @@ pub(crate) fn state_hash(app: &PhotocraftApp, input: Option<u64>) -> u64 {
     (app.discard.is_some(), app.camera_raw.is_some()).hash(&mut h);
     serde_json::to_string(&(&ui.panels, &ui.extras, &ui.view, ui.theme, ui.tool)).unwrap_or_default().hash(&mut h);
     s.prefs().interface.language.hash(&mut h);
-    app.ui.update_preferences.automatic.hash(&mut h);
-    app.services.check_updates.is_some().hash(&mut h);
     h.finish()
 }
 
@@ -834,10 +832,7 @@ mod tests {
         assert!(!ids(&by("Help").children).contains(&"help.about".to_string()));
         assert!(!ids(&by("Edit").children).contains(&"[Preferences]".to_string()));
         let titles: Vec<&str> = l.bar.menus.iter().map(|m| m.title.as_str()).collect();
-        assert_eq!(
-            titles,
-            ["Tibetan Design Photo", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", crate::menus::LANGUAGE_MENU, "Help"]
-        );
+        assert_eq!(titles, ["Tibetan Design Photo", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", crate::menus::LANGUAGE_MENU, "Help"]);
     }
 
     /// Tibetan Design Photo keeps Photoshop's ⌘H, ⌘M, ⌘W and ⌘, (Hide Layers): the system items give way.
@@ -870,7 +865,7 @@ mod tests {
         };
         let themes = ids(children);
         assert_eq!(themes.last().map(String::as_str), Some("window.theme.toggle"));
-        assert!(themes.contains(&"window.theme.pro".to_string()) && themes.contains(&"window.theme.classic".to_string()));
+        assert!(themes.contains(&"[Dark Theme]".to_string()) && themes.contains(&"[Light Theme]".to_string()));
         assert_eq!(l.bar.find("window.theme.classic").unwrap().checked, Some(true));
         assert_eq!(l.bar.find("window.theme.pro").unwrap().checked, Some(false));
         assert_eq!(l.bar.find("window.theme.toggle").unwrap().label, "Next Appearance Mode");

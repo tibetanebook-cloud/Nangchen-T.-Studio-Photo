@@ -29,34 +29,6 @@ fn main() {
     }
     pack_catalogs();
     deflate_egui_fonts();
-    deflate_tibetan_font();
-}
-
-/// Optional external build input: keep font binaries out of the source repository.
-fn deflate_tibetan_font() {
-    use std::io::Write as _;
-    println!("cargo:rerun-if-env-changed=TIBETAN_UI_FONT");
-    let bytes = std::env::var_os("TIBETAN_UI_FONT")
-        .and_then(|path| {
-            println!("cargo:rerun-if-changed={}", std::path::Path::new(&path).display());
-            match std::fs::read(path) {
-                Ok(bytes) if bytes.len() <= 16 << 20 => Some(bytes),
-                _ => {
-                    println!("cargo:warning=Tibetan UI font unavailable; using installed system fonts");
-                    None
-                }
-            }
-        })
-        .unwrap_or_default();
-    let result = (|| -> std::io::Result<()> {
-        let mut compressed = flate2::write::DeflateEncoder::new(Vec::new(), flate2::Compression::best());
-        compressed.write_all(&bytes)?;
-        let out = std::path::PathBuf::from(std::env::var_os("OUT_DIR").unwrap_or_default());
-        std::fs::write(out.join("tibetan-ui.ttf.deflate"), compressed.finish()?)
-    })();
-    if let Err(error) = result {
-        println!("cargo:warning=packing Tibetan UI font: {error}");
-    }
 }
 
 /// Deflate egui's default fonts (the `epaint_default_fonts` crate) into `OUT_DIR/egui_fonts/` for
