@@ -159,12 +159,18 @@ jobs:
         shell: bash
         run: cargo clippy --workspace --all-targets --locked --features heif -- -D warnings 2>&1 | tee "$RUNNER_TEMP/clippy.log"
 
-      - name: Upload Clippy diagnostics
+      - name: Publish Clippy diagnostics
         if: always() && steps.clippy.outcome == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: clippy-diagnostics-${{ matrix.os }}-${{ matrix.part }}
-          path: ${{ runner.temp }}/clippy.log
+        shell: bash
+        run: |
+          while IFS= read -r line; do
+            case "$line" in
+              warning:*|error:*|\ *--\>*)
+                line="${line//'%'/'%25'}"
+                printf '::error title=Clippy diagnostic::%s\n' "$line"
+                ;;
+            esac
+          done < "$RUNNER_TEMP/clippy.log"
 
       - name: Dependency layering
         if: matrix.part == 'all' || matrix.part == 'integration'
