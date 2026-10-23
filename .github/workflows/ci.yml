@@ -157,6 +157,8 @@ jobs:
         id: clippy
         if: matrix.part == 'all' || matrix.part == 'integration'
         shell: bash
+        env:
+          CARGO_TERM_COLOR: never
         run: cargo clippy --workspace --all-targets --locked --features heif -- -D warnings 2>&1 | tee "$RUNNER_TEMP/clippy.log"
 
       - name: Publish Clippy diagnostics
@@ -165,7 +167,7 @@ jobs:
         run: |
           while IFS= read -r line; do
             case "$line" in
-              warning:*|error:*|\ *--\>*)
+              *warning:*|*error:*|*--\>*)
                 line="${line//'%'/'%25'}"
                 printf '::error title=Clippy diagnostic::%s\n' "$line"
                 ;;
