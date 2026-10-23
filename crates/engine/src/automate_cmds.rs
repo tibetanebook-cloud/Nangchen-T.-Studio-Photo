@@ -35,10 +35,9 @@ fn extendscript_ext(path: &str) -> Option<&str> {
 
 fn reject_extendscript(cmd: &str, path: &str) -> Result<()> {
     match extendscript_ext(path) {
-        Some(_) => Err(bad(
-            cmd,
-            "Tibetan Design Photo scripts are JSON or command lists (one command.id {json} per line), not Photoshop ExtendScript (.js/.jsx)",
-        )),
+        Some(_) => {
+            Err(bad(cmd, "Tibetan Design Photo scripts are JSON or command lists (one command.id {json} per line), not Photoshop ExtendScript (.js/.jsx)"))
+        }
         None => Ok(()),
     }
 }
