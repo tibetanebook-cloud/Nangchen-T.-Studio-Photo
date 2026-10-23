@@ -866,11 +866,17 @@ pub fn install_fonts_with(ctx: &egui::Context, cjk: crate::cjk_fonts::Sources) {
     let medium = add(&mut fonts, "Inter-Medium", photocraft_text::fonts::INTER_MEDIUM.as_slice());
     let semibold = add(&mut fonts, "Inter-SemiBold", photocraft_text::fonts::INTER_SEMIBOLD.as_slice());
     let mono = add(&mut fonts, "JetBrainsMono", photocraft_text::fonts::JETBRAINS_MONO_REGULAR.as_slice());
+    let tibetan = add(&mut fonts, "NotoSerifTibetan", photocraft_text::fonts::NOTO_SERIF_TIBETAN_REGULAR.as_slice());
     if let Some(inter) = inter {
         fonts.families.entry(FontFamily::Proportional).or_default().insert(0, inter);
     }
     if let Some(mono) = mono {
         fonts.families.entry(FontFamily::Monospace).or_default().insert(0, mono);
+    }
+    if let Some(tibetan) = tibetan {
+        // The language switch remains visibly bilingual in every UI language. Ship this small
+        // OFL font so Tibetan labels render even on systems without a Tibetan system font.
+        fonts.families.entry(FontFamily::Proportional).or_default().push(tibetan);
     }
     // Named weights fall back to the default stack for missing glyphs.
     let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();

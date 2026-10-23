@@ -94,7 +94,7 @@ Rust test and variable work on Windows with the native shell's environment-varia
 
 ## Fonts (craft-fonts)
 
-Font assets shared by the Crafting Apps live in [storytold/craft-fonts](https://github.com/storytold/craft-fonts), never in this repo: don't commit font files here (Inter and JetBrains Mono in `assets/fonts/` are the only exceptions; new fonts go to craft-fonts). The rules are in `craftrules/standards/fonts.md` in a sibling `craftrules` checkout (see below); that repository is not public, so outside contributors can ask a maintainer for the rules that apply to their change.
+Editor font assets shared by the Crafting Apps live in [storytold/craft-fonts](https://github.com/storytold/craft-fonts); don't add new text-tool fonts here. UI fallback fonts may be bundled in `assets/fonts/` when the interface must render its own labels consistently without a system font; include the font's licence, attribution, and package copy rule. The rules for editor fonts are in `craftrules/standards/fonts.md` in a sibling `craftrules` checkout (see below); that repository is not public, so outside contributors can ask a maintainer for the rules that apply to their change.
 
 craft-fonts is an **optional build input**, never a Cargo dependency:
 

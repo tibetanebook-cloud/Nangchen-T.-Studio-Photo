@@ -155,6 +155,7 @@ foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
   $p = Join-Path $Root $f
   if (Test-Path $p) { Copy-Item $p $Portable }
 }
+Copy-Item (Join-Path $Root 'assets/fonts/OFL-Noto-Serif-Tibetan.txt') $Portable
 # Builds made with craft-fonts (CRAFT_FONTS_DIR, all official releases) embed its OFL-1.1 fonts:
 # ship each font's licence as OFL-<family-dir>.txt.
 if ($env:CRAFT_FONTS_DIR) {

@@ -67,7 +67,7 @@ at the `craft-fonts-ref` commit in `.github/workflows/release.yml` and builds wi
 `CRAFT_FONTS_REQUIRED=1`, so desktop releases embed its Japanese fonts (the web build embeds none: see
 `docs/development.md` › Fonts) and fail rather than ship without them. The packages carry each font's licence as
 `OFL-<family>.txt` (`copy_font_licences` in `packaging/env.sh`; the portable zip on Windows;
-`Contents/Resources/Licenses` in the macOS app). Bump the pin deliberately, together with the one
+`Contents/Resources/Licenses` in the macOS app). The bundled Noto Serif Tibetan UI fallback licence is included from `assets/fonts/OFL-Noto-Serif-Tibetan.txt`. Bump the pin deliberately, together with the one
 in `ci.yml`. Rules: `../craftrules/standards/fonts.md`; build option: `docs/development.md` › Fonts.
 
 ### macOS

@@ -36,6 +36,8 @@ pub static INTER_REGULAR: LazyLock<Vec<u8>> = LazyLock::new(|| inflate_font(bund
 pub static INTER_MEDIUM: LazyLock<Vec<u8>> = LazyLock::new(|| inflate_font(bundled_font!("Inter-Medium.ttf")));
 pub static INTER_SEMIBOLD: LazyLock<Vec<u8>> = LazyLock::new(|| inflate_font(bundled_font!("Inter-SemiBold.ttf")));
 pub static JETBRAINS_MONO_REGULAR: LazyLock<Vec<u8>> = LazyLock::new(|| inflate_font(bundled_font!("JetBrainsMono-Regular.ttf")));
+/// Tibetan UI fallback; kept separate because this script-only face does not cover Latin UI text.
+pub static NOTO_SERIF_TIBETAN_REGULAR: LazyLock<Vec<u8>> = LazyLock::new(|| inflate_font(bundled_font!("NotoSerifTibetan-Regular.ttf")));
 
 /// Fonts shipped with Tibetan Design Photo (OFL; licences in `assets/fonts`).
 pub static BUNDLED: [(&str, &LazyLock<Vec<u8>>); 4] = [
@@ -931,6 +933,17 @@ mod tests {
         let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../assets/fonts");
         for (name, bytes) in super::BUNDLED {
             assert_eq!(bytes.as_slice(), std::fs::read(dir.join(name)).unwrap(), "{name}");
+        }
+        assert_eq!(NOTO_SERIF_TIBETAN_REGULAR.as_slice(), std::fs::read(dir.join("NotoSerifTibetan-Regular.ttf")).unwrap(), "NotoSerifTibetan-Regular.ttf");
+    }
+
+    #[test]
+    fn tibetan_ui_fallback_covers_the_bilingual_language_switch() {
+        use skrifa::MetadataProvider;
+        let font = skrifa::FontRef::new(NOTO_SERIF_TIBETAN_REGULAR.as_slice()).expect("Tibetan fallback font parses");
+        let cmap = font.charmap();
+        for c in "བོད་ཡིག".chars() {
+            assert!(cmap.map(c).is_some_and(|glyph| glyph.to_u32() != 0), "Noto Serif Tibetan lacks {c}");
         }
     }
 

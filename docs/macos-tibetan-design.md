@@ -18,8 +18,10 @@ publishing a GitHub release.
 
 Each artifact also contains a separate command-line ZIP; ordinary app users only
 need the DMG. The application and DMG use the supplied Tibetan Design Photo logo.
-Both architectures embed Noto Serif Tibetan with its verified SHA-256 and OFL
-license. The bundle declares Tibetan and English, retains upstream format IDs,
+The UI embeds the Noto Serif Tibetan Regular font (SHA-256
+`ee97bf3dc56e813651db734c9f35f8f1d41e7e31acf5f7d893e64ad22b292446`) under the
+SIL Open Font License so the bilingual language switch renders without a
+system-installed Tibetan font. The bundle declares Tibetan and English, retains upstream format IDs,
 and uses a separate Tibetan Design Photo application identifier/settings directory.
 
 The build targets macOS 11.0 or newer, matching the upstream deployment target.

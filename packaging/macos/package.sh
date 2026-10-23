@@ -103,9 +103,10 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
 cp "$WORK/bin/photocraft" "$APP/Contents/MacOS/Tibetan Design Photo"
 cp "$ROOT/assets/app-icon/photocraft.icns" "$APP/Contents/Resources/Tibetan Design Photo.icns"
-# Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
+# Licences for bundled UI and optional craft-fonts fonts.
+mkdir -p "$APP/Contents/Resources/Licenses"
+cp "$ROOT/assets/fonts/OFL-Noto-Serif-Tibetan.txt" "$APP/Contents/Resources/Licenses/"
 if [ -n "${CRAFT_FONTS_DIR:-}" ]; then
-  mkdir -p "$APP/Contents/Resources/Licenses"
   copy_font_licences "$APP/Contents/Resources/Licenses"
 fi
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
