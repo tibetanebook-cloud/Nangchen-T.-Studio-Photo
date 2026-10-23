@@ -934,16 +934,23 @@ mod tests {
         for (name, bytes) in super::BUNDLED {
             assert_eq!(bytes.as_slice(), std::fs::read(dir.join(name)).unwrap(), "{name}");
         }
-        assert_eq!(NOTO_SERIF_TIBETAN_REGULAR.as_slice(), std::fs::read(dir.join("NotoSerifTibetan-Regular.ttf")).unwrap(), "NotoSerifTibetan-Regular.ttf");
+        let tibetan_font = std::fs::read(dir.join("NotoSerifTibetan-Regular.ttf")).ok();
+        assert!(tibetan_font.is_some(), "Noto Serif Tibetan font asset is missing");
+        if let Some(tibetan_font) = tibetan_font {
+            assert_eq!(NOTO_SERIF_TIBETAN_REGULAR.as_slice(), tibetan_font, "NotoSerifTibetan-Regular.ttf");
+        }
     }
 
     #[test]
     fn tibetan_ui_fallback_covers_the_bilingual_language_switch() {
         use skrifa::MetadataProvider;
-        let font = skrifa::FontRef::new(NOTO_SERIF_TIBETAN_REGULAR.as_slice()).expect("Tibetan fallback font parses");
-        let cmap = font.charmap();
-        for c in "བོད་ཡིག".chars() {
-            assert!(cmap.map(c).is_some_and(|glyph| glyph.to_u32() != 0), "Noto Serif Tibetan lacks {c}");
+        let font = skrifa::FontRef::new(NOTO_SERIF_TIBETAN_REGULAR.as_slice()).ok();
+        assert!(font.is_some(), "Noto Serif Tibetan fallback font does not parse");
+        if let Some(font) = font {
+            let cmap = font.charmap();
+            for c in "བོད་ཡིག".chars() {
+                assert!(cmap.map(c).is_some_and(|glyph| glyph.to_u32() != 0), "Noto Serif Tibetan lacks {c}");
+            }
         }
     }
 

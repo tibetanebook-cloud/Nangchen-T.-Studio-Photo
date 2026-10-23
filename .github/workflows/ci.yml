@@ -154,25 +154,8 @@ jobs:
 
       # Keep formatting, strict Clippy, layering and scorecard checks ahead of tests.
       - name: Clippy
-        id: clippy
         if: matrix.part == 'all' || matrix.part == 'integration'
-        shell: bash
-        env:
-          CARGO_TERM_COLOR: never
-        run: cargo clippy --workspace --all-targets --locked --features heif -- -D warnings 2>&1 | tee "$RUNNER_TEMP/clippy.log"
-
-      - name: Publish Clippy diagnostics
-        if: always() && steps.clippy.outcome == 'failure'
-        shell: bash
-        run: |
-          while IFS= read -r line; do
-            case "$line" in
-              *warning:*|*error:*|*--\>*)
-                line="${line//'%'/'%25'}"
-                printf '::error title=Clippy diagnostic::%s\n' "$line"
-                ;;
-            esac
-          done < "$RUNNER_TEMP/clippy.log"
+        run: cargo clippy --workspace --all-targets --locked --features heif -- -D warnings
 
       - name: Dependency layering
         if: matrix.part == 'all' || matrix.part == 'integration'
