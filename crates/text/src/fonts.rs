@@ -937,14 +937,14 @@ mod tests {
         let tibetan_font = std::fs::read(dir.join("NotoSerifTibetan-Regular.ttf")).ok();
         assert!(tibetan_font.is_some(), "Noto Serif Tibetan font asset is missing");
         if let Some(tibetan_font) = tibetan_font {
-            assert_eq!(NOTO_SERIF_TIBETAN_REGULAR.as_slice(), tibetan_font, "NotoSerifTibetan-Regular.ttf");
+            assert_eq!(super::NOTO_SERIF_TIBETAN_REGULAR.as_slice(), tibetan_font, "NotoSerifTibetan-Regular.ttf");
         }
     }
 
     #[test]
     fn tibetan_ui_fallback_covers_the_bilingual_language_switch() {
         use skrifa::MetadataProvider;
-        let font = skrifa::FontRef::new(NOTO_SERIF_TIBETAN_REGULAR.as_slice()).ok();
+        let font = skrifa::FontRef::new(super::NOTO_SERIF_TIBETAN_REGULAR.as_slice()).ok();
         assert!(font.is_some(), "Noto Serif Tibetan fallback font does not parse");
         if let Some(font) = font {
             let cmap = font.charmap();
