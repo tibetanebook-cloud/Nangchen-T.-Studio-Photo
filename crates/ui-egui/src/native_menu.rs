@@ -832,7 +832,10 @@ mod tests {
         assert!(!ids(&by("Help").children).contains(&"help.about".to_string()));
         assert!(!ids(&by("Edit").children).contains(&"[Preferences]".to_string()));
         let titles: Vec<&str> = l.bar.menus.iter().map(|m| m.title.as_str()).collect();
-        assert_eq!(titles, ["Tibetan Design Photo", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", crate::menus::LANGUAGE_MENU, "Help"]);
+        assert_eq!(
+            titles,
+            ["Tibetan Design Photo", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", crate::menus::LANGUAGE_MENU, "Help"]
+        );
     }
 
     /// Tibetan Design Photo keeps Photoshop's ⌘H, ⌘M, ⌘W and ⌘, (Hide Layers): the system items give way.

@@ -1518,7 +1518,8 @@ fn temporary_type_transform_preserves_depth_and_color_model() {
     for (depth, mode) in [(8, "rgb"), (16, "rgb"), (32, "rgb"), (16, "gray"), (8, "cmyk"), (16, "lab")] {
         let mut app = PhotocraftApp::new(photocraft_engine::Session::new(), crate::Services::default());
         app.run("file.new", json!({"width": 1200, "height": 900, "depth": depth, "mode": mode})).unwrap();
-        let id = LayerId(app.run("type.create", json!({"text": "Tibetan Design Photo é世界", "size": 32, "x": 300, "y": 350})).unwrap()["layer"].as_u64().unwrap());
+        let id =
+            LayerId(app.run("type.create", json!({"text": "Tibetan Design Photo é世界", "size": 32, "x": 300, "y": 350})).unwrap()["layer"].as_u64().unwrap());
         super::edit_active(&mut app).unwrap();
         let format = app.session.active().unwrap().doc.pixel_format();
         let a = crate::type_transform::frame(&mut app).unwrap().quad[2];

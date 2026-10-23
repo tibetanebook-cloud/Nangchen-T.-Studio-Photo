@@ -754,7 +754,10 @@ pub fn window_title(app: &PhotocraftApp) -> String {
     if !app.session.prefs().interface.show_file_name_in_title {
         return format!("{}Tibetan Design Photo", if app.session.active().is_some_and(|d| d.is_dirty()) { "*" } else { "" });
     }
-    app.session.active().map(|d| format!("{}{} \u{2014} Tibetan Design Photo", if d.is_dirty() { "*" } else { "" }, d.doc.name)).unwrap_or_else(|| "Tibetan Design Photo".into())
+    app.session
+        .active()
+        .map(|d| format!("{}{} \u{2014} Tibetan Design Photo", if d.is_dirty() { "*" } else { "" }, d.doc.name))
+        .unwrap_or_else(|| "Tibetan Design Photo".into())
 }
 
 /// Keep the OS window title (and the taskbar / Alt-Tab entry) on the active file. Sends
