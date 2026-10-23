@@ -813,7 +813,9 @@ pub(crate) fn import(name: &str, bytes: &[u8], ctl: &Interrupt<'_>) -> Result<Im
     // Photoshop, in the document's own encoding, so semi-transparent edges and most blend modes
     // render a little differently. Layers set to a perceptual space in GIMP match.
     if !precision.linear && linear_compositing {
-        image.warnings.note("GIMP composites this image in linear light; Tibetan Design Photo composites in gamma-encoded RGB, so blends and soft edges differ slightly");
+        image.warnings.note(
+            "GIMP composites this image in linear light; Tibetan Design Photo composites in gamma-encoded RGB, so blends and soft edges differ slightly",
+        );
     }
     if document.layers.is_empty() {
         image.warnings.note("the XCF file has no layers");
