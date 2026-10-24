@@ -23,7 +23,7 @@ jobs:
     uses: storytold/craft-common-actions/.github/workflows/release.yml@main
     with:
       app-name: photocraft
-      app-title: Tibetan Design Photo
+      app-title: Nangchen T. Studio Photo — ནང་ཆེན་བཀྲིས་པར་རིས་སྒྲིག་ཆས།
       craft-fonts-ref: abb83316d96aa59c1cf64784289e378fe9fa5695
       version: ${{ inputs.version }}
     secrets:
