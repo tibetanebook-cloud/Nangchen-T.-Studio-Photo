@@ -507,7 +507,13 @@ fn main() -> eframe::Result {
     // and usage errors leave no file behind. Records logged until now are written to it first.
     if let (Some(logger), Some(dir)) = (logger, services::config_dir()) {
         match logger.attach_dir(&dir.join("logs")) {
-            Ok(path) => log::info!("Nangchen T. Studio Photo — ནང་ཆེན་བཀྲིས་པར་རིས་སྒྲིག་ཆས། {}, log file {}", photocraft_engine::build_info::long_version(), path.display()),
+            Ok(path) => {
+                log::info!(
+                    "Nangchen T. Studio Photo — ནང་ཆེན་བཀྲིས་པར་རིས་སྒྲིག་ཆས། {}, log file {}",
+                    photocraft_engine::build_info::long_version(),
+                    path.display()
+                )
+            }
             // Standard error only by now (`attach_dir` gave up on the file); unlike `eprintln!`, never panics.
             Err(e) => log::warn!("no log file: {e}"),
         }
