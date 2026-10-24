@@ -1,0 +1,111 @@
+name: Publish v0.13.0 Windows packages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: publish-v0.13.0
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      SOURCE_RUN_ID: "40052687442"
+      SOURCE_SHA: "07838683290337eddc8ec9301f7d65fbb9b8eaeb"
+    steps:
+      - name: Verify the source build
+        shell: bash
+        run: |
+          set -euo pipefail
+          run="$(gh api "repos/$GH_REPO/actions/runs/$SOURCE_RUN_ID")"
+          test "$(jq -r .head_sha <<<"$run")" = "$SOURCE_SHA"
+          test "$(jq -r .head_branch <<<"$run")" = "update/photo-v0.13.0"
+          test "$(jq -r .conclusion <<<"$run")" = "failure"
+          for arch in x64 x86 arm64; do
+            gh api "repos/$GH_REPO/actions/runs/$SOURCE_RUN_ID/artifacts" --jq ".artifacts[] | select(.name == \"release-windows-$arch\" and .expired == false) | .name" | grep -Fx "release-windows-$arch"
+          done
+
+      - name: Download Windows x64 package
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654a4ef8333 # v8.0.2
+        with:
+          name: release-windows-x64
+          github-token: ${{ github.token }}
+          run-id: 40052687442
+          path: artifacts/x64
+
+      - name: Download Windows x86 package
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654a4ef8333 # v8.0.2
+        with:
+          name: release-windows-x86
+          github-token: ${{ github.token }}
+          run-id: 40052687442
+          path: artifacts/x86
+
+      - name: Download Windows ARM64 package
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654a4ef8333 # v8.0.2
+        with:
+          name: release-windows-arm64
+          github-token: ${{ github.token }}
+          run-id: 40052687442
+          path: artifacts/arm64
+
+      - name: Verify packages and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir release-assets
+          for arch in x64 x86 arm64; do
+            installer="$(find "artifacts/$arch" -type f -name "*-0.13.0-windows-$arch.msi" -print -quit)"
+            portable="$(find "artifacts/$arch" -type f -name "*-0.13.0-windows-$arch-portable.zip" -print -quit)"
+            test -n "$installer" && test -n "$portable"
+            cp "$installer" "release-assets/Nangchen-T.-Studio-Photo-0.13.0-windows-$arch.msi"
+            cp "$portable" "release-assets/Nangchen-T.-Studio-Photo-0.13.0-windows-$arch-portable.zip"
+          done
+          cd release-assets
+          sha256sum *.msi *.zip > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          test "$(find . -maxdepth 1 -type f | wc -l)" -eq 7
+
+      - name: Publish the public GitHub release
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view v0.13.0 >/dev/null 2>&1; then
+            echo "Release v0.13.0 already exists; refusing to replace it." >&2
+            exit 1
+          fi
+          if gh api "repos/$GH_REPO/git/ref/tags/v0.13.0" >/dev/null 2>&1; then
+            echo "Tag v0.13.0 already exists; refusing to point the release at another commit." >&2
+            exit 1
+          fi
+          cat > release-notes.md <<'NOTES'
+          # Nangchen T. Studio Photo v0.13.0
+
+          Free photo editing software with Tibetan and English menus.
+
+          ## Windows downloads
+
+          Choose the installer (.msi) or portable ZIP for your Windows processor:
+          - x64: most Intel and AMD 64-bit PCs
+          - x86: older 32-bit Windows PCs
+          - ARM64: Windows on ARM PCs
+
+          Windows packages are not code-signed and may show a SmartScreen warning.
+
+          macOS packages are not included in this release. The existing build workflow uses GitHub's paid macos-15-xlarge runner, which was blocked by billing. No Mac package is being represented as v0.13.0.
+
+          Built from source commit 07838683290337eddc8ec9301f7d65fbb9b8eaeb. SHA256SUMS.txt contains package checksums.
+          NOTES
+          mapfile -d '' -t assets < <(find release-assets -maxdepth 1 -type f -print0 | sort -z)
+          gh release create v0.13.0 "${assets[@]}" --title "Nangchen T. Studio Photo v0.13.0" --notes-file release-notes.md --target "$SOURCE_SHA" --latest
+          gh release view v0.13.0 --json url,isDraft,assets
+          test "$(gh release view v0.13.0 --json isDraft --jq .isDraft)" = false
+          echo "Published Windows v0.13.0 packages from $SOURCE_SHA." >> "$GITHUB_STEP_SUMMARY"
