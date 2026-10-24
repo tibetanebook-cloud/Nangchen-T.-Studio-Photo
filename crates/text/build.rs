@@ -7,7 +7,7 @@
 //! scripts run in the crate's directory, so a relative one resolves from `crates/text`. A bad
 //! checkout is a warning, or an error with `CRAFT_FONTS_REQUIRED=1` (release builds).
 //!
-//! PhotoCraft difference from the recipe: the web build (wasm32) embeds nothing. The wasm must
+//! Tibetan Design Photo difference from the recipe: the web build (wasm32) embeds nothing. The wasm must
 //! stay under the 24 MiB gate in `packaging/web/package.sh` (#237; Cloudflare's per-file cap is
 //! 25 MiB). Measured 2026-10-06 (`trunk build --release`): 24,190,076 bytes
 //! without craft-fonts, 28,867,488 with only the UI face (BIZ UDPGothic Regular) embedded, over
@@ -48,7 +48,7 @@ fn deflate_bundled_fonts() {
     let out = PathBuf::from(std::env::var_os("OUT_DIR").unwrap_or_default()).join("fonts");
     let result = (|| -> std::io::Result<()> {
         std::fs::create_dir_all(&out)?;
-        for name in ["Inter-Regular.ttf", "Inter-Medium.ttf", "Inter-SemiBold.ttf", "JetBrainsMono-Regular.ttf"] {
+        for name in ["Inter-Regular.ttf", "Inter-Medium.ttf", "Inter-SemiBold.ttf", "JetBrainsMono-Regular.ttf", "NotoSerifTibetan-Regular.ttf"] {
             let path = src.join(name);
             println!("cargo::rerun-if-changed={}", path.display());
             let mut z = flate2::write::DeflateEncoder::new(Vec::new(), flate2::Compression::best());

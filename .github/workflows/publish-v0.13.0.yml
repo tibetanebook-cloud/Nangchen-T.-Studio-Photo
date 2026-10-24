@@ -15,6 +15,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
@@ -63,13 +64,14 @@ jobs:
           set -euo pipefail
           mkdir release-assets
           for arch in x64 x86 arm64; do
-            installer="$(find "artifacts/$arch" -type f -name "photocraft-0.13.0-windows-$arch.msi" -print -quit)"
-            portable="$(find "artifacts/$arch" -type f -name "photocraft-0.13.0-windows-$arch-portable.zip" -print -quit)"
+            installer="$(find "artifacts/$arch" -type f -name "*-0.13.0-windows-$arch.msi" -print -quit)"
+            portable="$(find "artifacts/$arch" -type f -name "*-0.13.0-windows-$arch-portable.zip" -print -quit)"
             test -n "$installer" && test -n "$portable"
-            cp "$installer" "$portable" release-assets/
+            cp "$installer" "release-assets/Nangchen-T.-Studio-Photo-0.13.0-windows-$arch.msi"
+            cp "$portable" "release-assets/Nangchen-T.-Studio-Photo-0.13.0-windows-$arch-portable.zip"
           done
           cd release-assets
-          sha256sum *.msi *.zip > SHA256SUMS.txt
+          sha256sum -- *.msi *.zip > SHA256SUMS.txt
           cat SHA256SUMS.txt
           test "$(find . -maxdepth 1 -type f | wc -l)" -eq 7
 
@@ -103,7 +105,8 @@ jobs:
 
           Built from source commit 07838683290337eddc8ec9301f7d65fbb9b8eaeb. SHA256SUMS.txt contains package checksums.
           NOTES
-          gh release create v0.13.0 release-assets/* --title "Nangchen T. Studio Photo v0.13.0" --notes-file release-notes.md --target "$SOURCE_SHA" --latest
+          mapfile -d '' -t assets < <(find release-assets -maxdepth 1 -type f -print0 | sort -z)
+          gh release create v0.13.0 "${assets[@]}" --title "Nangchen T. Studio Photo v0.13.0" --notes-file release-notes.md --target "$SOURCE_SHA" --latest
           gh release view v0.13.0 --json url,isDraft,assets
           test "$(gh release view v0.13.0 --json isDraft --jq .isDraft)" = false
           echo "Published Windows v0.13.0 packages from $SOURCE_SHA." >> "$GITHUB_STEP_SUMMARY"

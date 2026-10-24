@@ -33,7 +33,7 @@ private keys prefixed with `__`. Never use `__` for user-facing or engine params
 | Kind | Body module | Typical entry |
 |---|---|---|
 | `NewDocument` | `new_doc_ui.rs` | File › New, `file.new` with no size params |
-| `About` | `dialogs.rs` (About / Contributors / Models tabs) | Help › About PhotoCraft; `systemInfo: true` → System Info variant |
+| `About` | `dialogs.rs` (About / Contributors / Models tabs) | Help › About Tibetan Design Photo; `systemInfo: true` → System Info variant |
 | `Command` | Routed—see below | Most menu commands with parameters |
 | `LayerStyle` | `layer_style.rs` | Layer › Layer Style… |
 | `Error` | inline in `dialogs.rs` | `message` field only (e.g. move lock, locked transform) |
@@ -50,6 +50,7 @@ Dispatch order matches `dialogs::show` in `dialogs.rs` (check earlier rows befor
 | `__stroke` | `stroke_ui.rs` | Edit › Stroke… |
 | `__createShape` | `shape_dialog.rs` | Click-with-shape-tool creation (rectangle, ellipse, …) |
 | `__deleteLayer` | `delete_layer_prompt.rs` | Layers panel trash confirmation |
+| `__replaceSaved` | `replace_prompt.rs` | Replace prompt when a save's added or lowercased extension names an existing file |
 | `__newLayer` | `new_layer_ui.rs` | Layer › New › Layer… (⇧⌘N; ⌥⇧⌘N makes the layer without it) |
 | `__rasterize` | `rasterize_prompt.rs` | Rasterize-before-paint prompt |
 | `__resetAllTools` | `tool_reset.rs` | Reset All Tools confirmation |
@@ -101,6 +102,7 @@ actions with their marker already set.
 | `__stroke` | `stroke_ui` |
 | `__createShape` | `shape_dialog` |
 | `__deleteLayer` | `delete_layer_prompt` |
+| `__replaceSaved` | `replace_prompt` |
 | `__newLayer` | `new_layer_ui` |
 | `__rasterize` | `rasterize_prompt` |
 | `__resetAllTools` | `tool_reset` |
