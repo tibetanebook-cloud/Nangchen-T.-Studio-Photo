@@ -904,8 +904,8 @@ mod tests {
         assert_eq!(de.bar.find("app.language.ja").map(|it| it.label.as_str()), Some("日本語"));
         let mut a = app(false);
         let ctx = egui::Context::default();
-        crate::menus::invoke(&mut a, &ctx, "app.language.ja", json!({})).unwrap();
-        assert_eq!(a.session.prefs().interface.language, "ja");
+        crate::menus::invoke(&mut a, &ctx, "app.language.bo", json!({})).unwrap();
+        assert_eq!(a.session.prefs().interface.language, "bo");
         crate::menus::invoke(&mut a, &ctx, "app.language.auto", json!({})).unwrap();
         assert_eq!(a.session.prefs().interface.language, "auto");
         assert!(crate::menus::invoke(&mut a, &ctx, "app.language.xx-nope", json!({})).is_err(), "an unknown code is an error");
