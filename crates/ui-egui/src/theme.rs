@@ -113,6 +113,23 @@ impl ThemeKind {
     pub fn is_pro(self) -> bool {
         matches!(self, ThemeKind::Pro | ThemeKind::ProMedium | ThemeKind::ProLightGray | ThemeKind::ProLight)
     }
+    /// Whether this theme belongs to the dark appearance family.
+    pub fn is_dark(self) -> bool {
+        matches!(
+            self,
+            ThemeKind::Studio
+                | ThemeKind::Pro
+                | ThemeKind::ProMedium
+                | ThemeKind::SolarizedDark
+                | ThemeKind::AdwaitaDark
+                | ThemeKind::BreezeDark
+                | ThemeKind::SoftDark
+        )
+    }
+    /// Whether this theme belongs to the light appearance family.
+    pub fn is_light(self) -> bool {
+        !self.is_dark()
+    }
     pub fn next(self) -> Self {
         let i = Self::ALL.iter().position(|k| *k == self).unwrap_or(0);
         Self::ALL[(i + 1) % Self::ALL.len()]
@@ -808,17 +825,21 @@ impl Tokens {
         if self.pro { Color32::from_gray(if self.dark() { 96 } else { 201 }) } else { self.accent_soft }
     }
 
+    /// The 1 px ring round a slider knob, if the theme draws one: the Pro layouts' dark ring, and
+    /// in the light themes the dim text colour, so their white knob stands out from a pale panel
+    /// (#7927). The dark Studio-layout themes need none; Classic draws a bevelled knob instead.
+    pub fn knob_outline(&self) -> Option<Color32> {
+        if self.pro {
+            Some(Color32::from_gray(40))
+        } else if self.dark() {
+            None
+        } else {
+            Some(self.text_dim)
+        }
+    }
+
     pub fn dark(&self) -> bool {
-        matches!(
-            self.kind,
-            ThemeKind::Studio
-                | ThemeKind::Pro
-                | ThemeKind::ProMedium
-                | ThemeKind::SolarizedDark
-                | ThemeKind::AdwaitaDark
-                | ThemeKind::BreezeDark
-                | ThemeKind::SoftDark
-        )
+        self.kind.is_dark()
     }
 }
 
@@ -845,13 +866,18 @@ pub fn install_fonts_with(ctx: &egui::Context, cjk: crate::cjk_fonts::Sources) {
     let medium = add(&mut fonts, "Inter-Medium", photocraft_text::fonts::INTER_MEDIUM.as_slice());
     let semibold = add(&mut fonts, "Inter-SemiBold", photocraft_text::fonts::INTER_SEMIBOLD.as_slice());
     let mono = add(&mut fonts, "JetBrainsMono", photocraft_text::fonts::JETBRAINS_MONO_REGULAR.as_slice());
+    let tibetan = add(&mut fonts, "NotoSerifTibetan", photocraft_text::fonts::NOTO_SERIF_TIBETAN_REGULAR.as_slice());
     if let Some(inter) = inter {
         fonts.families.entry(FontFamily::Proportional).or_default().insert(0, inter);
     }
     if let Some(mono) = mono {
         fonts.families.entry(FontFamily::Monospace).or_default().insert(0, mono);
     }
-    crate::egui_fonts::add_tibetan(&mut fonts);
+    if let Some(tibetan) = tibetan {
+        // The language switch remains visibly bilingual in every UI language. Ship this small
+        // OFL font so Tibetan labels render even on systems without a Tibetan system font.
+        fonts.families.entry(FontFamily::Proportional).or_default().push(tibetan);
+    }
     // Named weights fall back to the default stack for missing glyphs.
     let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
     for (fam, primary) in [("medium", medium), ("semibold", semibold)] {
@@ -1050,7 +1076,7 @@ pub fn apply(ctx: &egui::Context, kind: ThemeKind) {
         s.spacing.scroll = scroll;
         s.spacing.tooltip_width = 280.0;
     });
-    // egui selects its style branch using OS appearance, independently of Tibetan Design's fixed
+    // egui selects its style branch using OS appearance, independently of Tibetan Design Photo's fixed
     // Dark/Light mode or platform appearance service. Both branches need the selected palette.
     let style = ctx.global_style();
     ctx.set_style_of(egui::Theme::Light, Arc::clone(&style));
@@ -1130,7 +1156,7 @@ mod tests {
         let mut width = 0.0;
         ctx.run_ui(Default::default(), |ui| {
             assert!(medium_bound(ui.ctx()), "the installed stack reaches the second pass");
-            width = ui.painter().layout_no_wrap("Tibetan Design".into(), medium(13.0), Color32::WHITE).size().x;
+            width = ui.painter().layout_no_wrap("Tibetan Design Photo".into(), medium(13.0), Color32::WHITE).size().x;
         })
         .textures_delta
         .clear();
@@ -1140,7 +1166,7 @@ mod tests {
         let mut scaled = 0.0;
         ctx.run_ui(Default::default(), |ui| {
             assert!(medium_bound(ui.ctx()));
-            scaled = ui.painter().layout_no_wrap("Tibetan Design".into(), medium(13.0), Color32::WHITE).size().x;
+            scaled = ui.painter().layout_no_wrap("Tibetan Design Photo".into(), medium(13.0), Color32::WHITE).size().x;
         })
         .textures_delta
         .clear();
@@ -1150,7 +1176,7 @@ mod tests {
         for _ in 0..2 {
             ctx.run_ui(Default::default(), |ui| {
                 assert!(medium_bound(ui.ctx()));
-                let w = ui.painter().layout_no_wrap("Tibetan Design".into(), medium(13.0), Color32::WHITE).size().x;
+                let w = ui.painter().layout_no_wrap("Tibetan Design Photo".into(), medium(13.0), Color32::WHITE).size().x;
                 assert!((w - scaled).abs() < 1.0, "{w} vs {scaled}");
             })
             .textures_delta
@@ -1260,6 +1286,32 @@ mod tests {
         let lum = |c: Color32| 0.2126 * lin(c.r()) + 0.7152 * lin(c.g()) + 0.0722 * lin(c.b());
         let (hi, lo) = if lum(a) > lum(b) { (lum(a), lum(b)) } else { (lum(b), lum(a)) };
         (hi + 0.05) / (lo + 0.05)
+    }
+
+    /// The light themes outline their white slider knob so its edge holds WCAG's 3:1 non-text
+    /// contrast against the panels sliders sit on (#7927); the dark ones keep the plain knob.
+    #[test]
+    fn light_themes_outline_the_slider_knob() {
+        for kind in ThemeKind::ALL {
+            let t = Tokens::for_kind(kind);
+            // The Pro layouts keep their dark ring (it rims a grey knob), Classic its bevelled knob.
+            if t.pro || t.bevel {
+                continue;
+            }
+            match t.knob_outline() {
+                Some(outline) => {
+                    assert!(!t.dark(), "{kind:?}");
+                    for panel in [t.dock, t.card, t.chrome] {
+                        assert!(contrast(outline, panel) >= 3.0, "{kind:?}: knob outline {outline:?} on {panel:?}");
+                    }
+                }
+                None => assert!(t.dark(), "{kind:?}: a light theme without a knob outline"),
+            }
+        }
+        assert_eq!(Tokens::for_kind(ThemeKind::Pro).knob_outline(), Some(Color32::from_gray(40)), "Pro is unchanged");
+        for kind in [ThemeKind::StudioLight, ThemeKind::Adwaita, ThemeKind::BreezeLight, ThemeKind::SoftLight] {
+            assert!(Tokens::for_kind(kind).knob_outline().is_some(), "{kind:?}");
+        }
     }
 
     #[test]

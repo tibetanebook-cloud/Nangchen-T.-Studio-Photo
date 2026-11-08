@@ -14,8 +14,6 @@ const SAMPLE: &str = "AaBbCc";
 const ARABIC_CORE: [char; 4] = ['\u{627}', '\u{644}', '\u{645}', '\u{639}'];
 /// Short, recognisable, and joins letters, so it shows the face's shaping.
 const ARABIC_SAMPLE: &str = "أبجد هوز";
-/// Tibetan font comparisons need actual Tibetan outlines and combining vowel marks.
-const TIBETAN_SAMPLE: &str = "བོད་ཡིག";
 /// The Latin and Arabic sample widths and the sample height at the menu's medium (18 pt).
 const WIDTH: f32 = 100.0;
 const ARABIC_WIDTH: f32 = 72.0;
@@ -60,29 +58,23 @@ type Key = (String, u32, u64, u32);
 #[derive(Clone)]
 struct Samples {
     latin: TextureHandle,
-    secondary: Option<TextureHandle>,
+    arabic: Option<TextureHandle>,
 }
 #[derive(Clone, Default)]
 struct Cache(VecDeque<(Key, Option<Samples>)>);
 
 struct SampleImages {
     latin: ColorImage,
-    secondary: Option<ColorImage>,
+    arabic: Option<ColorImage>,
 }
 
-/// Latin plus a Tibetan or Arabic sample when the face covers that script. Tibetan takes
-/// priority for this editor; non-Latin faces show their own script instead of fallback letters.
+/// The Latin sample text, and the Arabic one for a face that has both scripts. `chars` is the
+/// face's ascending charmap. Arabic-only and symbol faces show their own glyphs instead of the
+/// Latin sample and get no second sample.
 fn sample_texts(chars: &[char]) -> (String, Option<&'static str>) {
     let has = |c: char| chars.binary_search(&c).is_ok();
-    let tibetan = TIBETAN_SAMPLE.chars().all(has);
     if !SAMPLE.chars().all(has) {
-        if tibetan {
-            return (TIBETAN_SAMPLE.into(), None);
-        }
         return (chars.iter().copied().filter(|c| !c.is_whitespace()).take(6).collect(), None);
-    }
-    if tibetan {
-        return (SAMPLE.into(), Some(TIBETAN_SAMPLE));
     }
     let arabic = ARABIC_CORE.into_iter().chain(ARABIC_SAMPLE.chars().filter(|c| !c.is_whitespace())).all(has);
     (SAMPLE.into(), arabic.then_some(ARABIC_SAMPLE))
@@ -114,13 +106,10 @@ fn images(engine: &mut photocraft_text::TextEngine, family: &str, scale: u32, si
     if !engine.fonts.has_family(family) {
         return None;
     }
-    let (latin, secondary) = sample_texts(&engine.fonts.charmap(family, 400, false));
+    let (latin, arabic) = sample_texts(&engine.fonts.charmap(family, 400, false));
     let latin = render(engine, family, &latin, scaled(WIDTH, size), scale, size)?;
-    let secondary = secondary.and_then(|text| {
-        let width = if text == TIBETAN_SAMPLE { WIDTH } else { ARABIC_WIDTH };
-        render(engine, family, text, scaled(width, size), scale, size)
-    });
-    Some(SampleImages { latin, secondary })
+    let arabic = arabic.and_then(|text| render(engine, family, text, scaled(ARABIC_WIDTH, size), scale, size));
+    Some(SampleImages { latin, arabic })
 }
 
 fn key(ctx: &egui::Context, family: &str, size: f32) -> Key {
@@ -129,21 +118,15 @@ fn key(ctx: &egui::Context, family: &str, size: f32) -> Key {
 }
 
 /// Width a row reserves for its samples: wider once a painted row showed the family covers
-/// Tibetan or Arabic, so the label truncates before the samples. Never renders, so rows scrolled out of
+/// Arabic, so the label truncates before the samples. Never renders, so rows scrolled out of
 /// view cost nothing.
 pub(crate) fn slot_width(ctx: &egui::Context, family: &str, size: f32) -> f32 {
     let key = key(ctx, family, size);
-    let extra = ctx.data_mut(|d| {
+    let arabic = ctx.data_mut(|d| {
         let cache = d.get_temp_mut_or_default::<Cache>(egui::Id::new(CACHE_ID));
-        cache
-            .0
-            .iter()
-            .find(|(k, _)| k == &key)
-            .and_then(|(_, samples)| samples.as_ref())
-            .and_then(|samples| samples.secondary.as_ref())
-            .map_or(0.0, |texture| GAP + texture.size()[0] as f32 / key.1 as f32)
+        cache.0.iter().any(|(k, samples)| k == &key && samples.as_ref().is_some_and(|s| s.arabic.is_some()))
     });
-    scaled(WIDTH, size) + extra
+    if arabic { scaled(WIDTH, size) + GAP + scaled(ARABIC_WIDTH, size) } else { scaled(WIDTH, size) }
 }
 
 pub(crate) fn paint(ui: &egui::Ui, family: &str, row: Rect, size: f32) {
@@ -162,9 +145,9 @@ pub(crate) fn paint(ui: &egui::Ui, family: &str, row: Rect, size: f32) {
     let samples = cached.unwrap_or_else(|| {
         let samples = images(&mut photocraft_text::shared().lock().unwrap_or_else(PoisonError::into_inner), family, scale, size).map(|img| {
             let load = |image| ctx.load_texture(format!("font-sample-{family}"), image, TextureOptions::LINEAR);
-            Samples { latin: load(img.latin), secondary: img.secondary.map(load) }
+            Samples { latin: load(img.latin), arabic: img.arabic.map(load) }
         });
-        if samples.as_ref().is_some_and(|s| s.secondary.is_some()) {
+        if samples.as_ref().is_some_and(|s| s.arabic.is_some()) {
             // The row reserved only the Latin width until now.
             ctx.request_repaint();
         }
@@ -183,10 +166,10 @@ pub(crate) fn paint(ui: &egui::Ui, family: &str, row: Rect, size: f32) {
         let [w, h] = box_for(size);
         let latin = Rect::from_min_size(pos2(row.right() - w - 8.0, row.center().y - h / 2.0), vec2(w, h));
         ui.painter().image(samples.latin.id(), latin, uv, tint);
-        if let Some(secondary) = samples.secondary {
-            let aw = secondary.size()[0] as f32 / scale as f32;
+        if let Some(arabic) = samples.arabic {
+            let aw = scaled(ARABIC_WIDTH, size);
             let rect = Rect::from_min_size(pos2(latin.left() - GAP - aw, latin.top()), vec2(aw, h));
-            ui.painter().image(secondary.id(), rect, uv, tint);
+            ui.painter().image(arabic.id(), rect, uv, tint);
         }
     }
 }
@@ -234,7 +217,7 @@ mod tests {
     fn latin_only_families_get_no_arabic_sample() {
         let mut engine = photocraft_text::TextEngine::new();
         for family in ["Inter", "JetBrains Mono"] {
-            assert!(images(&mut engine, family, 1, MEDIUM).expect("bundled").secondary.is_none(), "{family}");
+            assert!(images(&mut engine, family, 1, MEDIUM).expect("bundled").arabic.is_none(), "{family}");
         }
         assert!(images(&mut engine, "", 1, MEDIUM).is_none());
         assert!(images(&mut engine, "Missing font", 1, MEDIUM).is_none());
@@ -261,39 +244,20 @@ mod tests {
     fn a_system_arabic_face_renders_both_samples() {
         let mut engine = photocraft_text::TextEngine::new();
         engine.fonts.load_system_fonts();
-        let both = engine.fonts.families().into_iter().find(|f| sample_texts(&engine.fonts.charmap(f, 400, false)).1 == Some(ARABIC_SAMPLE));
-        let Some(family) = both else {
-            eprintln!("skipped: no installed family covers both Latin and Arabic");
+        let candidates: Vec<String> = engine.fonts.families().into_iter().filter(|f| sample_texts(&engine.fonts.charmap(f, 400, false)).1.is_some()).collect();
+        // A face can map the Arabic characters to blank glyphs (#5259): `render` then rightly gives
+        // no sample, so every candidate is rendered and the first one with an Arabic sample is checked.
+        let mut rendered = None;
+        for family in &candidates {
+            if let Some(arabic) = images(&mut engine, family, 1, MEDIUM).and_then(|i| i.arabic) {
+                rendered.get_or_insert((family.clone(), arabic));
+            }
+        }
+        let Some((family, arabic)) = rendered else {
+            eprintln!("skipped: no installed family renders both Latin and Arabic ({} claim both)", candidates.len());
             return;
         };
-        let images = images(&mut engine, &family, 1, MEDIUM).expect(&family);
-        let arabic = images.secondary.expect("Arabic sample");
-        assert_eq!(arabic.size, [ARABIC_WIDTH as usize, HEIGHT as usize]);
+        assert_eq!(arabic.size, [ARABIC_WIDTH as usize, HEIGHT as usize], "{family}");
         assert!(arabic.pixels.iter().any(|p| p.a() > 0), "{family}");
-    }
-
-    #[test]
-    fn tibetan_samples_require_the_requested_faces_glyphs() {
-        let both = charmap(&format!("{SAMPLE}{TIBETAN_SAMPLE}"));
-        assert_eq!(sample_texts(&both), (SAMPLE.into(), Some(TIBETAN_SAMPLE)));
-        assert_eq!(sample_texts(&charmap(TIBETAN_SAMPLE)), (TIBETAN_SAMPLE.into(), None));
-        for missing in TIBETAN_SAMPLE.chars() {
-            let partial: Vec<_> = both.iter().copied().filter(|c| *c != missing).collect();
-            assert_ne!(sample_texts(&partial).1, Some(TIBETAN_SAMPLE), "missing {missing}");
-        }
-    }
-
-    #[test]
-    fn prepared_tibetan_face_renders_a_real_tibetan_sample() {
-        let Some(path) = std::env::var_os("TIBETAN_UI_FONT") else { return };
-        let mut engine = photocraft_text::TextEngine::new();
-        let families = engine.fonts.register_font_data(std::fs::read(path).expect("prepared font"));
-        let family = families.first().expect("font family");
-        let samples = images(&mut engine, family, 1, MEDIUM).expect("font samples");
-        let tibetan = samples.secondary.expect("Tibetan beside Latin");
-        assert_eq!(tibetan.size, [100, 24]);
-        assert!(tibetan.pixels.iter().any(|p| p.a() > 0));
-        assert_ne!(samples.latin.pixels, tibetan.pixels);
-        assert_eq!(images(&mut engine, family, 2, MEDIUM).expect("scaled").secondary.expect("Tibetan").size, [200, 48]);
     }
 }

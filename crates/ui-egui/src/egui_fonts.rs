@@ -22,20 +22,6 @@ static HACK: LazyLock<Vec<u8>> = LazyLock::new(|| inflate(deflated!("Hack-Regula
 static NOTO_EMOJI: LazyLock<Vec<u8>> = LazyLock::new(|| inflate(deflated!("NotoEmoji-Regular")));
 static UBUNTU_LIGHT: LazyLock<Vec<u8>> = LazyLock::new(|| inflate(deflated!("Ubuntu-Light")));
 static EMOJI_ICON: LazyLock<Vec<u8>> = LazyLock::new(|| inflate(deflated!("emoji-icon-font")));
-static TIBETAN: LazyLock<Vec<u8>> = LazyLock::new(|| inflate(include_bytes!(concat!(env!("OUT_DIR"), "/tibetan-ui.ttf.deflate"))));
-
-/// Add the optional embedded Tibetan face to every base family before named weights are built.
-/// Latin text keeps Inter; Tibetan no longer depends on optional OS language packs.
-pub fn add_tibetan(fonts: &mut FontDefinitions) {
-    if TIBETAN.is_empty() {
-        return;
-    }
-    let name = "NotoSerifTibetan".to_owned();
-    fonts.font_data.insert(name.clone(), Arc::new(FontData::from_static(TIBETAN.as_slice())));
-    for stack in fonts.families.values_mut() {
-        stack.push(name.clone());
-    }
-}
 
 /// Inflated fonts are bounded (the largest is 0.42 MB), so corrupt data can't exhaust memory.
 const MAX_FONT_BYTES: u64 = 16 << 20;
@@ -101,18 +87,5 @@ mod tests {
     fn corrupt_font_data_is_left_out_not_a_panic() {
         assert!(inflate(b"not deflate data").is_empty());
         assert!(inflate(&[]).is_empty());
-    }
-
-    #[test]
-    fn optional_tibetan_face_covers_the_catalog() {
-        if TIBETAN.is_empty() {
-            return; // Source-only builds retain the upstream system-font fallback.
-        }
-        let text = include_str!("i18n/bo.tsv");
-        let chars: std::collections::BTreeSet<_> = text.chars().filter(|c| ('\u{0f00}'..='\u{0fff}').contains(c)).collect();
-        assert!(!chars.is_empty());
-        for c in chars {
-            assert!(photocraft_text::scripts::covering_face(TIBETAN.as_slice(), c).is_some(), "Tibetan font lacks {c}");
-        }
     }
 }

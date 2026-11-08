@@ -1,6 +1,6 @@
 # Summary
 
-[PhotoCraft Documentation](README.md)
+[Tibetan Design Photo Documentation](README.md)
 
 # Getting started
 

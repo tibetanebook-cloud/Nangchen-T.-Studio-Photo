@@ -1,26 +1,28 @@
-# Tibetan Design for macOS
+# Tibetan Design Photo for macOS
 
-The native Rust editor already supports macOS. This update adds Tibetan Design
-packaging and a manual GitHub Actions build for both Apple Silicon and Intel.
-The first Mac build and real-device testing are still required before announcing
-a Mac release. No DMG has been built on the Windows development machine.
+The upstream Rust editor supports macOS. Tibetan Design Photo keeps the upstream
+Mac packaging and uses the supplied brand assets. The reusable release workflow
+builds Apple Silicon and Intel packages; verify the completed workflow before
+publishing a GitHub release.
 
 ## Build on GitHub
 
-1. Commit and push the Mac update files to your existing private repository.
-2. Open **Actions → Tibetan Design macOS → Run workflow**, using `main`.
+1. Merge the reviewed source update after its pull-request checks pass.
+2. Run the repository's release workflow for the release branch.
 3. Wait for both architecture jobs to finish successfully.
-4. Download the corresponding artifact:
+4. Download the corresponding artifact from the workflow run:
    - **Tibetan-Design-macOS-aarch64**: Apple Silicon (M-series).
    - **Tibetan-Design-macOS-x86_64**: Intel Macs.
 5. Extract the artifact ZIP and open its `.dmg` on the matching Mac.
-6. Drag **Tibetan Design.app** to **Applications**.
+6. Drag **Tibetan Design Photo.app** to **Applications**.
 
 Each artifact also contains a separate command-line ZIP; ordinary app users only
-need the DMG. The application and DMG use the supplied Tibetan Design logo.
-Both architectures embed Noto Serif Tibetan with its verified SHA-256 and OFL
-license. The bundle declares Tibetan and English, retains upstream format IDs,
-and uses a separate Tibetan Design application identifier/settings directory.
+need the DMG. The application and DMG use the supplied Tibetan Design Photo logo.
+The UI embeds the Noto Serif Tibetan Regular font (SHA-256
+`ee97bf3dc56e813651db734c9f35f8f1d41e7e31acf5f7d893e64ad22b292446`) under the
+SIL Open Font License so the bilingual language switch renders without a
+system-installed Tibetan font. The bundle declares Tibetan and English, retains upstream format IDs,
+and uses a separate Tibetan Design Photo application identifier/settings directory.
 
 The build targets macOS 11.0 or newer, matching the upstream deployment target.
 Compatibility on older supported systems still needs real-device testing. The

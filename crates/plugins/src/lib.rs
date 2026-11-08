@@ -1,6 +1,6 @@
-//! Sandboxed WebAssembly plug-ins for PhotoCraft.
+//! Sandboxed WebAssembly plug-ins for Tibetan Design Photo.
 //!
-//! A plug-in is a WebAssembly module that implements the PhotoCraft plug-in ABI (v1, documented
+//! A plug-in is a WebAssembly module that implements the Tibetan Design Photo plug-in ABI (v1, documented
 //! in `docs/plugins.md`). It runs in [`wasmi`], a pure-Rust interpreter, with:
 //!
 //! - **no host imports**: no WASI, file system, network, clock or randomness. A module that
@@ -26,7 +26,7 @@ pub mod registry;
 mod runtime;
 
 pub use apply::format_code;
-pub use manifest::{Area, Kind, Manifest, ParamSpec};
+pub use manifest::{Area, Kind, Manifest, ParamSpec, Unit};
 pub use runtime::{ABI_VERSION, Limits, Plugin};
 
 /// A plug-in error. Every way a module can misbehave ends here, never in a panic.

@@ -1,6 +1,6 @@
 # UI localisation and live language switching
 
-PhotoCraft uses the same Rust catalog implementation in the native egui shell and the
+Tibetan Design Photo uses the same Rust catalog implementation in the native egui shell and the
 WebAssembly build. English source strings are lookup keys. UTF-8 TSV catalogs supply plain,
 contextual, command-ID and plural translations; missing entries fall back to English.
 
@@ -28,6 +28,7 @@ contextual, command-ID and plural translations; missing entries fall back to Eng
 | Magyar | `hu` | one form |
 | Tiếng Việt | `vi` | one form |
 | Srpski | `sr` | one / few / many (teens use many) |
+| हिन्दी | `hi` | one / other |
 
 Languages registered with `complete_menus` cover the current menu labels, `tl!` literals, blend
 mode names, and generated preference labels; tests enforce that coverage. Vietnamese (`vi`) is
@@ -132,7 +133,7 @@ detection remain separate outstanding work. Switching catalogs does not supply m
 2. Register its code, native name and plural rule in `i18n::LANGUAGES`.
 3. Translate the meaning of the English source keys. Preserve `{name}` placeholders, escaped
    characters and the trailing `…` on dialog commands. Use `@id` to disambiguate a command
-   label and `@plural` for count-sensitive text. Keep product names such as PhotoCraft.
+   label and `@plural` for count-sensitive text. Keep product names such as Tibetan Design Photo.
 4. Set `complete_menus` when the catalog covers all enforced keys. Add source and license
    attribution for translation assets, then run the catalog and shell tests.
 
@@ -146,5 +147,5 @@ cargo xtask wasm
 
 Render representative dialogs with the offscreen `snapshot` example, including a sequence
 of language changes in one process. Inspect the PNGs for missing glyphs and truncated labels.
-Translations are original work or reuse the open PhotoCraft contributions credited in
+Translations are original work or reuse the open Tibetan Design Photo contributions credited in
 [ATTRIBUTION.md](../ATTRIBUTION.md); no proprietary localisation resources are used.

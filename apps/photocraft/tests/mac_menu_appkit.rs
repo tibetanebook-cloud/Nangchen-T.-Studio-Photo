@@ -22,6 +22,18 @@ fn main() {
     use photocraft_ui_egui::native_menu;
     use serde_json::json;
 
+    // Without a harness nothing answers cargo-nextest's `--list`, so it ran the whole test as its
+    // listing and failed on the output. List the one test, as libtest's terse format would, and
+    // nothing for `--ignored` (nextest asks twice). Running it passes `<name> --exact`, which falls
+    // through to the test below.
+    let args: Vec<String> = std::env::args().collect();
+    if args.iter().any(|a| a == "--list") {
+        if !args.iter().any(|a| a == "--ignored") {
+            println!("mac_menu_appkit: test");
+        }
+        return;
+    }
+
     let mtm = MainThreadMarker::new().expect("harness = false runs on the main thread");
     let nsapp = NSApplication::sharedApplication(mtm);
     nsapp.finishLaunching();
@@ -97,13 +109,13 @@ fn main() {
     // The Mac layout, as AppKit has it.
     let bar = main_menu();
     let tops: Vec<String> = (0..bar.numberOfItems()).filter_map(|i| bar.itemAtIndex(i)?.submenu()).map(|m| m.title().to_string()).collect();
-    assert_eq!(tops, ["Tibetan Design", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "Help"]);
-    let app_menu = submenu(&bar, "Tibetan Design");
+    assert_eq!(tops, ["Tibetan Design Photo", "File", "Edit", "Image", "Layer", "Type", "Select", "Filter", "View", "Window", "Help"]);
+    let app_menu = submenu(&bar, "Tibetan Design Photo");
     let names = titles(&app_menu);
-    for want in ["About Tibetan Design", "Settings", "Language", "Appearance", "Hide Tibetan Design", "Quit Tibetan Design"] {
+    for want in ["About Tibetan Design Photo", "Settings", "Language", "Appearance", "Hide Tibetan Design Photo", "Quit Tibetan Design Photo"] {
         assert!(names.iter().any(|n| n == want), "{want} missing from the app menu: {names:?}");
     }
-    let quit = app_menu.itemAtIndex(index(&app_menu, "Quit Tibetan Design")).expect("Quit");
+    let quit = app_menu.itemAtIndex(index(&app_menu, "Quit Tibetan Design Photo")).expect("Quit");
     assert_eq!(quit.keyEquivalent().to_string(), "q");
     assert_eq!(quit.keyEquivalentModifierMask(), NSEventModifierFlags::Command);
     assert!(!titles(&submenu(&bar, "File")).iter().any(|n| n == "Exit"), "Exit moved to the app menu as Quit");

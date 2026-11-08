@@ -2,7 +2,7 @@
 
 > **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-10 · **Change:** trivial (status line added; the inventory is the 2026-10-06 branch-point snapshot, current status lives in context-menu-parity.md) · **Target:** Adobe Photoshop 2026
 
-This is the source-code inventory of PhotoCraft's right-click behavior at the branch point, captured 2026-10-06. It distinguishes a menu from another secondary-button gesture. The initial selection, Paths row, and document-tab menus added by this PR are called out separately. Photoshop comparison should be checked against an identified Photoshop version and platform before claiming exact parity; the current Layers menu explicitly targets Photoshop 2026 order.
+This is the source-code inventory of Tibetan Design Photo's right-click behavior at the branch point, captured 2026-10-06. It distinguishes a menu from another secondary-button gesture. The initial selection, Paths row, and document-tab menus added by this PR are called out separately. Photoshop comparison should be checked against an identified Photoshop version and platform before claiming exact parity; the current Layers menu explicitly targets Photoshop 2026 order.
 
 ## Canvas: every tool
 
@@ -30,7 +30,7 @@ Canvas invariant: secondary click must not accidentally start a paint stroke, co
 | Surface | Current entries or behavior | Command route / gap |
 |---|---|---|
 | Layers panel row | Blending Options; Duplicate/Delete; Group from Layers; Quick Export PNG / Export As; Artboard/Frame from Layers; Convert to Smart Object; content-specific Rasterize; Add/Disable/Apply/Delete Layer Mask; Create/Release Clipping Mask; Link/Select Linked; Copy/Paste/Clear Layer Style; Merge Layers/Down, Merge Visible, Flatten Image; Rename Layer. Multi-select changes duplicate/delete/merge labels and target. | `layer_menu_ui::entries` supplies IDs for all except inline rename, then `menus::invoke` or engine dispatch. Missing or disabled commands are filtered/greyed. Check menu visibility and enabled state for groups, backgrounds, masks, type, adjustment/fill, smart objects, and multi-selection. |
-| Channels panel row | Alpha: Duplicate/Delete/Rename, spot conversion or merge, selection-display and overlay controls. Quick Mask: Exit, display and overlay. Composite/color: Duplicate. Layer mask: Enable/Disable, Delete. Common: New Channel, New Spot Channel, Split, Merge. | `channel.*`, `layer.layerMask.*`, `select.editInQuickMaskMode`, `ui.renameChannel`. Check selection loading/saving, channel options, and per-row enablement against Photoshop. |
+| Channels panel row | Alpha: Duplicate/Delete/Rename, spot conversion or merge, selection-display and overlay controls. Quick Mask: Exit, display and overlay. Composite/color: Duplicate. Layer mask: Enable/Disable, Delete, Layer Mask Display Options… (also on double-click). Common: New Channel, New Spot Channel, Split, Merge. | `channel.*`, `layer.layerMask.*`, `select.editInQuickMaskMode`, `ui.renameChannel`. Check selection loading/saving, channel options, and per-row enablement against Photoshop. |
 | Brushes panel preset | Rename Brush, Delete Brush. | Routed through `brush.presets.*` panel actions. Check duplicate/export/import and library organization. |
 | Brushes panel group | Rename Group, Delete Group. | Routed through preset panel actions; confirm group deletion consequences. |
 | Generic presets group (gradients, patterns, swatches, etc.) | Rename Group, Delete Group. | `preset_panels.rs`; verify each collection's appropriate create, export/import, and delete semantics. |

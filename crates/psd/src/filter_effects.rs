@@ -13,7 +13,7 @@
 //!     after the item: u8 flag; if set rect, u64 length, u16 compression, data
 //! ```
 //!
-//! Photoshop puts one item in each section. Files written by earlier PhotoCraft versions put
+//! Photoshop puts one item in each section. Files written by earlier Tibetan Design Photo versions put
 //! every item in one section; both read.
 //!
 //! The slots hold the unfiltered placed pixels (colour channels from slot 0, transparency in the
@@ -170,7 +170,10 @@ impl FilterEffects {
             let pad = ((4 - len % 4) % 4).min(r.remaining() as u64);
             r.skip(pad as usize)?;
             let rest = r.peek_rest();
-            if rest.iter().all(|&b| b == 0) && rest.len() <= 3 {
+            // Padding is at most three bytes. Check the length before scanning the suffix for
+            // zeros: otherwise each iteration scans the whole remaining buffer, which is
+            // quadratic when a block contains many empty sections.
+            if rest.len() <= 3 && rest.iter().all(|&b| b == 0) {
                 break;
             }
             if rest.len() < 8 {
@@ -281,7 +284,7 @@ mod tests {
         assert_eq!(fx.to_bytes(), bytes);
     }
 
-    /// Older PhotoCraft files hold every item in one section; they still read.
+    /// Older Tibetan Design Photo files hold every item in one section; they still read.
     #[test]
     fn reads_several_items_in_one_section() {
         let items = vec![item("a-1", true), item("b-2", false)];

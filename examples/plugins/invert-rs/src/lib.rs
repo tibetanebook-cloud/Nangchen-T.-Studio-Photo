@@ -1,4 +1,4 @@
-//! Invert: a minimal PhotoCraft filter plug-in (plug-in ABI v1, see `docs/plugins.md`).
+//! Invert: a minimal Tibetan Design Photo filter plug-in (plug-in ABI v1, see `docs/plugins.md`).
 //!
 //! `no_std`, no allocator, no imports: the host hands us an interleaved `f32` buffer and we
 //! invert the colour channels in place, leaving alpha (and fully transparent pixels) alone,
@@ -15,8 +15,8 @@ const MANIFEST: &str = r#"{
   "name": "Invert (WebAssembly)",
   "version": "1.0.0",
   "kind": "filter",
-  "author": "PhotoCraft contributors",
-  "description": "Inverts the colour channels; an example of the PhotoCraft plug-in ABI.",
+  "author": "Tibetan Design Photo contributors",
+  "description": "Inverts the colour channels; an example of the Tibetan Design Photo plug-in ABI.",
   "params": {}
 }"#;
 
@@ -49,7 +49,16 @@ pub extern "C" fn pc_alloc(size: u32) -> u32 {
 /// The host guarantees `buf..buf + len` is a block it got from `pc_alloc`, holding `len / 4`
 /// samples.
 #[unsafe(no_mangle)]
-pub unsafe extern "C" fn pc_filter(buf: *mut f32, len: u32, _width: u32, _height: u32, channels: u32, format: u32, _params: *const u8, _params_len: u32) -> i32 {
+pub unsafe extern "C" fn pc_filter(
+    buf: *mut f32,
+    len: u32,
+    _width: u32,
+    _height: u32,
+    channels: u32,
+    format: u32,
+    _params: *const u8,
+    _params_len: u32,
+) -> i32 {
     let n = channels as usize;
     if n == 0 {
         return 1;

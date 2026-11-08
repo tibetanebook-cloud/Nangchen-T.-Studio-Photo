@@ -51,6 +51,7 @@ copy_docs() {
     if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
   done
   copy_font_licences "$dest"
+  cp "$ROOT/assets/fonts/OFL-Noto-Serif-Tibetan.txt" "$dest/"
 }
 
 # Builds made with craft-fonts (CRAFT_FONTS_DIR, all official releases) embed its fonts, which
